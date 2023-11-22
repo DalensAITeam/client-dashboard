@@ -13,7 +13,7 @@ function SettingDashBoard() {
           ? navigate(`/setting`)
           : navigate(`/setting/${title}`)
       }
-      className="w-96 h-52 shadow-md rounded-lg p-20 flex flex-col items-start justify-center cursor-pointer space-y-4"
+      className="w-90 h-52 shadow-md rounded-lg p-20 flex flex-col items-start justify-center cursor-pointer space-y-4"
     >
       <div className=" w-40 h-40 text-green-500">{icon}</div>
       <h4 className="font-poppins text-1x1 font-semibold text-gray-800">
@@ -35,7 +35,7 @@ function SettingDashBoard() {
             Email
           </h6>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-10 w-full">
+        <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-10 w-full">
           {renderSettingCard(
             "Profile",
             "Edit personal details",

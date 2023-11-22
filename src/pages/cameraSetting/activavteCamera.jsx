@@ -20,9 +20,7 @@ function ActivateCamera() {
           </h3>
 
           {/* Deactivate link for Camera 1 */}
-          <span className="text-red-500 underline cursor-pointer">
-            deactivate
-          </span>
+          <span className="text-green-500  cursor-pointer">active</span>
         </div>
 
         {/* Container for each active camera with flex layout and horizontal gap */}
@@ -38,7 +36,6 @@ function ActivateCamera() {
           </span>
         </div>
       </div>
-
       {/* Container for editing IP addresses with flex column layout, vertical gap, and padding */}
       <div className="flex flex-col gap-10 p-30 w-full">
         {/* Heading for Edit IP Address */}
@@ -74,7 +71,6 @@ function ActivateCamera() {
           />
         </div>
       </div>
-
       {/* Container for the "Save Changes" button with flex column layout, items centering, and full width */}
       <div className="flex flex-col items-center justify-center w-full h-10  bg-gradient-to-r from-[#70e000] to-[#70e000] rounded-md cursor-pointer">
         {/* Text for the "Save Changes" button */}
