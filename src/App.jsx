@@ -1,4 +1,4 @@
-
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import './App.css'
 import Screen from './Components/Screen'
 
@@ -7,7 +7,12 @@ function App() {
 
   return (
     <>
-      <Screen/>
+      <BrowserRouter>
+        <Routes>
+            <Route exact path="/" element={<Screen/>} />
+          </Routes>
+      </BrowserRouter>
+     
     </>
   )
 }
