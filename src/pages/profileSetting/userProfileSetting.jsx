@@ -4,7 +4,7 @@ import { FaArrowLeft, FaEdit } from "react-icons/fa";
 
 function UserProfileSetting() {
   return (
-    <div className="flex flex-col items-start gap-5 w-full p-5">
+    <div className="flex flex-col items-start gap-5 w-full p-5 ">
       <h1 className=" flex flex-row items-center text-3xl font-bold dark:text-white gap-5 text-gray-800">
         <FaArrowLeft className=" flex md:hidden w-17 h-5 cursor-pointer " />
         Profile
