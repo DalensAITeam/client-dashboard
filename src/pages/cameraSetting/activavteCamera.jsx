@@ -51,10 +51,11 @@ function ActivateCamera() {
           </label>
 
           {/* Input for IP address (Camera 1) with specified styling */}
-          <input
-            className="w-750 h-12 bg-gray-200 px-4 text-base font-normal text-gray-800 border-b-2 border-gray-500 focus:outline-none focus:border-green-500"
-            placeholder="000.00.0.0"
-          />
+          <div className="flex flex-col items-start justify-center w-750 h-12 bg-gray-200 px-4  border-b-2 border-gray-500 focus:outline-none focus:border-green-500">
+            <span className="text-base font-normal text-gray-800">
+              000.00.0.0
+            </span>
+          </div>
         </div>
 
         {/* Container for each IP address input with flex column layout, vertical gap, and full width */}
@@ -65,10 +66,11 @@ function ActivateCamera() {
           </label>
 
           {/* Input for IP address (Camera 2) with specified styling */}
-          <input
-            className="w-full h-12 bg-gray-200 px-4 text-base font-normal text-gray-800 border-b-2 border-gray-500 focus:outline-none focus:border-green-500"
-            placeholder="000.00.0.0"
-          />
+          <div className="flex flex-col items-start justify-center w-750 h-12 bg-gray-200 px-4  border-b-2 border-gray-500 focus:outline-none focus:border-green-500">
+            <span className="text-base font-normal text-gray-800">
+              000.00.0.0
+            </span>
+          </div>
         </div>
       </div>
       {/* Container for the "Save Changes" button with flex column layout, items centering, and full width */}

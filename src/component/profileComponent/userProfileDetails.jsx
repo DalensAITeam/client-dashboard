@@ -14,7 +14,7 @@ function UserProfileDetailsSection() {
           <div className="relative flex items-center w-full">
             {/* Input for IP address (Camera 2) with specified styling */}
             <input
-              className="flex w-full h-12 bg-transparent rounded-tl-[10px] rounded-tr-[10px] rounded-br-0 rounded-bl-0 border-2 focus:outline-none border-green-500 p-5  font-poppins text-base font-semibold leading-8 text-left text-gray-500"
+              className="flex w-full h-12 bg-transparent rounded-tl-[10px] rounded-tr-[10px] rounded-br-0 rounded-bl-0 border-2 focus:outline-green-500 border-grey-500 p-5  font-poppins text-base font-semibold leading-8 text-left text-gray-500"
               type="text"
               placeholder="HF"
             />
@@ -38,7 +38,7 @@ function UserProfileDetailsSection() {
         <div className="relative flex items-center w-full">
           {/* Input for IP address (Camera 2) with specified styling */}
           <input
-            className="flex w-full h-12 bg-transparent border-2 focus:outline-none border-green-500 p-5 rounded-md font-poppins text-base font-semibold leading-8 text-left text-gray-500"
+            className="flex w-full h-12 bg-transparent border-2  focus:outline-green-500 border-grey-500 p-5 rounded-md font-poppins text-base font-semibold leading-8 text-left text-gray-500"
             type="email"
             placeholder="example@example.com"
           />
@@ -54,7 +54,7 @@ function UserProfileDetailsSection() {
         <div className="relative flex items-center w-full">
           {/* Input for IP address (Camera 2) with specified styling */}
           <input
-            className="flex w-full h-12 bg-transparent border-2 focus:outline-none border-green-500 p-5 rounded-md font-poppins text-base font-semibold leading-8 text-left text-gray-500"
+            className="flex w-full h-12 bg-transparent border-2  focus:outline-green-500 border-grey-500 p-5 rounded-md font-poppins text-base font-semibold leading-8 text-left text-gray-500"
             type="number"
             placeholder="+9991626838292"
           />
@@ -70,7 +70,7 @@ function UserProfileDetailsSection() {
         <div className="relative flex items-center w-full">
           {/* Input for IP address (Camera 2) with specified styling */}
           <input
-            className="flex w-full h-12 bg-transparent border-2 focus:outline-none border-green-500 p-5 rounded-md font-poppins text-base font-semibold leading-8 text-left text-gray-500"
+            className="flex w-full h-12 bg-transparent border-2 focus:outline-green-500 border-grey-500 p-5 rounded-md font-poppins text-base font-semibold leading-8 text-left text-gray-500"
             type="password"
             placeholder="********************"
           />
