@@ -13,7 +13,7 @@ const DataScreen = () => {
     <div className="DataScreen pt-8">
       <h4 className="heading">Data Manager</h4>
       <div className="DataScreen-data-filter flex items-center justify-between">
-        <div className="DataScreen-dates flex items-center justify-between">
+        <div className="DataScreen-dates flex items-center justify-between gap-4">
           <h6 className="Datascreen-date text-[15px]">30 Days</h6>
           <h6 className="Datascreen-date text-[15px]">12 Months</h6>
           <h6 className="Datascreen-date text-[15px]">7 Days</h6>

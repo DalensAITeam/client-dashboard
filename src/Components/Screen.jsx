@@ -6,10 +6,11 @@ const Screen = () => {
   return (
     <div className="flex">
       <CompressedNav/>
-      <div className="min-w-[calc(100vw - 100px)] px-[1.2rem] py-[.7rem] flex min-h-screen flex-col">
+      <div className="Header-body min-w-[calc(100vw - 100px)] w-full px-[1.2rem] py-[.7rem] flex min-h-screen flex-col">
       <Header/>
       <DataScreen/>
       </div>
+      {/* <h3 className="text-red-">Hello</h3> */}
     </div>
   )
 }
