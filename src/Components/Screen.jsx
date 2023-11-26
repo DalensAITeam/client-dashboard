@@ -10,7 +10,7 @@ const Screen = () => {
       <Header/>
       <DataScreen/>
       </div>
-      {/* <h3 className="text-red-">Hello</h3> */}
+      
     </div>
   )
 }
