@@ -3,7 +3,7 @@ import { FaVolumeUp, FaEdit } from "react-icons/fa";
 
 function UserProfileDetailsSection() {
   return (
-    <div className="flex flex-col gap-5 p-8 w-full">
+    <div className="flex flex-col gap-5 w-full">
       {/* Container for each IP address input with flex column layout, vertical gap, and full width */}
       <div className="flex flex-col gap-2 w-full">
         {/* Label for IP address (Camera 1) */}

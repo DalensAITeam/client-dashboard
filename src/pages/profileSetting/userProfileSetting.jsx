@@ -1,14 +1,22 @@
 import React from "react";
 import UserProfileDetailsSection from "../../component/profileComponent/userProfileDetails";
 import { FaArrowLeft, FaEdit } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 function UserProfileSetting() {
+  const navigator = useNavigate();
+  function onGoToSettingHomePageFn() {
+    navigator("/");
+  }
   return (
-    <div className="flex flex-col items-start gap-5 w-full p-5 ">
-      <h1 className=" flex flex-row items-center text-3xl font-bold dark:text-white gap-5 text-gray-800">
-        <FaArrowLeft className=" flex md:hidden w-17 h-5 cursor-pointer " />
-        Profile
-      </h1>
+    <div className="flex flex-col items-start gap-5 w-full p-3 ">
+      <h2 className="  flex flex-row items-center font-inter text-2xl gap-5 font-semibold text-gray-800">
+        <FaArrowLeft
+          className=" flex md:hidden w-17 h-5 cursor-pointer"
+          onClick={onGoToSettingHomePageFn}
+        />
+        Profile Settings
+      </h2>
       <div className="flex  flex-row align-center sm:justify-between justify-center gap-5 w-full shadow-md p-5">
         <div className="flex sm:flex-row flex-col align-center justify-center gap-5">
           <div className="relative w-32 h-32 rounded-full border-4 border-green-500 flex items-center justify-center">

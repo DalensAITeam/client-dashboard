@@ -2,14 +2,22 @@ import React from "react";
 import { FaPlusSquare } from "react-icons/fa";
 import ActivateCamera from "./activavteCamera"; // Importing ActivateCamera component
 import { FaArrowLeft, FaEdit } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 function CameraSettings() {
+  const navigator = useNavigate();
+  function onGoToSettingHomePageFn() {
+    navigator("/");
+  }
   return (
     // Main container with flex column layout and padding
-    <div className="flex flex-col p-10 space-y-30 gap-10 w-full ">
+    <div className="flex flex-col p-3 space-y-30 gap-10 w-full ">
       {/* Heading for Camera Settings */}
       <h2 className="  flex flex-row items-center font-inter text-2xl gap-5 font-semibold text-gray-800">
-        <FaArrowLeft className=" flex md:hidden w-17 h-5 cursor-pointer " />
+        <FaArrowLeft
+          className=" flex md:hidden w-17 h-5 cursor-pointer justify-start"
+          onClick={onGoToSettingHomePageFn}
+        />
         Camera Settings
       </h2>
 
