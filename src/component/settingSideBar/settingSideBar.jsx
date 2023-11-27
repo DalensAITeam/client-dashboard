@@ -1,14 +1,22 @@
 import React from "react";
 import { FaArrowLeft, FaVolumeUp, FaEdit } from "react-icons/fa";
 import { MdContacts, MdCameraAlt, MdCreditCard } from "react-icons/md";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 function SettingSideBar() {
+  const navigator = useNavigate();
+  function onGoToSettingHomePageFn() {
+    navigator("/");
+  }
+
   return (
     // Main container with flex column layout
     <div className="flex flex-col items-start justify-start gap-10 p-4">
       {/* Back arrow */}
-      <FaArrowLeft className="w-27 h-14" />
+      <FaArrowLeft
+        className="w-27 h-14 cursor-pointer"
+        onClick={onGoToSettingHomePageFn}
+      />
 
       {/* Navigation links */}
       <div className="flex flex-col items-center justify-start w-305px h-344px gap-5 mx-auto">

@@ -20,9 +20,7 @@ function ActivateCamera() {
           </h3>
 
           {/* Deactivate link for Camera 1 */}
-          <span className="text-red-500 underline cursor-pointer">
-            deactivate
-          </span>
+          <span className="text-green-500  cursor-pointer">active</span>
         </div>
 
         {/* Container for each active camera with flex layout and horizontal gap */}
@@ -38,7 +36,6 @@ function ActivateCamera() {
           </span>
         </div>
       </div>
-
       {/* Container for editing IP addresses with flex column layout, vertical gap, and padding */}
       <div className="flex flex-col gap-10 p-30 w-full">
         {/* Heading for Edit IP Address */}
@@ -54,10 +51,11 @@ function ActivateCamera() {
           </label>
 
           {/* Input for IP address (Camera 1) with specified styling */}
-          <input
-            className="w-750 h-12 bg-gray-200 px-4 text-base font-normal text-gray-800 border-b-2 border-gray-500 focus:outline-none focus:border-green-500"
-            placeholder="000.00.0.0"
-          />
+          <div className="flex flex-col items-start justify-center w-750 h-12 bg-gray-200 px-4  border-b-2 border-gray-500 focus:outline-none focus:border-green-500">
+            <span className="text-base font-normal text-gray-800">
+              000.00.0.0
+            </span>
+          </div>
         </div>
 
         {/* Container for each IP address input with flex column layout, vertical gap, and full width */}
@@ -68,13 +66,13 @@ function ActivateCamera() {
           </label>
 
           {/* Input for IP address (Camera 2) with specified styling */}
-          <input
-            className="w-full h-12 bg-gray-200 px-4 text-base font-normal text-gray-800 border-b-2 border-gray-500 focus:outline-none focus:border-green-500"
-            placeholder="000.00.0.0"
-          />
+          <div className="flex flex-col items-start justify-center w-750 h-12 bg-gray-200 px-4  border-b-2 border-gray-500 focus:outline-none focus:border-green-500">
+            <span className="text-base font-normal text-gray-800">
+              000.00.0.0
+            </span>
+          </div>
         </div>
       </div>
-
       {/* Container for the "Save Changes" button with flex column layout, items centering, and full width */}
       <div className="flex flex-col items-center justify-center w-full h-10  bg-gradient-to-r from-[#70e000] to-[#70e000] rounded-md cursor-pointer">
         {/* Text for the "Save Changes" button */}
