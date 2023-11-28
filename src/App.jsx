@@ -1,6 +1,11 @@
+ // DATA MANAGER SCREEN - DAVID HYPE
+
 import QuickMonitoring from "./comopnents/pages/quickMonitoring/QuickMonitoring";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import './App.css'
+
+// DASHBOARD BRANCH- MOHAMMED
+
 import Screen from './Components/Screen'
 import Metrics from "./comopnents/pages/metrics/Metrics";
 import NumberOfAnimals from "./comopnents/pages/NumberOfAnimals/NumberOfAnimals";
@@ -8,10 +13,18 @@ import GeneralHealth from "./comopnents/pages/GeneralHealth/GeneralHealth";
 import FeedingStatus from "./comopnents/pages/FeedingStatus/FeedingStatus";
 import FeedingAlarm from "./comopnents/pages/FeednigAlarm/FeedingAlarm";
 
+   //DASHBOARD-CONTINUE - ANIEKEME
+
+// import Homepage from "./page/landing-pages/home"
+import Onboarding from './components/shared-components/Onboarding-screen/onboarding';
+import WelcomeScreen from './components/shared-components/welcome screen/welcome';
+import Camera from './components/shared-components/welcome screen/camera';
+import Camera2 from './components/shared-components/welcome screen/camera2';
+
 function App() {
   return (
 
-    // DATA MANAGER SCREEN
+    // DATA MANAGER SCREEN - DAVID HYPE
 
     // <BrowserRouter>
     //   <Routes>
@@ -19,7 +32,7 @@ function App() {
     //     </Routes>
     // </BrowserRouter>
 
-    // DASHBOARD REPO
+   // DASHBOARD BRANCH- MOHAMMED
 
     // <div className="main">
     //   <div className="monitor">
@@ -33,25 +46,22 @@ function App() {
     //     <FeedingStatus />
     //   </div>
     // </div>
+
+    //DASHBOARD-CONTINUE - ANIEKEME
+
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<WelcomeScreen />} />
+          {/* <Route index element={<Home />} /> */}
+          <Route path="onboarding" element={<Onboarding />} />
+          <Route path="welcome" element={<WelcomeScreen />} />
+          <Route path="camera" element={<Camera />} />
+          <Route path="camera2" element={<Camera2 />} />
+          {/* <Route path="*" element={<NoPage />} /> */}
+      </Routes>
+    </BrowserRouter>
   );
 }
 
 export default App;
-
-
-
-// function App() {
-  
-
-//   return (
-//     <>
-//       <BrowserRouter>
-//         <Routes>
-//             <Route exact path="/" element={<Screen/>} />
-//           </Routes>
-//       </BrowserRouter>
-     
-//     </>
-//   )
-// }
 
