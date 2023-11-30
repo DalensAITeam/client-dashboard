@@ -1,8 +1,8 @@
-import CompressedNav from "./CompressedNav";
-import DataScreen from "./DataScreen";
-import Header from "./Header";
+import CompressedNav from "./Components/CompressedNav"
+import DataScreen from "./Components/DataScreen"
+import Header from "./Components/Header"
 
-const Screen = () => {
+const DataManagerScreen = () => {
   return (
     <div className="flex">
       <CompressedNav/>
@@ -14,4 +14,4 @@ const Screen = () => {
   )
 }
 
-export default Screen
+export default DataManagerScreen
