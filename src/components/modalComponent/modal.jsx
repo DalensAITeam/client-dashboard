@@ -3,6 +3,7 @@ import React from "react";
 import styles from "../../../src/components/modalComponent/Modal.module.css";
 import successfulScreenImg from "../../assets/successful-screen-Img.png";
 import { RiCloseLine } from "react-icons/ri";
+import { Link } from "react-router-dom";
 
 // eslint-disable-next-line react/prop-types
 const Modal = ({ setIsOpen }) => {
@@ -24,9 +25,9 @@ const Modal = ({ setIsOpen }) => {
           </div>
           <div className={styles.modalActions}>
             <div className={styles.actionsContainer}>
-              <button className={styles.dashboardBtn} onClick={() => setIsOpen(false)}>
+              <Link to='/1/dashboard' className={styles.dashboardBtn} onClick={() => setIsOpen(false)}>
                 Go to Dashboard
-              </button>
+              </Link>
              
             </div>
           </div>

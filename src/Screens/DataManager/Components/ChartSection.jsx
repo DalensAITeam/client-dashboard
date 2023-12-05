@@ -1,6 +1,6 @@
 import { useState } from "react"
 import LineChart from "./LineChart"
-import { AnimalData } from "../Data"
+import { AnimalData } from "../../../Data"
 
 const ChartSection = () => {
     const [userData, setUserData] = useState({
