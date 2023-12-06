@@ -10,8 +10,8 @@ function SettingDashBoard() {
     <div
       onClick={() =>
         title === "Profile"
-          ? navigate(`/1/setting`)
-          : navigate(`/:1/setting/${title}`)
+          ? navigate(`/profile/setting`)
+          : navigate(`/profile/setting/${title}`)
       }
       className="w-90 h-52 shadow-md rounded-lg p-10 flex flex-col items-start justify-center cursor-pointer space-y-4"
     >

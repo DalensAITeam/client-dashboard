@@ -13,7 +13,7 @@ const SideNav = ({ active }) => {
     <div
       className={`${
         open ? "w-72" : "w-20"
-      } duration-300 bg-[#393939] h-screen fixed `}
+      } duration-300 bg-[#393939] h-screen relative `}
     >
       <img
         src={settings}
@@ -37,7 +37,7 @@ const SideNav = ({ active }) => {
           } flex items-center gap-3  ${
             active && ":bg-[#a3ff47]"
           } hover:bg-[#a3ff47] hover:border-l-[4px_solid_#4b9302]`}
-          to="/1/dashboard"
+          to="/dashboard"
         >
           <img
             src={grid}
@@ -54,7 +54,7 @@ const SideNav = ({ active }) => {
           } flex items-center gap-3  ${
             active && ":bg-[#a3ff47]"
           } hover:bg-[#a3ff47] hover:border-l-[4px_solid_#4b9302]`}
-          to="/1/data-manager"
+          to="/data-manager"
         >
           <img
             src={topic}
@@ -81,7 +81,7 @@ const SideNav = ({ active }) => {
           <span className={` text-white ${open ? "" : "hidden"}`}>Topic</span>
         </Link>
         <Link
-          to="/1"
+          to="/profile"
           className={`w-full py-3 ${
             open ? "   px-2" : "flex justify-center items-center"
           } flex items-center gap-3  ${

@@ -25,7 +25,7 @@ const Modal = ({ setIsOpen }) => {
           </div>
           <div className={styles.modalActions}>
             <div className={styles.actionsContainer}>
-              <Link to='/1/dashboard' className={styles.dashboardBtn} onClick={() => setIsOpen(false)}>
+              <Link to='/dashboard' className={styles.dashboardBtn} onClick={() => setIsOpen(false)}>
                 Go to Dashboard
               </Link>
              

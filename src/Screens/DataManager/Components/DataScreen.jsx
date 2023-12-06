@@ -7,8 +7,14 @@ import chart from "../assets/chart.svg";
 import warning from "../assets/warning.svg";
 import search from "../assets/search.svg";
 import ChartSection from "./ChartSection";
+import { useState } from "react";
 
 const DataScreen = () => {
+  const [searchText, setSearchText] = useState("");
+  const handleSearch = (ev) => {
+    ev.preventDefault();
+    alert(searchText);
+  };
   return (
     <div className="DataScreen pt-8">
       <h4 className="heading">Data Manager</h4>
@@ -20,27 +26,45 @@ const DataScreen = () => {
           <h6 className="Datascreen-date text-[15px]">24 Hours</h6>
         </div>
         <div className="DataScreen-dates-filters flex items-center justify-between">
-          <img className='w-[40px] h-[40px] border-[.1px] border-[solid] border-[rgb(142,141,141)] flex justify-center items-center px-[0] py-[2px] rounded-[10px]' src={notification} alt="" />
+          <img
+            className="w-[40px] h-[40px] border-[.1px] border-[solid] border-[rgb(142,141,141)] flex justify-center items-center px-[0] py-[2px] rounded-[10px]"
+            src={notification}
+            alt=""
+          />
 
-          <img className='w-[40px] h-[40px] border-[.1px] border-[solid] border-[rgb(142,141,141)] flex justify-center items-center px-[0] py-[2px] rounded-[10px]' src={filter} alt="" />
+          <img
+            className="w-[40px] h-[40px] border-[.1px] border-[solid] border-[rgb(142,141,141)] flex justify-center items-center px-[0] py-[2px] rounded-[10px]"
+            src={filter}
+            alt=""
+          />
         </div>
       </div>
       <div className="DataCreen-group-chart grid grid-cols-[repeat(4,_1fr)] gap-[1.4rem] px-[0] py-[1.2rem]">
         <div className="DataCreen-group-container border-[1.3px] border-[solid] border-[rgb(142,141,141)] rounded-[10px] flex flex-col justify-around p-[.9rem] gap-[.6rem]">
-          <img className='w-[30px]' src={hailday} alt="" />
-          <h4 className="DataCreen-group-container-text text-[14px] text-[#797979]">Total Animal Count</h4>
-          <h3 className="DataCreen-group-container-number text-[30px] font-extrabold">250</h3>
+          <img className="w-[30px]" src={hailday} alt="" />
+          <h4 className="DataCreen-group-container-text text-[14px] text-[#797979]">
+            Total Animal Count
+          </h4>
+          <h3 className="DataCreen-group-container-number text-[30px] font-extrabold">
+            250
+          </h3>
         </div>
 
         <div className="DataCreen-group-container border-[1.3px] border-[solid] border-[rgb(142,141,141)] rounded-[10px] flex flex-col justify-around p-[.9rem] gap-[.6rem]">
-          <img className='w-[30px]' src={night} alt="" />
-          <h4 className="DataCreen-group-container-text text-[14px] text-[#797979]">Total Animal Count</h4>
-          <h3 className="DataCreen-group-container-number text-[30px] font-extrabold">250</h3>
+          <img className="w-[30px]" src={night} alt="" />
+          <h4 className="DataCreen-group-container-text text-[14px] text-[#797979]">
+            Total Animal Count
+          </h4>
+          <h3 className="DataCreen-group-container-number text-[30px] font-extrabold">
+            250
+          </h3>
         </div>
 
         <div className="DataCreen-group-container border-[1.3px] border-[solid] border-[rgb(142,141,141)] rounded-[10px] flex flex-col justify-around p-[.9rem] gap-[.6rem]">
-          <img className='w-[30px]' src={heart} alt="" />
-          <h4 className="DataCreen-group-container-text text-[14px] text-[#797979]">Health Status</h4>
+          <img className="w-[30px]" src={heart} alt="" />
+          <h4 className="DataCreen-group-container-text text-[14px] text-[#797979]">
+            Health Status
+          </h4>
           <div className="DataCreen-group-container-text-wrapper flex items-center gap-8">
             <div className="group-wrapper flex items-center gap-[.3rem]">
               <img className="warning-img w-[20px]" src={warning} alt="" />
@@ -55,9 +79,16 @@ const DataScreen = () => {
         </div>
 
         <div className="DataCreen-group-container border-[1.3px] border-[solid] border-[rgb(142,141,141)] rounded-[10px] flex flex-col justify-around p-[.9rem] gap-[.6rem]">
-          <div id="group-wrapper" className='flex items-center justify-between'>
-            <h4 className="DataCreen-group-container-text text-[14px] text-[#797979]">Health Status</h4>
-            <img id="DataCreen-group-container-Chart" className='w-[70px]' src={chart} alt="" />
+          <div id="group-wrapper" className="flex items-center justify-between">
+            <h4 className="DataCreen-group-container-text text-[14px] text-[#797979]">
+              Health Status
+            </h4>
+            <img
+              id="DataCreen-group-container-Chart"
+              className="w-[70px]"
+              src={chart}
+              alt=""
+            />
           </div>
           <div className="group-wrapper flex items-center gap-[.3rem]">
             <img className="warning-img w-[20px]" src={warning} alt="" />
@@ -89,23 +120,30 @@ const DataScreen = () => {
       <div className="DataScreen_History mt-8 flex flex-col border-[.1px] border-[solid] border-[rgb(142,141,141)] p-[1.2rem] rounded-[10px]">
         <div className="data_screen-container flex items-center justify-between">
           <h4 className="chart-screen-heading text-[19px]">Data History</h4>
-          <div className="data-screen-search relative flex items-center">
-            <img  className='absolute' src={search} alt="" />
+          <form
+            onSubmit={handleSearch}
+            className="data-screen-search relative flex items-center"
+          >
+            <img className="absolute" src={search} alt="" />
             <input
-              className="data-screen-history-input outline-[none]  min-w-[18rem] pt-[.5rem] pr-[.6rem] pb-[.6rem] pl-[2.3rem] rounded-tl-[5px] rounded-br-[0] rounded-tr-[0] rounded-bl-[5px] border-[.1px] border-[solid] border-[rgb(142,141,141)]"
+              className="data-screen-history-input outline-none  min-w-[18rem] pt-[.5rem] pr-[.6rem] pb-[.6rem] pl-[2.3rem] rounded-tl-[5px] rounded-br-[0] rounded-tr-[0] rounded-bl-[5px] border-[.1px] border-[solid] border-[rgb(142,141,141)]"
               id="data-screen-history-input"
               type="text"
+              onChange={(e) => setSearchText(e.target.value)}
             />
-            <input
-              className="data-screen-history-input outline-[none] px-[1.3rem] py-[.6rem] text-[white] bg-[#a3ff47] border-[none] text-[15px] rounded-tl-[0] rounded-br-[5px] rounded-tr-[5px] rounded-bl-[0] uppercase"
-              id="data-screen-history-submit"
+            <button
+              className="data-screen-history-input outline-none px-[1.3rem] py-[.6rem] text-[white] bg-[#a3ff47] border-none text-[15px] rounded-tl-[0] rounded-br-[5px] cursor-pointer rounded-tr-[5px] rounded-bl-[0] uppercase"
               type="submit"
-              value="Search"
-            />
-          </div>
+            >Search</button>
+
+          </form>
           <div className="data-screen-select-date flex items-center border-[.1px] border-[solid] border-[rgb(142,141,141)] p-[3px] rounded-[10px] gap-[5px]">
-            <img className='h-[30px]' src={notification} alt="" />
-            <select name="" className="chart-screen-history-select border-[none] outline-[none]" id="">
+            <img className="h-[30px]" src={notification} alt="" />
+            <select
+              name=""
+              className="chart-screen-history-select border-[none] outline-[none]"
+              id=""
+            >
               <option value="">Select Date</option>
               <option value="">2024</option>
             </select>
@@ -122,17 +160,16 @@ const DataScreen = () => {
               <th>Animal Type</th>
               <th>Weight Measurements</th>
             </tr>
-            
-              <tr>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
-              </tr>
-        
+
+            <tr>
+              <td>1</td>
+              <td>1</td>
+              <td>1</td>
+              <td>1</td>
+              <td>1</td>
+              <td>1</td>
+              <td>1</td>
+            </tr>
           </table>
         </div>
       </div>
