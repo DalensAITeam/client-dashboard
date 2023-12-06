@@ -66,7 +66,7 @@ const DataScreen = () => {
         </div>
       </div>
 
-      <div className="Data_Screen_Chart flex items-center justify-between">
+      {/* <div className="Data_Screen_Chart flex items-center justify-between">
         <div className="Chart-screen-wrappers border-[1px] border-[solid] border-[rgb(142,141,141)] p-[10px] rounded-[10px]">
           <div
             className="Chart-screen-wrappers-options flex items-center justify-between w-[600px]"
@@ -84,7 +84,7 @@ const DataScreen = () => {
           className="Chart-screen-wrappers w-[450px] h-[345px] border-[1px] border-[solid] border-[rgb(142,141,141)] p-[10px] rounded-[10px]"
           id="Chart-screen-wrappers-without-chart"
         ></div>
-      </div>
+      </div> */}
 
       <div className="DataScreen_History mt-8 flex flex-col border-[.1px] border-[solid] border-[rgb(142,141,141)] p-[1.2rem] rounded-[10px]">
         <div className="data_screen-container flex items-center justify-between">

@@ -1,3 +1,4 @@
+import SideNav from "../../LayOut/SideNav"
 import CompressedNav from "./Components/CompressedNav"
 import DataScreen from "./Components/DataScreen"
 import Header from "./Components/Header"
@@ -5,8 +6,8 @@ import Header from "./Components/Header"
 const DataManager = () => {
   return (
     <div className="flex">
-      <CompressedNav/>
-      <div className="min-w-[calc(100vw - 100px)] px-[1.2rem] py-[.7rem] flex min-h-screen flex-col">
+      <SideNav active/>
+      <div className="w-full px-[1.2rem] py-[.7rem] flex min-h-screen flex-col">
       <Header/>
       <DataScreen/>
       </div>

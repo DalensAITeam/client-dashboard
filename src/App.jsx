@@ -28,6 +28,7 @@ const router = createBrowserRouter(
     <Route>
       {/* Indivial Routes Are Added Here */}
       <Route path="/" element={<WelcomeScreen />} />
+
       <Route path="camera" element={<Camera />} />
       <Route path="camera2" element={<Camera2 />} />
       <Route path="/:id/data-manager" element={<DataManager />} />
