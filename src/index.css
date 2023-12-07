@@ -11,6 +11,18 @@
   --accentColor: #70e000;
   --lightAccentColor: #a3ff47;
 }
+.width-calculator{
+  width: calc(100% - 200px);
+}
+.width-data-manager{
+  width: calc(100% - 100px);
+  margin-left: 100px;
+}
+.main-data-manager{
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
 
 a {
   font-weight: 500;
@@ -28,7 +40,7 @@ a:hover {
   min-height: 100vh;
   display: grid;
   grid-template-columns: 2fr 1fr;
-  width: 100%;
+  /* minwidth: 100%; */
   gap: 5px;
 }
 .monitor {

@@ -1,23 +1,20 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-    loading: false,
-    openSideNav:true
+    openSideNav:false
   };
 
 export const ActionSlice = createSlice({
     name: "actions",
     initialState,
     reducers: {
-        SideNavOpen:(state)=>{
-            state.openSideNav = true
+        SideNavToggle:(state)=>{
+            state.openSideNav = !state.openSideNav;
         },
-        SideNavClose:(state)=>{
-            state.openSideNav = false
-        }
+        
     }
 })
 
 
-export const { SideNavOpen, SideNavClose } = ActionSlice.actions;
+export const { SideNavToggle } = ActionSlice.actions;
 export default ActionSlice.reducer;
