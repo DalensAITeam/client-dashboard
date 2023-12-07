@@ -31,15 +31,20 @@ const router = createBrowserRouter(
 
       <Route path="camera" element={<Camera />} />
       <Route path="camera2" element={<Camera2 />} />
-      <Route path="/:id/data-manager" element={<DataManager />} />
-      <Route path="/:id/dashboard" element={<DashboardMain />} />
+      <Route path="/data-manager" element={<DataManager />} />
+      <Route path="/dashboard" element={<DashboardMain />} />
+
+      {/* <Route path="/:id/data-manager" element={<DataManager />} />
+      <Route path="/:id/dashboard" element={<DashboardMain />} /> */}
       {/* Routes For The User Settings Are Nested Here */}
+
       <Route path="/:id" element={<HomeScreen />}>
         {/* Nested routes for the SettingDashBoard component */}
         <Route index element={<SettingDashBoard />} />
 
         {/* Nested routes for the inner setting component */}
         <Route path="/:id/setting" element={<CameraContainer />}>
+        {/* <Route path="/:id/setting" element={<CameraContainer />}> */}
           {/* Default route for the CameraContainer component */}
           <Route index element={<UserProfileSetting />} />
 
