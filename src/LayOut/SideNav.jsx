@@ -6,18 +6,25 @@ import group from "../assets/group.svg";
 import settings from "../assets/settings.svg";
 import topic from "../assets/topic.svg";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from 'react-redux'
+import { SideNavToggle } from "../Redux/ActionSlice";
 
 const SideNav = ({ active }) => {
   const [open, setOpen] = useState(false);
+  const dispatch = useDispatch();
+  const openSideNav = useSelector(state=>state.actions.openSideNav);
+  
   return (
     <div
       className={`${
-        open ? "w-72" : "w-20"
-      } duration-300 bg-[#393939] h-screen fixed `}
+        openSideNav ? "w-72" : "w-20"
+      } duration-300 bg-[#393939] h-full fixed `}
+     
     >
       <img
         src={settings}
-        onClick={() => setOpen(!open)}
+        // onClick={() => setOpen(!open)}
+        onClick={()=>dispatch(SideNavToggle())}
         className={`absolute cursor-pointer rounded-full -right-3 top-9 w-7 border-2`}
         alt=""
       />
@@ -25,7 +32,7 @@ const SideNav = ({ active }) => {
         <Link className="" to="/">
           <img
             src={logo}
-            className={`${open ? "max-w-[25]" : "max-w-[20]"}`}
+            className={`${openSideNav ? "max-w-[25]" : "max-w-[20]"}`}
             alt=""
           />
         </Link>
@@ -33,41 +40,41 @@ const SideNav = ({ active }) => {
       <div className="flex justify-center items-center text-white flex-col gap-5 pt-6">
         <Link
           className={`w-full py-3  ${
-            open ? "   px-2" : "flex justify-center items-center"
+            openSideNav ? "   px-2" : "flex justify-center items-center"
           } flex items-center gap-3  ${
             active && ":bg-[#a3ff47]"
           } hover:bg-[#a3ff47] hover:border-l-[4px_solid_#4b9302]`}
-          to="/1/dashboard"
+          to="/dashboard"
         >
           <img
             src={grid}
-            className={`${open ? "max-w-lg" : "max-w-[20]"}`}
+            className={`${openSideNav ? "max-w-lg" : "max-w-[20]"}`}
             alt=""
           />
-          <span className={` text-white ${open ? "" : "hidden"}`}>
+          <span className={` text-white ${openSideNav ? "" : "hidden"}`}>
             Dashboard
           </span>
         </Link>
         <Link
           className={`w-full py-3  ${
-            open ? "   px-2" : "flex justify-center items-center"
+            openSideNav? "   px-2" : "flex justify-center items-center"
           } flex items-center gap-3  ${
             active && ":bg-[#a3ff47]"
           } hover:bg-[#a3ff47] hover:border-l-[4px_solid_#4b9302]`}
-          to="/1/data-manager"
+          to="/data-manager"
         >
           <img
             src={topic}
-            className={`${open ? "max-w-lg" : "max-w-[20]"}`}
+            className={`${openSideNav ? "max-w-lg" : "max-w-[20]"}`}
             alt=""
           />
-          <span className={` text-white ${open ? "" : "hidden"}`}>
-            Data Manager
+          <span className={` text-white ${openSideNav ? "" : "hidden"}`}>
+            Farm Monitor
           </span>
         </Link>
         <Link
           className={`w-full py-3 ${
-            open ? "px-2" : "flex justify-center items-center"
+            openSideNav? "px-2" : "flex justify-center items-center"
           } flex items-center gap-3  ${
             active && ":bg-[#a3ff47]"
           } hover:bg-[#a3ff47] hover:border-l-[4px_solid_#4b9302]`}
@@ -75,15 +82,15 @@ const SideNav = ({ active }) => {
         >
           <img
             src={group}
-            className={`${open ? "max-w-lg" : "max-w-[20]"}`}
+            className={`${openSideNav ? "max-w-lg" : "max-w-[20]"}`}
             alt=""
           />
-          <span className={` text-white ${open ? "" : "hidden"}`}>Topic</span>
+          <span className={` text-white ${openSideNav ? "" : "hidden"}`}>Data Manager</span>
         </Link>
         <Link
-          to="/1"
+          to="/profile"
           className={`w-full py-3 ${
-            open ? "   px-2" : "flex justify-center items-center"
+            openSideNav ? "   px-2" : "flex justify-center items-center"
           } flex items-center gap-3  ${
             active && ":bg-[#a3ff47]"
           } hover:bg-[#a3ff47] hover:border-l-[4px_solid_#4b9302]`}
@@ -91,15 +98,15 @@ const SideNav = ({ active }) => {
         >
           <img
             src={settings}
-            className={`${open ? "max-w-lg" : "max-w-[20]"}`}
+            className={`${openSideNav? "max-w-lg" : "max-w-[20]"}`}
             alt=""
           />
-          <span className={`text-white ${open ? "" : "hidden"}`}>Settings</span>
+          <span className={`text-white ${openSideNav ? "" : "hidden"}`}>Settings</span>
         </Link>
         <br />
         <Link
           className={`w-full py-3 ${
-            open ? "   px-2" : "flex justify-center items-center"
+            openSideNav ? "   px-2" : "flex justify-center items-center"
           } flex items-center gap-3  ${
             active && ":bg-[#a3ff47]"
           } hover:bg-[#a3ff47] hover:border-l-[4px_solid_#4b9302]`}
@@ -107,10 +114,10 @@ const SideNav = ({ active }) => {
         >
           <img
             src={logout}
-            className={`${open ? "max-w-lg" : "max-w-[20]"}`}
+            className={`${openSideNav ? "max-w-lg" : "max-w-[20]"}`}
             alt=""
           />
-          <span className={`${open ? "" : "hidden"} text-white`}>Logout</span>
+          <span className={`${openSideNav ? "" : "hidden"} text-white`}>Logout</span>
         </Link>
       </div>
     </div>
