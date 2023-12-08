@@ -5,12 +5,17 @@ import logout from "../assets/logout.svg";
 import group from "../assets/group.svg";
 import settings from "../assets/settings.svg";
 import topic from "../assets/topic.svg";
+import dashboard_highlight from "../assets/dashboard_highlight.svg";
+import farmMonitor_highlight from "../assets/farmMonitor_highlight.svg";
+import dataManager_nohighlight from "../assets/dataManager_nohighlight.svg";
+import settings_highlight from "../assets/settings_highlight.svg";
+import arrow from "../assets/arrow.svg";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux'
 import { SideNavToggle } from "../Redux/ActionSlice";
 
-const SideNav = ({ active }) => {
-  const [open, setOpen] = useState(false);
+const SideNav = ({ activeDashboard, activeDataManager, activeSettings, activeFarm , active}) => {
+  
   const dispatch = useDispatch();
   const openSideNav = useSelector(state=>state.actions.openSideNav);
   
@@ -22,10 +27,10 @@ const SideNav = ({ active }) => {
      
     >
       <img
-        src={settings}
-        // onClick={() => setOpen(!open)}
+        src={arrow}
+        
         onClick={()=>dispatch(SideNavToggle())}
-        className={`absolute cursor-pointer rounded-full -right-3 top-9 w-7 border-2`}
+        className={`absolute cursor-pointer rounded-full h-10  -right-6 top-5 w-7 border-2`}
         alt=""
       />
       <div className="flex justify-center items-center pt-2">
@@ -42,12 +47,12 @@ const SideNav = ({ active }) => {
           className={`w-full py-3  ${
             openSideNav ? "   px-2" : "flex justify-center items-center"
           } flex items-center gap-3  ${
-            active && ":bg-[#a3ff47]"
+            activeDashboard && "bg-[#a3ff47]"
           } hover:bg-[#a3ff47] hover:border-l-[4px_solid_#4b9302]`}
           to="/dashboard"
         >
           <img
-            src={grid}
+            src={activeDashboard ? dashboard_highlight : grid}
             className={`${openSideNav ? "max-w-lg" : "max-w-[20]"}`}
             alt=""
           />
@@ -59,12 +64,13 @@ const SideNav = ({ active }) => {
           className={`w-full py-3  ${
             openSideNav? "   px-2" : "flex justify-center items-center"
           } flex items-center gap-3  ${
-            active && ":bg-[#a3ff47]"
+            activeFarm && "bg-[#a3ff47]"
           } hover:bg-[#a3ff47] hover:border-l-[4px_solid_#4b9302]`}
-          to="/data-manager"
+          to='/farm'
         >
           <img
-            src={topic}
+
+            src={activeFarm ? farmMonitor_highlight : group}
             className={`${openSideNav ? "max-w-lg" : "max-w-[20]"}`}
             alt=""
           />
@@ -76,12 +82,12 @@ const SideNav = ({ active }) => {
           className={`w-full py-3 ${
             openSideNav? "px-2" : "flex justify-center items-center"
           } flex items-center gap-3  ${
-            active && ":bg-[#a3ff47]"
+            activeDataManager && "bg-[#a3ff47]"
           } hover:bg-[#a3ff47] hover:border-l-[4px_solid_#4b9302]`}
-          to="/"
+          to="/data-manager"
         >
           <img
-            src={group}
+            src={activeDataManager ? topic : dataManager_nohighlight}
             className={`${openSideNav ? "max-w-lg" : "max-w-[20]"}`}
             alt=""
           />
@@ -92,12 +98,13 @@ const SideNav = ({ active }) => {
           className={`w-full py-3 ${
             openSideNav ? "   px-2" : "flex justify-center items-center"
           } flex items-center gap-3  ${
-            active && ":bg-[#a3ff47]"
+            activeSettings && "bg-[#a3ff47]"
           } hover:bg-[#a3ff47] hover:border-l-[4px_solid_#4b9302]`}
           
         >
           <img
-            src={settings}
+          src={activeSettings ? settings_highlight : settings}
+            // src={settings}
             className={`${openSideNav? "max-w-lg" : "max-w-[20]"}`}
             alt=""
           />

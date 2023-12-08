@@ -2,7 +2,7 @@ import { useSelector } from "react-redux";
 import SideNav from "../../LayOut/SideNav";
 import CompressedNav from "./Components/CompressedNav";
 import DataScreen from "./Components/DataScreen";
-import Header from "./Components/Header";
+import Header from "../../LayOut/Header";
 import QuickMonitoring from "../DashboardMain/comopnents/pages/quickMonitoring/QuickMonitoring";
 import Metrics from "../DashboardMain/comopnents/pages/metrics/Metrics";
 import NumberOfAnimals from "../DashboardMain/comopnents/pages/NumberOfAnimals/NumberOfAnimals";
@@ -12,7 +12,7 @@ const DataManager = () => {
 
   return (
     <div className=" ">
-      <SideNav active />
+      <SideNav activeDataManager />
       <div
         // className="w-full px-[1.2rem] py-[.7rem] flex min-h-screen flex-col"
         className={`${
