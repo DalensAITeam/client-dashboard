@@ -22,7 +22,9 @@
     "react-redux": "^9.0.1",
     "react-router-dom": "^6.20.0",
     "styled-components": "^6.1.1",
-    "yaml": "^2.3.4"
+    "yaml": "^2.3.4",
+    "classnames": "^2.3.2",
+    "react-switch": "^7.0.0"
   },
   "devDependencies": {
     "@types/react": "^18.2.15",
