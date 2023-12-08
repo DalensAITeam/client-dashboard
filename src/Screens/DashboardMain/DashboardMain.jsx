@@ -13,7 +13,7 @@ const DashboardMain = () => {
   
   return (
     <div className="">
-      <SideNav active />
+      <SideNav activeDashboard />
       <div
         // className="main flex-1 m-auto"
 

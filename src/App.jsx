@@ -20,6 +20,7 @@ import HomeScreen from "./pages/homePage";
 import CameraContainer from "./pages/cameraSetting/cameraContainer";
 import CameraSettings from "./pages/cameraSetting/cameraSetting";
 import UserProfileSetting from "./pages/profileSetting/userProfileSetting";
+import FarmMonitor from "./Screens/FarmMonitor/FarmMonitor";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -33,6 +34,7 @@ const router = createBrowserRouter(
       <Route path="camera2" element={<Camera2 />} />
       <Route path="/data-manager" element={<DataManager />} />
       <Route path="/dashboard" element={<DashboardMain />} />
+      <Route path="/farm" element={<FarmMonitor />} />
       {/* Routes For The User Settings Are Nested Here */}
       <Route path="/profile" element={<HomeScreen />}>
         {/* Nested routes for the SettingDashBoard component */}
