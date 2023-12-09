@@ -4,6 +4,7 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import ToggleButtonOnOff from './pages/notification'
 import Pricing from './pages/pricing'
+import History from './pages/history'
 
 
 function App() {
@@ -11,8 +12,9 @@ function App() {
 
   return (
    <div>
-    <ToggleButtonOnOff/>
-    {/* <Pricing/> */}
+    {/* <ToggleButtonOnOff/> */}
+    <Pricing/>
+    {/* <History/> */}
    </div>
   )
 }
