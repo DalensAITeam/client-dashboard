@@ -2,20 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
-/* :root {
+
+:root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%;
+  --clipPathStart: 0% 30%;
+  --clipPathEnd: 100% 30%;
+  --accentColor: #70e000;
+  --lightAccentColor: #a3ff47;
 }
 
 a {
@@ -27,47 +21,51 @@ a:hover {
   color: #535bf2;
 }
 
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
+/* reasonable */
+/* clip-path: polygon(0 30%, 16% 36%, 37% 39%, 54% 36%, 74% 29%, 93% 34%, 100% 40%, 100% 99%, 0% 99%); */
+
+.main {
   min-height: 100vh;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  width: 100%;
+  gap: 5px;
+}
+.monitor {
+  border-right: 1px #d6d6d6 solid;
+  /* display: flex;
+  flex-direction: column;
+  justify-content: space-between; */
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+.stats {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  justify-content: space-between;
+  gap: 5px;
+  height: 100%;
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
+@media (max-width: 900px) {
+  .main {
+    display: block;
+  }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+}
+*{
+    box-sizing:border-box;
+    margin: 0;
+    padding: 0;
+}
+/* .Screen{
+    display: flex; 
+}
+.Header-body{
+    min-width: calc(100vw - 100px);
+    padding: .7rem 1.2rem;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column; 
 } */
