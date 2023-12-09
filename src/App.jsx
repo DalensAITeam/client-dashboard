@@ -1,21 +1,24 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import "./App.css";
-import DashboardScreen from "./Screens/Dashboard/DashboardScreen";
-import DataManagerScreen from "./Screens/DataManagerScreen/DataManagerScreen";
-import SideNav from "./Layouts/SideNav";
+
+import { useState } from 'react'
+import reactLogo from './assets/react.svg'
+import viteLogo from '/vite.svg'
+import './App.css'
+import ToggleButtonOnOff from './pages/notification'
+import Pricing from './pages/pricing'
+import History from './pages/history'
+
 
 function App() {
+
+
   return (
-    <>
-      <BrowserRouter>
-        <Routes>
-          <Route exact path="/data-manager" element={<DataManagerScreen />} />
-          <Route exact path="/dashboard" element={<DashboardScreen />} />
-          <Route exact path="/" element={<SideNav />} />
-        </Routes>
-      </BrowserRouter>
-    </>
-  );
+   <div>
+    {/* <ToggleButtonOnOff/> */}
+    <Pricing/>
+    {/* <History/> */}
+   </div>
+  )
+
 }
 
 export default App;
