@@ -18,6 +18,7 @@ const Metrics = () => {
         heading={true}
         label={["Feeding", "Animal Attack", "Health"]}
         borderColor={["#E05100", "#01A9F2", "#70E000"]}
+        width={100}
         pointBackgroundColor={["#E05100", "#01A9F2", "#70E000"]}
         pointBorderColor={["#E05100", "#01A9F2", "#70E000"]}
         min={0}

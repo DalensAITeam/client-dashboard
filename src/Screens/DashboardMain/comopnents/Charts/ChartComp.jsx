@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "chart.js/auto";
 import { Chart } from "react-chartjs-2";
 
@@ -39,35 +39,78 @@ const ChartComp = ({
   min = 0,
   borderColor = ["#3CCAD7"],
   backgroundColor = "#163A4F",
-  label,
+  label = [],
   pointRadius = 3,
   yAxesLAbel,
   yAxesDisplay = false,
   xAxesLAbel,
   xAxesDisplay = false,
-  className,
+  className = "",
   heading = false,
   tension = 0.5,
-  pointBackgroundColor,
-  pointBorderColor,
+  pointBackgroundColor = [],
+  pointBorderColor = [],
 }) => {
-  const [dataSet] = useState({
+  // Check if data exists and has at least one element
+  if (!data || !data[0]) {
+    return <div>Error: Data is undefined or empty</div>;
+  }
+
+  const [dataSet, setDataSet] = useState({
     labels: data[0].map((dataSet) => dataSet[xAxes]),
     datasets: data.map((dataSet, index) => ({
-      label: label[index],
+      label: label[index] || "",
       data: dataSet.map((element) => element[yAxes]),
       backgroundColor,
       fill: true,
-      borderColor: borderColor[index],
+      borderColor: borderColor[index] || "#3CCAD7", // Use a default color if not provided
       tension,
       hoverOffset: 4,
-      pointBackgroundColor: pointBackgroundColor[index],
-      pointBorderColor: pointBorderColor[index],
+      pointBackgroundColor: pointBackgroundColor[index] || "",
+      pointBorderColor: pointBorderColor[index] || "",
       pointRadius,
       pointHoverRadius: pointRadius + 5,
     })),
   });
-  console.log(data[0].map((dataSet) => dataSet[xAxes]));
+
+  useEffect(() => {
+    // Update dataSet when data changes
+    setDataSet({
+      labels: data[0].map((dataSet) => dataSet[xAxes]),
+      datasets: data.map((dataSet, index) => ({
+        label: label[index] || "",
+        data: dataSet.map((element) => element[yAxes]),
+        backgroundColor,
+        fill: true,
+        borderColor: borderColor[index] || "#3CCAD7",
+        tension,
+        hoverOffset: 4,
+        pointBackgroundColor: pointBackgroundColor[index] || "",
+        pointBorderColor: pointBorderColor[index] || "",
+        pointRadius,
+        pointHoverRadius: pointRadius + 5,
+      })),
+    });
+  }, [
+    data,
+    xAxes,
+    yAxes,
+    max,
+    min,
+    borderColor,
+    backgroundColor,
+    label,
+    pointRadius,
+    yAxesLAbel,
+    yAxesDisplay,
+    xAxesLAbel,
+    xAxesDisplay,
+    className,
+    heading,
+    tension,
+    pointBackgroundColor,
+    pointBorderColor,
+  ]);
 
   let options = {
     plugins: {
@@ -79,8 +122,8 @@ const ChartComp = ({
       y: {
         display: yAxesDisplay,
         title: {
-          text: yAxesLAbel,
-          display: yAxesLAbel,
+          text: yAxesLAbel || "",
+          display: yAxesLAbel ? true : false,
           color: "#3CCAD7",
           padding: 0,
         },
@@ -93,15 +136,14 @@ const ChartComp = ({
       x: {
         display: xAxesDisplay,
         title: {
-          text: xAxesLAbel,
-          display: xAxesLAbel,
+          text: xAxesLAbel || "",
+          display: xAxesLAbel ? true : false,
           color: "#3CCAD7",
           padding: 0,
         },
         max,
         min,
         ticks: {
-          // stepSize: "5",
           color: "#6B6B6B",
         },
       },
@@ -109,7 +151,7 @@ const ChartComp = ({
   };
 
   return (
-    <div style={{ width: "100%" }} className={`${className}`}>
+    <div style={{ width: "100%" }} className={className}>
       <Chart type={type} data={dataSet} options={options} />
     </div>
   );
