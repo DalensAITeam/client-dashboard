@@ -17,24 +17,23 @@ const DashboardMain = () => {
   return (
     <>
       <Navbar Bell={<FaBell />} toggle={<HiMenu />} text={"HF"} />
-      <div className=" px-6 py-3">
-        {/* <SideNav activeDashboard /> */}
+      <div className={`px-6  w-full py-3 flex`}>
+        <SideNav activeDashboard />
         <div
-        // className={`${
-        //   !openSideNav ? "width-calculator " : " w-full"
-        // } duration-300 main flex-1 m-auto w`}
+          className={`md:flex-1  ${
+            !openSideNav ? "w-fit md:ml-20 " : "w-full"
+          } duration-300 main flex m-auto`}
         >
-          <QuickMonitoring />
-          <div className="flex justify-around mx-auto w-full">
+          <div className="flex-col justify-center items-center md:w-11/12">
+            <QuickMonitoring />
+          </div>
+
+          <div className="flex flex-wrap self-end md:flex-1 justify-around md:justify-between mx-auto w-full md:flex-col md:w-full">
             <NumberOfAnimals />
             <FeedingAlarm />
-          </div>
-
-          <div className="">
             <GeneralHealth />
-            <FeedingStatus />
           </div>
-
+          <FeedingStatus />
           <Metrics />
         </div>
       </div>

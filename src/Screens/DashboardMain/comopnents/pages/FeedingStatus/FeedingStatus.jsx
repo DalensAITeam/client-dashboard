@@ -44,7 +44,7 @@ const FeedingStatus = () => {
     );
   }, [clipPathFNEnd, clipPathFNStart, range]);
   return (
-    <div className="GeneralFeeding flex flex-col my-8 p-5 justify-around items-center font-medium font-[Poppins] h-[60vh]">
+    <div className="GeneralFeeding order-last flex flex-col my-8 p-5 justify-around items-center font-medium font-[Poppins] h-[60vh]">
       <h2 className="font-medium text-xl text-center">
         General Feeding Status
       </h2>

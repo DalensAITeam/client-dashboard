@@ -21,7 +21,7 @@ function Camera() {
           </h3>
         </div>
         <form className="h-[75vh] text-black   flex flex-col justify-between md:justify-normal">
-          <div className="text-[#CCCCCC] flex flex-col h-3/5 justify-evenly font-poppins text-[15px] leading-[20px]">
+          <div className="text-black font-medium flex flex-col h-3/5 justify-evenly font-poppins text-[15px] leading-[20px]">
             <select className="border-b-2 w-[100%] focus:outline-none focus:border-b-[#70E000]">
               <option value=""> Amount of Camera</option>
               <option

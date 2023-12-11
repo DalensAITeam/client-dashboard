@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import "chart.js/auto";
-import { Chart } from "react-chartjs-2";
+import { Line } from "react-chartjs-2";
 
 //* in case we upgraded to TS interface chartInterface {
 //   data: any;
@@ -116,6 +116,16 @@ const ChartComp = ({
     plugins: {
       legend: {
         display: heading,
+        labels: {
+          usePointStyle: true,
+          font: {
+            size: 14, // Adjust the font size of the legend labels
+            weight: "medium", // Adjust the font weight of the legend labels
+            family: "poppins", // Adjust the font family of the legend labels
+          },
+          boxWidth: 15,
+          borderRadius: "50",
+        },
       },
     },
     scales: {
@@ -152,7 +162,7 @@ const ChartComp = ({
 
   return (
     <div style={{ width: "100%" }} className={className}>
-      <Chart type={type} data={dataSet} options={options} />
+      <Line type={type} data={dataSet} options={options} />
     </div>
   );
 };
