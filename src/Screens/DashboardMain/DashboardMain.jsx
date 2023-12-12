@@ -9,18 +9,17 @@ import QuickMonitoring from "./comopnents/pages/quickMonitoring/QuickMonitoring"
 import "../../App.css";
 import { HiMenu } from "react-icons/hi";
 import { FaBell } from "react-icons/fa6";
-import Navbar from "../../components/shared-components/navbar/navbar";
+import Header from "../../LayOut/Header";
 
 const DashboardMain = () => {
   const openSideNav = useSelector((state) => state.actions.openSideNav);
 
   return (
     <>
-      <Navbar Bell={<FaBell />} toggle={<HiMenu />} text={"HF"} />
-      <div className={`px-6  w-full py-3 flex`}>
+      <div className={`  w-full py-3 flex`}>
         <SideNav activeDashboard />
         <div
-          className={`md:flex-1  ${
+          className={`md:flex-1 px-4 ${
             !openSideNav ? "w-fit md:ml-20 " : "w-full"
           } duration-300 main flex m-auto`}
         >

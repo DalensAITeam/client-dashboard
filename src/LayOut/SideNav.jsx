@@ -29,7 +29,7 @@ const SideNav = ({
     <div
       className={`${
         openSideNav ? "w-72 " : "w-20 -left-20"
-      } duration-300 bg-[#393939] h-full md:left-0 fixed z-[100] top-0 left-0 `}
+      } duration-300 bg-[#393939] h-full md:left-0 fixed z-[100] top-0`}
     >
       <img
         src={arrow}
@@ -48,12 +48,12 @@ const SideNav = ({
           />
         </Link>
       </div>
-      <div className="flex justify-center items-center text-white flex-col gap-5 pt-6">
+      <div className="flex justify-center items-center text-white flex-col gap-5 pt-6 ">
         <Link
           className={`w-full py-3  ${
             openSideNav ? "   px-2" : "flex justify-center items-center"
           } flex items-center gap-3  ${
-            activeDashboard && "bg-[#a3ff47]"
+            activeDashboard && "bg-[#a3ff47]/50 border-l-4 border-[#a3ff47] "
           } hover:bg-[#a3ff47] hover:border-l-[4px_solid_#4b9302]`}
           to="/dashboard"
         >
@@ -70,7 +70,7 @@ const SideNav = ({
           className={`w-full py-3  ${
             openSideNav ? "   px-2" : "flex justify-center items-center"
           } flex items-center gap-3  ${
-            activeFarm && "bg-[#a3ff47]"
+            activeFarm && "bg-[#a3ff47]/50 border-l-4 border-[#a3ff47] "
           } hover:bg-[#a3ff47] hover:border-l-[4px_solid_#4b9302]`}
           to="/farm"
         >
@@ -87,7 +87,7 @@ const SideNav = ({
           className={`w-full py-3 ${
             openSideNav ? "px-2" : "flex justify-center items-center"
           } flex items-center gap-3  ${
-            activeDataManager && "bg-[#a3ff47]"
+            activeDataManager && "bg-[#a3ff47]/50 border-l-4 border-[#a3ff47] "
           } hover:bg-[#a3ff47] hover:border-l-[4px_solid_#4b9302]`}
           to="/data-manager"
         >
@@ -105,7 +105,7 @@ const SideNav = ({
           className={`w-full py-3 ${
             openSideNav ? "   px-2" : "flex justify-center items-center"
           } flex items-center gap-3  ${
-            activeSettings && "bg-[#a3ff47]"
+            activeSettings && "bg-[#a3ff47]/50 border-l-4 border-[#a3ff47] "
           } hover:bg-[#a3ff47] hover:border-l-[4px_solid_#4b9302]`}
         >
           <img
@@ -123,7 +123,7 @@ const SideNav = ({
           className={`w-full py-3 ${
             openSideNav ? "   px-2" : "flex justify-center items-center"
           } flex items-center gap-3  ${
-            active && ":bg-[#a3ff47]"
+            active && "bg-[#a3ff47]/50 border-l-4 border-[#a3ff47] "
           } hover:bg-[#a3ff47] hover:border-l-[4px_solid_#4b9302]`}
           to="/"
         >

@@ -16,8 +16,8 @@ const DataManager = () => {
       <div
         // className="w-full px-[1.2rem] py-[.7rem] flex min-h-screen flex-col"
         className={`${
-          !openSideNav ? "width-data-manager " : "w-full"
-        } duration-300 main-data-manager  px-3 py-3`}
+          !openSideNav ? "w-[calc(100% - 100px)] md:ml-[100px] " : "w-full"
+        } duration-300 main-data-manager  px-5 py-3`}
       >
         <Header />
 
