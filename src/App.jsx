@@ -66,16 +66,16 @@ const router = createBrowserRouter(
 
 function App() {
 
-  //Merged branches
-  // return <RouterProvider router={router} />
+  // Merged branches
+  return <RouterProvider router={router} />
   
   // New branch
-  return(
+  // return(
 
-   <div>
-    <ToggleButtonOnOff/>
-   </div>
-  )
+  //  <div>
+  //   <ToggleButtonOnOff/>
+  //  </div>
+  // )
 
   ;}
 
