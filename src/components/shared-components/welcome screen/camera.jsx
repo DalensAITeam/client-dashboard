@@ -8,7 +8,7 @@ function Camera() {
     <div className="flex flex-col gap-12">
       <Navbar back={"Go back to Dashboard"} />
 
-      <div className="mx-auto w-full p-5 h-[90vh] md:w-fit flex flex-col  pt-5 ">
+      <div className="mx-auto w-full p-5 h-[80vh] md:w-fit flex flex-col  pt-5 ">
         <div className="flex items-center md:w-[600px] justify-between gap-6">
           <h1 className="font-medium text-[30px] md:text-3xl   font-inter">
             <span className="md:border-b-[7px] md:border-[#70E000] mx-1 ">

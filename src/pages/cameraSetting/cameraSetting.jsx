@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 function CameraSettings() {
   const navigator = useNavigate();
   function onGoToSettingHomePageFn() {
-    navigator("/");
+    navigator("/profile");
   }
   return (
     // Main container with flex column layout and padding
