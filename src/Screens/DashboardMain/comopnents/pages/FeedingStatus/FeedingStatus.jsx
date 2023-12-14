@@ -44,9 +44,11 @@ const FeedingStatus = () => {
     );
   }, [clipPathFNEnd, clipPathFNStart, range]);
   return (
-    <div className="GeneralFeeding">
-      <h2>General Feeding Status</h2>
-      <div className="cirlce">
+    <div className="GeneralFeeding order-last flex flex-col my-8 p-5 justify-around items-center font-medium font-[Poppins] h-[60vh]">
+      <h2 className="font-medium text-xl text-center">
+        General Feeding Status
+      </h2>
+      <div className="cirlce flex justify-center items-center w-[200px] h-[200px] rounded-full relative overflow-hidden bg-[#e6e6e6]">
         <p ref={devRef}></p>
         <span>{range}%</span>
       </div>

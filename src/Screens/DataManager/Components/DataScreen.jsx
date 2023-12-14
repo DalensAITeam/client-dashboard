@@ -17,15 +17,9 @@ const DataScreen = () => {
   };
   return (
     <div className="DataScreen pt-8">
-      <h4 className="heading">Data Manager</h4>
-      <div className="DataScreen-data-filter flex items-center justify-between">
-        <div className="DataScreen-dates flex items-center justify-between">
-          <h6 className="Datascreen-date text-[15px]">30 Days</h6>
-          <h6 className="Datascreen-date text-[15px]">12 Months</h6>
-          <h6 className="Datascreen-date text-[15px]">7 Days</h6>
-          <h6 className="Datascreen-date text-[15px]">24 Hours</h6>
-        </div>
-        <div className="DataScreen-dates-filters flex items-center justify-between">
+      <div className="flex w-full items-center justify-between">
+        <h4 className="heading text-2xl font-medium">Data Manager</h4>
+        <div className="DataScreen-dates-filters flex w-1/4 items-center justify-between">
           <img
             className="w-[40px] h-[40px] border-[.1px] border-[solid] border-[rgb(142,141,141)] flex justify-center items-center px-[0] py-[2px] rounded-[10px]"
             src={notification}
@@ -39,9 +33,20 @@ const DataScreen = () => {
           />
         </div>
       </div>
-      <div className="DataCreen-group-chart grid grid-cols-[repeat(4,_1fr)] gap-[1.4rem] px-[0] py-[1.2rem]">
-        <div className="DataCreen-group-container border-[1.3px] border-[solid] border-[rgb(142,141,141)] rounded-[10px] flex flex-col justify-around p-[.9rem] gap-[.6rem]">
-          <img className="w-[30px]" src={hailday} alt="" />
+
+      <div className="DataScreen-data-filter flex items-center justify-between">
+        <div className="DataScreen-dates w-full px-7 my-5 flex  border-b  border-slate-600/25 cursor-pointer  items-center justify-between">
+          <h6 className="Datascreen-date border-b-2  border-green-600 py-1 text-[15px]">
+            30 Days
+          </h6>
+          <h6 className="Datascreen-date text-[15px]">12 Months</h6>
+          <h6 className="Datascreen-date text-[15px]">7 Days</h6>
+          <h6 className="Datascreen-date text-[15px]">24 Hours</h6>
+        </div>
+      </div>
+      <div className="DataCreen-group-chart grid grid-cols-2 md:grid-cols-4 gap-[1.4rem] px-[0] py-[1.2rem]">
+        <div className=" border-[1.3px] border-[solid] border-[rgb(142,141,141)] rounded-[10px] flex flex-col justify-around p-[.9rem] gap-[.6rem]">
+          <img className="w-[35px]" src={hailday} alt="" />
           <h4 className="DataCreen-group-container-text text-[14px] text-[#797979]">
             Total Animal Count
           </h4>
@@ -60,15 +65,15 @@ const DataScreen = () => {
           </h3>
         </div>
 
-        <div className="DataCreen-group-container border-[1.3px] border-[solid] border-[rgb(142,141,141)] rounded-[10px] flex flex-col justify-around p-[.9rem] gap-[.6rem]">
+        <div className="DataCreen-group-container border-[1.3px] border-[solid] border-[rgb(142,141,141)] rounded-[10px] flex flex-col justify-between p-[.9rem] gap-[.6rem]">
           <img className="w-[30px]" src={heart} alt="" />
           <h4 className="DataCreen-group-container-text text-[14px] text-[#797979]">
             Health Status
           </h4>
-          <div className="DataCreen-group-container-text-wrapper flex items-center gap-8">
-            <div className="group-wrapper flex items-center gap-[.3rem]">
-              <img className="warning-img w-[20px]" src={warning} alt="" />
-              <p className="smaller-text">
+          <div className="DataCreen-group-container-text-wrapper flex-col flex ">
+            <div className="group-wrapper flex">
+              <p className="smaller-text flex">
+                <img className=" w-[20px]" src={warning} alt="" />
                 Threats:<span>0</span>
               </p>
             </div>
@@ -81,7 +86,7 @@ const DataScreen = () => {
         <div className="DataCreen-group-container border-[1.3px] border-[solid] border-[rgb(142,141,141)] rounded-[10px] flex flex-col justify-around p-[.9rem] gap-[.6rem]">
           <div id="group-wrapper" className="flex items-center justify-between">
             <h4 className="DataCreen-group-container-text text-[14px] text-[#797979]">
-              Health Status
+              Feeding Status
             </h4>
             <img
               id="DataCreen-group-container-Chart"
@@ -96,15 +101,18 @@ const DataScreen = () => {
           </div>
         </div>
       </div>
-
-      <div className="Data_Screen_Chart flex items-center justify-between">
-        <div className="Chart-screen-wrappers border-[1px] border-[solid] border-[rgb(142,141,141)] p-[10px] rounded-[10px]">
+      <div className=" flex flex-col md:flex-row items-center justify-between">
+        <div className="border-[1px] w-full my-5 border-[solid] border-[rgb(142,141,141)] p-[10px] rounded-[10px]">
           <div
-            className="Chart-screen-wrappers-options flex items-center justify-between w-[600px]"
+            className="Chart-screen-wrappers-options flex items-center justify-between w-full md:w-[600px]"
             id="Chart-screen-wrappers-with-chart"
           >
             <h4 className="chart-screen-heading text-[19px]">Analytics</h4>
-            <select name="" className="chart-screen-select p-[2px] rounded-[3px] outline-[none]" id="">
+            <select
+              name=""
+              className="chart-screen-select p-[2px] rounded-[3px] outline-[none]"
+              id=""
+            >
               <option value="">2023</option>
               <option value="">2024</option>
             </select>
@@ -112,31 +120,13 @@ const DataScreen = () => {
           <ChartSection />
         </div>
         <div
-          className="Chart-screen-wrappers w-[450px] h-[345px] border-[1px] border-[solid] border-[rgb(142,141,141)] p-[10px] rounded-[10px]"
+          className="Chart-screen-wrappers w-full  md:w-[450px] h-[345px] border-[1px] border-[solid] border-[rgb(142,141,141)] p-[10px] rounded-[10px]"
           id="Chart-screen-wrappers-without-chart"
         ></div>
       </div>
-
       <div className="DataScreen_History mt-8 flex flex-col border-[.1px] border-[solid] border-[rgb(142,141,141)] p-[1.2rem] rounded-[10px]">
-        <div className="data_screen-container flex items-center justify-between">
+        <div className="data_screen-container flex flex-wrap items-center justify-between">
           <h4 className="chart-screen-heading text-[19px]">Data History</h4>
-          <form
-            onSubmit={handleSearch}
-            className="data-screen-search relative flex items-center"
-          >
-            <img className="absolute" src={search} alt="" />
-            <input
-              className="data-screen-history-input outline-none  min-w-[18rem] pt-[.5rem] pr-[.6rem] pb-[.6rem] pl-[2.3rem] rounded-tl-[5px] rounded-br-[0] rounded-tr-[0] rounded-bl-[5px] border-[.1px] border-[solid] border-[rgb(142,141,141)]"
-              id="data-screen-history-input"
-              type="text"
-              onChange={(e) => setSearchText(e.target.value)}
-            />
-            <button
-              className="data-screen-history-input outline-none px-[1.3rem] py-[.6rem] text-[white] bg-[#a3ff47] border-none text-[15px] rounded-tl-[0] rounded-br-[5px] cursor-pointer rounded-tr-[5px] rounded-bl-[0] uppercase"
-              type="submit"
-            >Search</button>
-
-          </form>
           <div className="data-screen-select-date flex items-center border-[.1px] border-[solid] border-[rgb(142,141,141)] p-[3px] rounded-[10px] gap-[5px]">
             <img className="h-[30px]" src={notification} alt="" />
             <select
@@ -148,8 +138,26 @@ const DataScreen = () => {
               <option value="">2024</option>
             </select>
           </div>
+          <form
+            onSubmit={handleSearch}
+            className="data-screen-search relative w-full flex my-5 items-center mx-auto"
+          >
+            <img className="absolute" src={search} alt="" />
+            <input
+              className="data-screen-history-input outline-none py-2 h-[45px] pl-8 rounded-l-lg border-[.1px] border-[solid] border-[rgb(142,141,141)]"
+              id="data-screen-history-input"
+              type="text"
+              onChange={(e) => setSearchText(e.target.value)}
+            />
+            <button
+              className="data-screen-history-input outline-none py-3 h-[45px] px-2 text-[white] bg-[#a3ff47] border-none text-[15px] rounded-tl-[0] rounded-br-[5px] cursor-pointer rounded-tr-[5px] rounded-bl-[0] uppercase"
+              type="submit"
+            >
+              Search
+            </button>
+          </form>
         </div>
-        <div className="data-screen-history-body">
+        <div className="data-screen-history-body w-full overflow-x-scroll">
           <table>
             <tr className="top-table">
               <th>No</th>

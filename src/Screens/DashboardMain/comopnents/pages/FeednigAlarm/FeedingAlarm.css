@@ -1,17 +1,4 @@
-.feedingGeneral {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-}
-.feedingGeneral h2 {
-  font-weight: 500;
-  font-size: 20px;
-  text-align: center;
-}
-
-.feedingGeneral input {
+input {
   font-size: 25px;
   border-bottom: 2px solid var(--accentColor) !important;
 }

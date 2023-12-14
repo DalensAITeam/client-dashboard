@@ -22,6 +22,14 @@ import CameraSettings from "./pages/cameraSetting/cameraSetting";
 import UserProfileSetting from "./pages/profileSetting/userProfileSetting";
 import FarmMonitor from "./Screens/FarmMonitor/FarmMonitor";
 
+//The new notifications screen
+
+import { useState } from "react";
+import reactLogo from "./assets/react.svg";
+import viteLogo from "/vite.svg";
+// import './App.css'
+import ToggleButtonOnOff from "./pages/notification";
+
 const router = createBrowserRouter(
   createRoutesFromElements(
     // Root route for the HomeScreen component
@@ -57,7 +65,18 @@ const router = createBrowserRouter(
 );
 
 function App() {
-  return <RouterProvider router={router} />;
+  //  Merged branches
+  return (
+    <RouterProvider router={router} />
+
+    // New branch
+    // return(
+
+    //  <div>
+    //   <ToggleButtonOnOff/>
+    //  </div>
+    // )
+  );
 }
 
 export default App;
