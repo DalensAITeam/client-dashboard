@@ -50,6 +50,7 @@ const SideNav = ({
       </div>
       <div className="flex justify-center items-center text-white flex-col gap-5 pt-6 ">
         <Link
+          onClick={() => openSideNav && dispatch(SideNavToggle())}
           className={`w-full py-3  ${
             openSideNav ? "   px-2" : "flex justify-center items-center"
           } flex items-center gap-3  ${
@@ -67,6 +68,7 @@ const SideNav = ({
           </span>
         </Link>
         <Link
+          onClick={() => openSideNav && dispatch(SideNavToggle())}
           className={`w-full py-3  ${
             openSideNav ? "   px-2" : "flex justify-center items-center"
           } flex items-center gap-3  ${
@@ -84,6 +86,7 @@ const SideNav = ({
           </span>
         </Link>
         <Link
+          onClick={() => openSideNav && dispatch(SideNavToggle())}
           className={`w-full py-3 ${
             openSideNav ? "px-2" : "flex justify-center items-center"
           } flex items-center gap-3  ${
@@ -101,6 +104,7 @@ const SideNav = ({
           </span>
         </Link>
         <Link
+          onClick={() => openSideNav && dispatch(SideNavToggle())}
           to="/profile"
           className={`w-full py-3 ${
             openSideNav ? "   px-2" : "flex justify-center items-center"
@@ -120,6 +124,7 @@ const SideNav = ({
         </Link>
         <br />
         <Link
+          onClick={() => openSideNav && dispatch(SideNavToggle())}
           className={`w-full py-3 ${
             openSideNav ? "   px-2" : "flex justify-center items-center"
           } flex items-center gap-3  ${
