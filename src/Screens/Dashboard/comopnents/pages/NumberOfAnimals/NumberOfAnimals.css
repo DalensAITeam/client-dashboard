@@ -1,0 +1,32 @@
+.NumberMain {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px solid var(--accentColor);
+}
+
+.NumberMain h2 {
+  font-weight: 500;
+  font-size: 20px;
+  text-align: center;
+}
+
+.NumberMain .numbers {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  width: 100%;
+}
+.NumberMain .number {
+  padding: 5px 15px;
+  color: #4c4c4c;
+  font-size: 30px;
+  font-weight: 400;
+  box-shadow: inset 0 0 10px #cccccc;
+  border-radius: 5px;
+}
+.NumberMain p {
+  color: #6b6b6b;
+  font-weight: 500;
+}

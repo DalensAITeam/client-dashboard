@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
 
@@ -10,18 +9,6 @@
   --clipPathEnd: 100% 30%;
   --accentColor: #70e000;
   --lightAccentColor: #a3ff47;
-}
-.width-calculator{
-  width: calc(100% - 200px);
-}
-.width-data-manager{
-  width: calc(100% - 100px);
-  margin-left: 100px;
-}
-.main-data-manager{
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
 }
 
 a {
@@ -40,7 +27,7 @@ a:hover {
   min-height: 100vh;
   display: grid;
   grid-template-columns: 2fr 1fr;
-  /* minwidth: 100%; */
+  width: 100%;
   gap: 5px;
 }
 .monitor {
@@ -58,6 +45,10 @@ a:hover {
   justify-content: space-between;
   gap: 5px;
   height: 100%;
+}
+
+body ::-webkit-scrollbar {
+  display: none;
 }
 
 @media (max-width: 900px) {

@@ -24,11 +24,14 @@ import FarmMonitor from "./Screens/FarmMonitor/FarmMonitor";
 
 //The new notifications screen
 
+
+
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
+// import reactLogo from './react.svg'
 import viteLogo from '/vite.svg'
-// import './App.css'
 import ToggleButtonOnOff from './pages/notification'
+import Pricing from './pages/pricing'
+import History from './pages/history'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -67,16 +70,17 @@ const router = createBrowserRouter(
 function App() {
 
   // Merged branches
-  return <RouterProvider router={router} />
+  // return <RouterProvider router={router} />
   
   // New branch
-  // return(
-
-  //  <div>
-  //   <ToggleButtonOnOff/>
-  //  </div>
-  // )
-
+  return (
+    <div>
+     {/* <ToggleButtonOnOff/> */}
+     <Pricing/>
+     {/* <History/> */}
+    </div>
+   )
+ 
   ;}
 
 
@@ -84,3 +88,7 @@ function App() {
  
 
 export default App;
+
+
+
+
