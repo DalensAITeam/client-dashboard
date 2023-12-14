@@ -1,15 +1,11 @@
 import { useSelector } from "react-redux";
 import SideNav from "../../LayOut/SideNav";
-import CompressedNav from "./Components/CompressedNav";
 import DataScreen from "./Components/DataScreen";
 import Header from "../../LayOut/Header";
-import QuickMonitoring from "../DashboardMain/comopnents/pages/quickMonitoring/QuickMonitoring";
-import Metrics from "../DashboardMain/comopnents/pages/metrics/Metrics";
-import NumberOfAnimals from "../DashboardMain/comopnents/pages/NumberOfAnimals/NumberOfAnimals";
 
 const DataManager = () => {
   const openSideNav = useSelector((state) => state.actions.openSideNav);
-
+  
   return (
     <div className=" ">
       <SideNav activeDataManager />
@@ -20,7 +16,6 @@ const DataManager = () => {
         } duration-300 main-data-manager  px-3 py-3`}
       >
         <Header />
-
         <DataScreen />
       </div>
     </div>
