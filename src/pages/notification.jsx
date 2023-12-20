@@ -3,11 +3,8 @@ import Switch from "../assets/components/switch";
 
 
 
-
 const ToggleButtonOnOff = () => {
     const [isOff, setIsOff] = useState(true);
-
-
     return (
         <div>
             <div className="text-zinc-900 text-[40px] font-medium font-['Inter']">Notifications</div>
@@ -42,9 +39,10 @@ const ToggleButtonOnOff = () => {
             </div>
         </div>
 
-
     );
 };
 
 
 export default ToggleButtonOnOff
+
+// export default Notification
