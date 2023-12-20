@@ -1,0 +1,35 @@
+.monitoring-main {
+  width: 97%;
+  margin: 0px auto;
+  /* height: 100%; */
+  padding-right: 5px;
+}
+.header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 0px;
+}
+.monitoring-main h1 {
+  font-weight: 500;
+  margin: 0px;
+}
+.monitoring-main button {
+  background: none;
+  border: none;
+  color: var(--accentColor);
+  font-weight: 600;
+  font-size: 15px;
+  height: fit-content;
+  align-self: center;
+  margin: 0px;
+  padding: 0px;
+}
+.monitoring-main button:hover {
+  cursor: pointer;
+  color: var(--lightAccentColor);
+}
+
+.monitoring-main img {
+  width: 100%;
+}

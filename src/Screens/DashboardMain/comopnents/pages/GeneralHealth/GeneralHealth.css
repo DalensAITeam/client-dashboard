@@ -1,0 +1,46 @@
+.GeneralHealth {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.GeneralHealth h2 {
+  font-weight: 500;
+  font-size: 20px;
+  text-align: center;
+}
+
+.ChartGeneralHealth {
+  background-color: #f1fce6;
+  width: 100%;
+}
+
+.GeneralHealth .threats {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  width: 95%;
+  margin: 0 auto;
+}
+
+.count {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.count p {
+  color: #cccccc;
+  font-size: 20px;
+}
+
+.status h5 {
+  font-size: 20px;
+  font-weight: 500;
+}
+.status span {
+  font-weight: 400;
+}
