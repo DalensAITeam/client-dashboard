@@ -7,11 +7,11 @@ const GeneralHealth = () => {
       <h2>General Health Status</h2>
       <StatusChart />
       <div className="threats">
-        <div className="count">
+        <div className="flex text-[#ccc] text-sm my-3">
           <img src="/warning.png" alt="warning" />
           <p>Threats: 0</p>
         </div>
-        <div className="status">
+        <div className="text-sm my-3">
           <h5>
             Status: <span>Perfect</span>
           </h5>

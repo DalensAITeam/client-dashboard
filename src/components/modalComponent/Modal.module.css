@@ -1,4 +1,6 @@
-.darkBG {
+/* converting all This to  tailwind I don't have to write media query  */
+
+/* .darkBG {
   background-color: rgb(214, 210, 210);
   width: 100vw;
   height: 100vh;
@@ -7,15 +9,16 @@
   left: 50%;
   transform: translate(-50%, -50%);
   position: absolute;
-}
+} */
 
-.centered {
+/* .centered {
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-}
+} */
 
+/* 
 .modal {
   width: 840px;
   height: 592px;
@@ -24,31 +27,28 @@
   z-index: 20;
   border-radius: 10px;
   box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.04);
-}
+} */
 
-
-.modalContent {
+/* .modalContent {
   display: flex;
   justify-content: center;
   font-size: 14px;
   color: #2c3e50;
   text-align: center;
   padding-top: 80px;
-}
+} */
 
-.h2{
+/* .h2 {
   display: flex;
   justify-content: center;
   font-size: 40px;
   font-weight: 500;
-  font-family: 'inter',;
-  color:#1A1A1A;
+  font-family: "inter";
+  color: #1a1a1a;
   line-height: 48.41px;
-  
+} */
 
-}
-
-.modalActions {
+/* .modalActions {
   position: absolute;
   bottom: 2px;
   margin-bottom: 10px;
@@ -59,14 +59,14 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-}
+} */
 
 .closeBtn {
   font-weight: 500;
   border-radius: 8px;
   border: white;
-  font-size: 50px;
-  color:black;
+  font-size: 30px;
+  color: black;
   background: white;
   position: absolute;
   right: 10px;
@@ -76,23 +76,21 @@
   margin-right: 10px;
 }
 
-
-
-.dashboardBtn {
+/* .dashboardBtn {
   margin-bottom: 50px;
   font-weight: 500;
   padding: 11px 28px;
   border-radius: 5px;
   font-size: 19px;
-  border: #70E000;
+  border: #70e000;
   gap: 10px;
-  color: #FFFFFF;
-  background: #70E000;
+  color: #ffffff;
+  background: #70e000;
   transition: all 0.25s ease;
-}
+} */
 
 .dashboardBtn:hover {
-  background: #70E000;
+  background: #70e000;
 }
 
 .DoneBtn {
@@ -100,12 +98,12 @@
   padding: 13px 25px;
   border-radius: 0.25rem;
   font-size: 0.8rem;
-  border: #70E000;
+  border: #70e000;
   color: white;
-  background: #70E000;
+  background: #70e000;
   transition: all 0.25s ease;
 }
 
 .DoneBtn:hover {
-  background: #70E000;
+  background: #70e000;
 }

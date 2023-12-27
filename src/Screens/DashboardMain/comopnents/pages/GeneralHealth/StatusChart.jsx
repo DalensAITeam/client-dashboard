@@ -1,10 +1,28 @@
 import ChartComp from "../../Charts/ChartComp";
+import { useEffect, useState } from "react";
+import { data } from "./data";
 
 const StatusChart = () => {
+  const [chartData, setChartData] = useState(null);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    if (!data || !data[0]) {
+      // Set an error state or log an error message
+      setError("Error: Data is undefined or empty");
+    } else {
+      setChartData(data);
+    }
+  }, [data]);
+
+  if (error) {
+    return <div>{error}</div>;
+  }
+
   return (
     <div className="ChartGeneralHealth">
       <ChartComp
-        data={data}
+        data={chartData}
         type="line"
         xAxes="date"
         yAxes="result"
@@ -23,152 +41,3 @@ const StatusChart = () => {
 };
 
 export default StatusChart;
-
-const data = [
-  [
-    {
-      date: "2023-02",
-      result: "80",
-    },
-    {
-      date: "2023-03",
-      result: "3",
-    },
-    {
-      date: "2023-04",
-      result: "90",
-    },
-    {
-      date: "2023-05",
-      result: "6",
-    },
-    {
-      date: "2023-06",
-      result: "100",
-    },
-    {
-      date: "2023-07",
-      result: "1",
-    },
-    {
-      date: "2023-08",
-      result: "80",
-    },
-    {
-      date: "2023-09",
-      result: "9",
-    },
-    {
-      date: "2023-02",
-      result: "50",
-    },
-    {
-      date: "2023-03",
-      result: "3",
-    },
-    {
-      date: "2023-04",
-      result: "110",
-    },
-    {
-      date: "2023-04",
-      result: "2",
-    },
-    {
-      date: "2023-02",
-      result: "80",
-    },
-    {
-      date: "2023-03",
-      result: "3",
-    },
-    {
-      date: "2023-04",
-      result: "90",
-    },
-    {
-      date: "2023-05",
-      result: "6",
-    },
-    {
-      date: "2023-06",
-      result: "100",
-    },
-    {
-      date: "2023-07",
-      result: "1",
-    },
-    {
-      date: "2023-08",
-      result: "80",
-    },
-    {
-      date: "2023-09",
-      result: "9",
-    },
-    {
-      date: "2023-02",
-      result: "50",
-    },
-    {
-      date: "2023-03",
-      result: "3",
-    },
-    {
-      date: "2023-04",
-      result: "110",
-    },
-    {
-      date: "2023-04",
-      result: "2",
-    },
-    {
-      date: "2023-02",
-      result: "80",
-    },
-    {
-      date: "2023-03",
-      result: "3",
-    },
-    {
-      date: "2023-04",
-      result: "90",
-    },
-    {
-      date: "2023-05",
-      result: "6",
-    },
-    {
-      date: "2023-06",
-      result: "100",
-    },
-    {
-      date: "2023-07",
-      result: "1",
-    },
-    {
-      date: "2023-08",
-      result: "80",
-    },
-    {
-      date: "2023-09",
-      result: "9",
-    },
-    {
-      date: "2023-02",
-      result: "50",
-    },
-    {
-      date: "2023-03",
-      result: "3",
-    },
-    {
-      date: "2023-04",
-      result: "110",
-    },
-    {
-      date: "2023-04",
-      result: "2",
-    },
-  ],
-];

@@ -1,19 +1,19 @@
-import successfulScreenImg from "../../../assets/successfulScreenImg"
-import React, { useState} from "react";
+import successfulScreenImg from "../../../assets/successfulScreenImg";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 function Successful() {
   return (
-    <div >
+    <div>
       <div className="h-[90vh] flex justify-center flex-col items-center">
         <div className="text-=center">
-            
-            <Link to={'/welcome'} className="text-[#70E000]">
+          <Link
+            to={"/welcome"}
+            className="text-[#70E000] hover:drop-shadow-[0_5px_10px_#70e000]"
+          >
             Go to Dashboard
-            </Link> 
-  
+          </Link>
         </div>
-
       </div>
     </div>
   );
