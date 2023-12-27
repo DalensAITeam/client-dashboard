@@ -19,7 +19,7 @@ const DataScreen = () => {
     <div className="DataScreen pt-8">
       <div className="flex w-full items-center justify-between">
         <h4 className="heading text-2xl font-medium">Data Manager</h4>
-        <div className="DataScreen-dates-filters flex w-1/4 items-center justify-between">
+        <div className="DataScreen-dates-filters flex w-1/4 md:w-1/12 items-center justify-between">
           <img
             className="w-[40px] h-[40px] border-[.1px] border-[solid] border-[rgb(142,141,141)] flex justify-center items-center px-[0] py-[2px] rounded-[10px]"
             src={notification}
@@ -34,8 +34,8 @@ const DataScreen = () => {
         </div>
       </div>
 
-      <div className="DataScreen-data-filter flex items-center justify-between">
-        <div className="DataScreen-dates w-full px-7 my-5 flex  border-b  border-slate-600/25 cursor-pointer  items-center justify-between">
+      <div className="DataScreen-data-filter flex items-center justify-between ">
+        <div className="DataScreen-dates w-full md:w-1/3 px-7 my-5 flex  border-b  border-slate-600/25 cursor-pointer  items-center justify-between">
           <h6 className="Datascreen-date border-b-2  border-green-600 py-1 text-[15px]">
             30 Days
           </h6>
@@ -70,7 +70,7 @@ const DataScreen = () => {
           <h4 className="DataCreen-group-container-text text-[14px] text-[#797979]">
             Health Status
           </h4>
-          <div className="DataCreen-group-container-text-wrapper flex-col flex ">
+          <div className="DataCreen-group-container-text-wrapper flex-col flex md:flex-row md:w-full justify-between">
             <div className="group-wrapper flex">
               <p className="smaller-text flex">
                 <img className=" w-[20px]" src={warning} alt="" />
@@ -102,9 +102,9 @@ const DataScreen = () => {
         </div>
       </div>
       <div className=" flex flex-col md:flex-row items-center justify-between">
-        <div className="border-[1px] w-full my-5 border-[solid] border-[rgb(142,141,141)] p-[10px] rounded-[10px]">
+        <div className="border-[1px] w-full md:w-3/5 my-5 border-[solid] border-[rgb(142,141,141)] p-[10px] md:h-[60vh] h-fit rounded-[10px]">
           <div
-            className="Chart-screen-wrappers-options flex items-center justify-between w-full md:w-[600px]"
+            className="Chart-screen-wrappers-options flex items-center justify-between w-full"
             id="Chart-screen-wrappers-with-chart"
           >
             <h4 className="chart-screen-heading text-[19px]">Analytics</h4>
@@ -120,18 +120,18 @@ const DataScreen = () => {
           <ChartSection />
         </div>
         <div
-          className="Chart-screen-wrappers w-full  md:w-[450px] h-[345px] border-[1px] border-[solid] border-[rgb(142,141,141)] p-[10px] rounded-[10px]"
+          className="Chart-screen-wrappers w-full  md:w-[450px] md:h-[60vh] h-fit  border-[1px] border-[solid] border-[rgb(142,141,141)] p-[10px] rounded-[10px]"
           id="Chart-screen-wrappers-without-chart"
         ></div>
       </div>
       <div className="DataScreen_History mt-8 flex flex-col border-[.1px] border-[solid] border-[rgb(142,141,141)] p-[1.2rem] rounded-[10px]">
-        <div className="data_screen-container flex flex-wrap items-center justify-between">
-          <h4 className="chart-screen-heading text-[19px]">Data History</h4>
-          <div className="data-screen-select-date flex items-center border-[.1px] border-[solid] border-[rgb(142,141,141)] p-[3px] rounded-[10px] gap-[5px]">
+        <div className="data_screen-container md:flex-1 flex flex-wrap md:flex-nowrap  items-center justify-between">
+          <h4 className=" text-[19px] md:w-3/5">Data History</h4>
+          <div className="data-screen-select-date flex md:order-last items-center border-[.1px] md:w-1/5 border-[solid] border-[rgb(142,141,141)] p-[3px] rounded-[10px] gap-[5px]">
             <img className="h-[30px]" src={notification} alt="" />
             <select
               name=""
-              className="chart-screen-history-select border-[none] outline-[none]"
+              className="chart-screen-history-select w-full border-[none] outline-[none]"
               id=""
             >
               <option value="">Select Date</option>
@@ -140,7 +140,7 @@ const DataScreen = () => {
           </div>
           <form
             onSubmit={handleSearch}
-            className="data-screen-search relative w-full flex my-5 items-center mx-auto"
+            className="data-screen-search relative self-center sm:w-full flex my-5 items-center  sm:mx-auto"
           >
             <img className="absolute" src={search} alt="" />
             <input

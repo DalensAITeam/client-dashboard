@@ -6,7 +6,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 function SettingSideBar() {
   const navigator = useNavigate();
   function onGoToSettingHomePageFn() {
-    navigator("/");
+    navigator("/profile");
   }
 
   return (

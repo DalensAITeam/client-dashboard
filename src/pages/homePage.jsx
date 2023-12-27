@@ -14,7 +14,7 @@ function HomeScreen() {
       <div
         // className="flex py-3 px-3 flex-col w-full flex-1"
         className={`${
-          !openSideNav ? "width-data-manager" : " w-full"
+          !openSideNav ? "w-[calc(100% - 100px)] md:ml-[100px]" : " w-full"
         } duration-300 flex py-3 px-3 flex-col  flex-1`}
       >
         <Header />

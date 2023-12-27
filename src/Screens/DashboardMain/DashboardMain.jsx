@@ -16,8 +16,17 @@ const DashboardMain = () => {
 
   return (
     <>
+      <div
+        className={` duration-300  ${
+          !openSideNav ? "md:w-[calc(100%-100px)] md:ml-20 " : "w-full"
+        }`}
+      >
+        <Header />
+      </div>
+
       <div className={`  w-full py-3 flex`}>
         <SideNav activeDashboard />
+
         <div
           className={`md:flex-1 px-4 ${
             !openSideNav ? "w-fit md:ml-20 " : "w-full"

@@ -57,7 +57,7 @@ const router = createBrowserRouter(
           <Route index element={<UserProfileSetting />} />
 
           {/* Route for the CameraSettings component */}
-          <Route path="Camera" element={<CameraSettings />} />
+          <Route path="camera" element={<CameraSettings />} />
 
           {/* Route for the Price component */}
           <Route path="Price" element={<p>hello price</p>} />
