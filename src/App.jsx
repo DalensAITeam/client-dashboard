@@ -60,7 +60,9 @@ const router = createBrowserRouter(
           <Route path="camera" element={<CameraSettings />} />
 
           {/* Route for the Price component */}
-          <Route path="Price" element={<p>hello price</p>} />
+          <Route path="price" element={<Pricing/>} />
+          <Route path="notification" element={<ToggleButtonOnOff/>} />
+          <Route path="history" element={<History/>} />
         </Route>
       </Route>
     </Route>
@@ -70,16 +72,16 @@ const router = createBrowserRouter(
 function App() {
 
   // Merged branches
-  // return <RouterProvider router={router} />
+  return <RouterProvider router={router} />
   
   // New branch
-  return (
-    <div>
-     {/* <ToggleButtonOnOff/> */}
-     <Pricing/>
-     {/* <History/> */}
-    </div>
-   )
+  // return (
+  //   <div>
+  //    {/* <ToggleButtonOnOff/> */}
+  //    <Pricing/>
+  //    {/* <History/> */}
+  //   </div>
+  //  )
  
   ;}
 
