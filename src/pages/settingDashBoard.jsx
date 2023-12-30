@@ -52,7 +52,7 @@ function SettingDashBoard() {
             <MdCreditCard className="w-10 h-10" />
           )}
           {renderSettingCard(
-            "Notification Settings",
+            "notification",
             "Customize Notification to suit your needs",
             <FaVolumeUp className="w-10 h-10" />
           )}

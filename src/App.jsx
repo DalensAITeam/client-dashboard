@@ -17,6 +17,7 @@ import DashboardMain from "./Screens/DashboardMain/DashboardMain";
 // Importing components for different pages
 import SettingDashBoard from "./pages/settingDashBoard";
 import HomeScreen from "./pages/homePage";
+
 import CameraContainer from "./pages/cameraSetting/cameraContainer";
 import CameraSettings from "./pages/cameraSetting/cameraSetting";
 import UserProfileSetting from "./pages/profileSetting/userProfileSetting";
@@ -29,6 +30,8 @@ import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 // import './App.css'
 import ToggleButtonOnOff from "./pages/notification";
+import History from "./pages/History";
+import Price from "./pages/Price";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -55,9 +58,12 @@ const router = createBrowserRouter(
 
           {/* Route for the CameraSettings component */}
           <Route path="camera" element={<CameraSettings />} />
+          {/* Route for the Notification setting component */}
+          <Route path="notification" element={<ToggleButtonOnOff />} />
+          <Route path="history" element={<History />} />
 
           {/* Route for the Price component */}
-          <Route path="Price" element={<p>hello price</p>} />
+          <Route path="Price" element={<Price />} />
         </Route>
       </Route>
     </Route>

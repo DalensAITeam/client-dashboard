@@ -11,6 +11,13 @@ import Modal from "../../modalComponent/modal";
 function Camera2() {
   const [isOpen, setIsOpen] = useState(false);
 
+  const options = [
+    "One variety of animal farm type",
+    "Double variety of animal farm type",
+    "Multiple variety of animal farm farm type",
+  ];
+  const optionsPlaceholder = "Type of Animal Farm";
+
   const handleSubmit = (e) => {
     e.preventDefault();
   };
@@ -37,7 +44,10 @@ function Camera2() {
         >
           <div className="text-black h-3/5 flex flex-col justify-between  font-poppins text-[15px] leading-[20px] pt-10">
             <div className="border-b-2 w-[100%] border-b-[#4D4D4D]">
-              <CustomDropdown />
+              <CustomDropdown
+                options={options}
+                placeholder={optionsPlaceholder}
+              />
             </div>{" "}
             <div>
               <input

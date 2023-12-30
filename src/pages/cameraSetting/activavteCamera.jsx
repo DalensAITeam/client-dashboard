@@ -4,16 +4,16 @@ import React from "react";
 function ActivateCamera() {
   return (
     // Main container with flex column layout, items alignment, and vertical gap
-    <div className="flex flex-col items-start gap-5 w-full">
+    <div className="flex flex-col items-start gap-2 w-full">
       {/* Container for the heading "Active Cameras" */}
       <h4 className="font-poppins text-2xl font-semibold text-gray-800">
         Active Cameras
       </h4>
 
       {/* Container for displaying active cameras with flex column layout and vertical gap */}
-      <div className="flex flex-col gap-10">
+      <div className="flex flex-col gap-4">
         {/* Container for each active camera with flex layout and horizontal gap */}
-        <div className="flex items-center gap-20">
+        <div className="flex items-center gap-10">
           {/* Heading for Camera 1 */}
           <h3 className="font-poppins text-base font-semibold text-gray-800">
             Camera 1
@@ -24,7 +24,7 @@ function ActivateCamera() {
         </div>
 
         {/* Container for each active camera with flex layout and horizontal gap */}
-        <div className="flex items-center gap-20">
+        <div className="flex items-center gap-10">
           {/* Heading for Camera 2 */}
           <h3 className="font-poppins text-base font-semibold text-gray-800">
             Camera 2

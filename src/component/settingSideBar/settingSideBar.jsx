@@ -22,7 +22,7 @@ function SettingSideBar() {
       <div className="flex flex-col items-center justify-start w-305px h-344px gap-5 mx-auto">
         {/* Profile Link */}
         <NavLink
-          to="/setting"
+          to=""
           className={({ isActive }) =>
             isActive
               ? `flex items-center justify-start p-4 rounded-md border border-gray-300 cursor-pointer gap-5 w-full bg-gradient-to-r from-[#70e000] to-[#70e000] `
@@ -77,7 +77,7 @@ function SettingSideBar() {
 
         {/* Notification Settings Link */}
         <NavLink
-          to="/Notification Settings"
+          to="notification"
           className={({ isActive }) =>
             isActive
               ? `flex items-center justify-start p-4 rounded-md border border-gray-300 cursor-pointer gap-5 w-full bg-gradient-to-r from-[#70e000] to-[#70e000] `
@@ -96,7 +96,7 @@ function SettingSideBar() {
 
         {/* History Link */}
         <NavLink
-          to="/History"
+          to="History"
           className={({ isActive }) =>
             isActive
               ? `flex items-center justify-start p-4 rounded-md border border-gray-300 cursor-pointer gap-5 w-full bg-gradient-to-r from-[#70e000] to-[#70e000] `
