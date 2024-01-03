@@ -58,7 +58,7 @@ function SettingSideBar() {
 
         {/* Pricing Link */}
         <NavLink
-          to="Price"
+          to="price"
           className={({ isActive }) =>
             isActive
               ? `flex items-center justify-start p-4 rounded-md border border-gray-300 cursor-pointer gap-5 w-full bg-gradient-to-r from-[#70e000] to-[#70e000]`

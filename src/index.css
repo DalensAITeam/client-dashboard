@@ -41,7 +41,7 @@ a:hover {
   min-height: 100vh;
   display: grid;
   grid-template-columns: 2fr 1fr;
-  /* minwidth: 100%; */
+  width: 100%;
   gap: 5px;
 }
 .monitor {
@@ -59,6 +59,10 @@ a:hover {
   justify-content: space-between;
   gap: 5px;
   height: 100%;
+}
+
+body ::-webkit-scrollbar {
+  display: none;
 }
 
 @media (max-width: 900px) {

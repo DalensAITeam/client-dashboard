@@ -71,17 +71,18 @@ const router = createBrowserRouter(
 );
 
 function App() {
-  //  Merged branches
+  // Merged branches
   return (
     <RouterProvider router={router} />
 
     // New branch
-    // return(
-
-    //  <div>
-    //   <ToggleButtonOnOff/>
-    //  </div>
-    // )
+    // return (
+    //   <div>
+    //    {/* <ToggleButtonOnOff/> */}
+    //    <Pricing/>
+    //    {/* <History/> */}
+    //   </div>
+    //  )
   );
 }
 

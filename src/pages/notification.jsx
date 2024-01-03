@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Switch from "../assets/components/switch";
 
-const ToggleButtonOnOff = () => {
+function Notification() {
   const [isOff, setIsOff] = useState(false);
 
   return (
@@ -47,6 +47,6 @@ const ToggleButtonOnOff = () => {
       </div>
     </div>
   );
-};
+}
 
-export default ToggleButtonOnOff;
+export default Notification;
