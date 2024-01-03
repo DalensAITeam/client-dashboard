@@ -96,7 +96,7 @@ function SettingSideBar() {
 
         {/* History Link */}
         <NavLink
-          to="History"
+          to="history"
           className={({ isActive }) =>
             isActive
               ? `flex items-center justify-start p-4 rounded-md border border-gray-300 cursor-pointer gap-5 w-full bg-gradient-to-r from-[#70e000] to-[#70e000] `
