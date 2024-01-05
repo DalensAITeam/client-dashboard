@@ -1,13 +1,8 @@
 import { useState } from "react";
 // import './CustomDropdown.css';
+import { FaAngleDown } from "react-icons/fa6";
 
-const options = [
-  "One variety of animal farm type",
-  "Double variety of animal farm type",
-  "Multiple variety of animal farm farm type",
-];
-
-const CustomDropdown = () => {
+const CustomDropdown = ({ options, placeHolder }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState("");
 
@@ -22,9 +17,10 @@ const CustomDropdown = () => {
         className="selected-option font-[500px]"
         onClick={() => setIsOpen(!isOpen)}
       >
-        {selectedOption || (
-          <p className="text-[#ccc] py-2">Type of Animal Farm</p>
-        )}
+        <div className="flex items-center py-1 w-full justify-between">
+          {selectedOption || <p className="text-[#ccc]">{placeHolder}</p>}
+          <FaAngleDown />
+        </div>
       </div>
       <div className="options relative bg-[#CCCCCC80] shadow-lg shadow-[#CCCCCC80]-500/50">
         {isOpen && options.length > 0 && (
@@ -40,7 +36,7 @@ const CustomDropdown = () => {
                   type="radio"
                   name="options"
                   value={option}
-                  className={`rounded-full appearance-none border-2 border-solid ring-2 ring-[#70E000] border-white h-4 w-4 outline-1 m-1 mr-2 outline-[#70E000] focus:ring-2  ${
+                  className={`rounded-full appearance-none border-b-0 border-2 border-solid ring-2 ring-[#70E000] border-white h-4 w-4 outline-1  m-1 mr-2 outline-[#70E000] focus:ring-2  ${
                     selectedOption === option && "bg-[#70E000]"
                   }`}
                   checked={selectedOption === option}

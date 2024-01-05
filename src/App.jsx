@@ -16,6 +16,7 @@ import DashboardMain from "./Screens/DashboardMain/DashboardMain";
 // Importing components for different pages
 import SettingDashBoard from "./pages/settingDashBoard";
 import HomeScreen from "./pages/homePage";
+
 import CameraContainer from "./pages/cameraSetting/cameraContainer";
 import CameraSettings from "./pages/cameraSetting/cameraSetting";
 import UserProfileSetting from "./pages/profileSetting/userProfileSetting";
@@ -23,14 +24,13 @@ import FarmMonitor from "./Screens/FarmMonitor/FarmMonitor";
 
 //The new notifications screen
 
-
-
-import { useState } from 'react'
-// import reactLogo from './react.svg'
-import viteLogo from '/vite.svg'
-import ToggleButtonOnOff from './pages/notification'
-import Pricing from './pages/pricing'
-import History from './pages/history'
+import { useState } from "react";
+import reactLogo from "./assets/react.svg";
+import viteLogo from "/vite.svg";
+// import './App.css'
+import ToggleButtonOnOff from "./pages/notification";
+import History from "./pages/History";
+import Price from "./pages/Price";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -56,6 +56,9 @@ const router = createBrowserRouter(
 
           {/* Route for the CameraSettings component */}
           <Route path="camera" element={<CameraSettings />} />
+          {/* Route for the Notification setting component */}
+          <Route path="notification" element={<ToggleButtonOnOff />} />
+          <Route path="history" element={<History />} />
 
           {/* Route for the Price component */}
           <Route path="price" element={<Pricing/>} />
@@ -68,27 +71,19 @@ const router = createBrowserRouter(
 );
 
 function App() {
-
   // Merged branches
-  return <RouterProvider router={router} />
-  
-  // New branch
-  // return (
-  //   <div>
-  //    {/* <ToggleButtonOnOff/> */}
-  //    <Pricing/>
-  //    {/* <History/> */}
-  //   </div>
-  //  )
- 
-  ;}
+  return (
+    <RouterProvider router={router} />
 
-
-
- 
+    // New branch
+    // return (
+    //   <div>
+    //    {/* <ToggleButtonOnOff/> */}
+    //    <Pricing/>
+    //    {/* <History/> */}
+    //   </div>
+    //  )
+  );
+}
 
 export default App;
-
-
-
-

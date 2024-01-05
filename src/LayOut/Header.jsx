@@ -9,7 +9,7 @@ const Header = () => {
   const openSideNav = useSelector((state) => state.actions.openSideNav);
 
   return (
-    <div className="flex   items-center justify-between [box-shadow:2px_3px_4px_black] px-[.9rem] py-[.4rem]">
+    <div className="flex items-center justify-between [box-shadow:2px_3px_4px_black] px-[.9rem] py-[.4rem]">
       <img
         onClick={() => dispatch(SideNavToggle())}
         className="h-[40px] w-[40px] cursor-pointer"
