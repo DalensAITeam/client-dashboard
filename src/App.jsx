@@ -10,7 +10,6 @@ import WelcomeScreen from "./components/shared-components/welcome screen/welcome
 // import Onboarding from "./components/shared-components/Onboarding-screen/onboarding";
 // import WelcomeScreen from './components/shared-components/welcome screen/welcome';
 import Camera from "./components/shared-components/welcome screen/Setup";
-import Camera2 from "./components/shared-components/welcome screen/camera2";
 // import Home from "./page/landing-pages/home";
 import DataManager from "./Screens/DataManager/DataManager";
 import DashboardMain from "./Screens/DashboardMain/DashboardMain";
@@ -42,7 +41,6 @@ const router = createBrowserRouter(
       <Route path="/" element={<WelcomeScreen />} />
 
       <Route path="setup" element={<Camera />} />
-      <Route path="camera2" element={<Camera2 />} />
       <Route path="/data-manager" element={<DataManager />} />
       <Route path="/dashboard" element={<DashboardMain />} />
       <Route path="/farm" element={<FarmMonitor />} />
