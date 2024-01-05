@@ -1,6 +1,6 @@
 // eslint-disable-next-line no-unused-vars
 import React, { useEffect, useState } from "react";
-import Navbar from "../navbar/navbar";
+import Navbar from "../navbar/NavBarWelcome";
 import { FaBell } from "react-icons/fa6";
 // import { FaHamburger } from "react-icons/gi";
 import { HiMenu } from "react-icons/hi";
@@ -11,15 +11,15 @@ function WelcomeScreen() {
   // Using this to check when to break text
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
-  useEffect(() => {
-    const handleResize = () => {
-      setWindowWidth(window.innerWidth);
-    };
-    window.addEventListener("resize", handleResize);
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
+  // useEffect(() => {
+  //   const handleResize = () => {
+  //     setWindowWidth(window.innerWidth);
+  //   };
+  //   window.addEventListener("resize", handleResize);
+  //   return () => {
+  //     window.removeEventListener("resize", handleResize);
+  //   };
+  // }, []);
   return (
     <div>
       <Navbar Bell={<FaBell />} toggle={<HiMenu />} text={"HF"} />
@@ -31,9 +31,9 @@ function WelcomeScreen() {
             Welcome To Dalens AI
           </h2>
           <p className="font-poppins font-[500px] text-[19px] leading-[28.5px]">
-            To start set up your farm,
+            To start setting up your farm,
             {windowWidth <= 774 && <br />} {/* Breaking Text here*/}
-            <Link to={"/camera"} className="text-[#70E000]">
+            <Link to={"/setup"} className="text-[#70E000]">
               Click here
             </Link>
           </p>

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import logo from "../assets/logo.svg";
+import logo from "../assets/Images/logo.svg";
 import grid from "../assets/grid.svg";
 import logout from "../assets/logout.svg";
 import group from "../assets/group.svg";
@@ -44,7 +44,7 @@ const SideNav = ({
           <img
             src={logo}
             className={`${openSideNav ? "max-w-[25]" : "max-w-[20]"}`}
-            alt=""
+            alt="DalensAI"
           />
         </Link>
       </div>
@@ -105,7 +105,7 @@ const SideNav = ({
         </Link>
         <Link
           onClick={() => openSideNav && dispatch(SideNavToggle())}
-          to="/profile"
+          to="/settings"
           className={`w-full py-3 ${
             openSideNav ? "   px-2" : "flex justify-center items-center"
           } flex items-center gap-3  ${

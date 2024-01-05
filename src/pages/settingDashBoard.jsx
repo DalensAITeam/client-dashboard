@@ -8,11 +8,12 @@ function SettingDashBoard() {
 
   const renderSettingCard = (title, description, icon) => (
     <div
-      onClick={() =>
-        title === "Profile"
-          ? navigate(`/profile/setting`)
-          : navigate(`/profile/setting/${title}`)
-      }
+      onClick={() => navigate(`/settings/${title}`)}
+      // onClick={() =>
+      //   title === "Profile"
+      //     ? navigate(`/settings`)
+      //     : navigate(`/settings/${title}`)
+      // }
       className="w-90 h-52 shadow-md rounded-lg p-10 flex flex-col items-start justify-center cursor-pointer space-y-4"
     >
       <div className=" w-40 h-40 text-green-500">{icon}</div>
@@ -37,27 +38,27 @@ function SettingDashBoard() {
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-10 w-full">
           {renderSettingCard(
-            "Profile",
+            "profile",
             "Edit personal details",
             <MdContacts className="w-10 h-10" />
           )}
           {renderSettingCard(
-            "Camera",
+            "camera",
             "Edit camera setting",
             <MdCameraAlt className="w-10 h-10" />
           )}
           {renderSettingCard(
-            "Price",
+            "price",
             "Checkout price details",
             <MdCreditCard className="w-10 h-10" />
           )}
           {renderSettingCard(
-            "Notification Settings",
+            "notifications",
             "Customize Notification to suit your needs",
             <FaVolumeUp className="w-10 h-10" />
           )}
           {renderSettingCard(
-            "History",
+            "history",
             "View all history",
             <FaEdit className="w-10 h-10" />
           )}

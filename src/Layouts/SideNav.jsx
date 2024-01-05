@@ -2,7 +2,7 @@
 //From a similar project of mine
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import logo from "./assets/logo.svg";
+import logo from "./assets/Images/logo.svg";
 
 const SideNav = () => {
   const [sideNavFull, setSideNavFull] = useState(false);
@@ -19,7 +19,7 @@ const SideNav = () => {
         >
           {!showNavFull && (
             <Link to="/">
-              <img src={logo} className="" alt="Bliks Logo" />
+              <img src={logo} className="" alt="DalensAI" />
             </Link>
           )}
           <button className="p-1.5 rounded-lg bg-blue-50 hover:bg-blue-100">

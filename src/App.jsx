@@ -9,7 +9,7 @@ import WelcomeScreen from "./components/shared-components/welcome screen/welcome
 // import Homepage from "./page/landing-pages/home";
 // import Onboarding from "./components/shared-components/Onboarding-screen/onboarding";
 // import WelcomeScreen from './components/shared-components/welcome screen/welcome';
-import Camera from "./components/shared-components/welcome screen/camera";
+import Camera from "./components/shared-components/welcome screen/Setup";
 import Camera2 from "./components/shared-components/welcome screen/camera2";
 // import Home from "./page/landing-pages/home";
 import DataManager from "./Screens/DataManager/DataManager";
@@ -41,27 +41,27 @@ const router = createBrowserRouter(
       {/* Indivial Routes Are Added Here */}
       <Route path="/" element={<WelcomeScreen />} />
 
-      <Route path="camera" element={<Camera />} />
+      <Route path="setup" element={<Camera />} />
       <Route path="camera2" element={<Camera2 />} />
       <Route path="/data-manager" element={<DataManager />} />
       <Route path="/dashboard" element={<DashboardMain />} />
       <Route path="/farm" element={<FarmMonitor />} />
       {/* Routes For The User Settings Are Nested Here */}
-      <Route path="/profile" element={<HomeScreen />}>
+      <Route path="/settings" element={<HomeScreen />}>
         {/* Nested routes for the SettingDashBoard component */}
         <Route index element={<SettingDashBoard />} />
 
         {/* Nested routes for the inner setting component */}
-        <Route path="/profile/setting" element={<CameraContainer />}>
+        <Route path="/settings" element={<CameraContainer />}>
           {/* Default route for the CameraContainer component */}
-          <Route index element={<UserProfileSetting />} />
+          <Route path="profile" element={<UserProfileSetting />} />
 
           {/* Route for the CameraSettings component */}
           <Route path="camera" element={<CameraSettings />} />
 
           {/* Route for the Price component */}
           <Route path="price" element={<Pricing/>} />
-          <Route path="notification" element={<ToggleButtonOnOff/>} />
+          <Route path="notifications" element={<ToggleButtonOnOff/>} />
           <Route path="history" element={<History/>} />
         </Route>
       </Route>

@@ -6,7 +6,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 function SettingSideBar() {
   const navigator = useNavigate();
   function onGoToSettingHomePageFn() {
-    navigator("/profile");
+    navigator("/settings");
   }
 
   return (
@@ -22,7 +22,7 @@ function SettingSideBar() {
       <div className="flex flex-col items-center justify-start w-305px h-344px gap-5 mx-auto">
         {/* Profile Link */}
         <NavLink
-          to=""
+          to="profile"
           className={({ isActive }) =>
             isActive
               ? `flex items-center justify-start p-4 rounded-md border border-gray-300 cursor-pointer gap-5 w-full bg-gradient-to-r from-[#70e000] to-[#70e000] `
@@ -40,7 +40,7 @@ function SettingSideBar() {
 
         {/* Camera Settings Link */}
         <NavLink
-          to="Camera"
+          to="camera"
           className={({ isActive }) =>
             isActive
               ? `flex items-center justify-start p-4 rounded-md border border-gray-300 cursor-pointer gap-5 w-full bg-gradient-to-r from-[#70e000] to-[#70e000]`
@@ -75,9 +75,9 @@ function SettingSideBar() {
           </div>
         </NavLink>
 
-        {/* Notification Settings Link */}
+        {/* notifications Settings Link */}
         <NavLink
-          to="notification"
+          to="notifications"
           className={({ isActive }) =>
             isActive
               ? `flex items-center justify-start p-4 rounded-md border border-gray-300 cursor-pointer gap-5 w-full bg-gradient-to-r from-[#70e000] to-[#70e000] `
