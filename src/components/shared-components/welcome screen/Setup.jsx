@@ -116,7 +116,8 @@ function Camera() {
         >
           <div className="text-black gap-[1.3rem] flex flex-col  font-poppins text-[15px] leading-[20px] ">
             <div className="border-b-2 mt-[1.8rem] w-[100%] border-b-[#4D4D4D]">
-              <CustomDropdown />
+              {/* This was suppossed to be a drop down, uncomment this line below to debug or just use a select tag like it was used for the camera ip addresses */}
+              {/* <CustomDropdown /> */}
             </div>{" "}
             <div>
               <input

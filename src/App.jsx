@@ -30,7 +30,7 @@ import viteLogo from "/vite.svg";
 // import './App.css'
 import ToggleButtonOnOff from "./pages/notification";
 import History from "./pages/History";
-import Price from "./pages/Price";
+import Pricing from "./pages/Price";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -61,7 +61,7 @@ const router = createBrowserRouter(
           <Route path="history" element={<History />} />
 
           {/* Route for the Price component */}
-          <Route path="price" element={<Pricing/>} />
+          <Route path="price" element={<Price/>} />
           <Route path="notifications" element={<ToggleButtonOnOff/>} />
           <Route path="history" element={<History/>} />
         </Route>
