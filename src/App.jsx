@@ -61,7 +61,7 @@ const router = createBrowserRouter(
           <Route path="history" element={<History />} />
 
           {/* Route for the Price component */}
-          <Route path="price" element={<Price/>} />
+          <Route path="price" element={<Pricing/>} />
           <Route path="notifications" element={<ToggleButtonOnOff/>} />
           <Route path="history" element={<History/>} />
         </Route>
