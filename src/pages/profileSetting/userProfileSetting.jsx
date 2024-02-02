@@ -9,7 +9,7 @@ function UserProfileSetting() {
     navigator("/");
   }
   return (
-    <div className="flex flex-col items-start gap-5 w-full p-3 ">
+    <div className="flex flex-col items-start gap-5 w-full p-3 h-full">
       <h2 className="  flex flex-row items-center font-inter text-2xl gap-5 font-semibold text-gray-800">
         <FaArrowLeft
           className=" flex md:hidden w-17 h-5 cursor-pointer"

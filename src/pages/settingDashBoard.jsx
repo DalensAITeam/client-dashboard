@@ -1,5 +1,6 @@
 import React from "react";
-import { MdContacts, MdCameraAlt, MdCreditCard } from "react-icons/md";
+import { MdAccountBox, MdCreditCard } from "react-icons/md";
+import { HiCamera } from "react-icons/hi2";
 import { FaVolumeUp, FaEdit } from "react-icons/fa";
 import { useNavigate, useParams } from "react-router-dom";
 
@@ -14,9 +15,9 @@ function SettingDashBoard() {
       //     ? navigate(`/settings`)
       //     : navigate(`/settings/${title}`)
       // }
-      className="w-90 h-52 shadow-md rounded-lg p-10 flex flex-col items-start justify-center cursor-pointer space-y-4"
+      className="shadow-md rounded-lg p-10 flex flex-col items-start justify-center gap-3 cursor-pointer"
     >
-      <div className=" w-40 h-40 text-green-500">{icon}</div>
+      <div className=" text-green-500">{icon}</div>
       <h4 className="font-poppins text-1x1 font-semibold text-gray-800">
         {title}
       </h4>
@@ -40,27 +41,27 @@ function SettingDashBoard() {
           {renderSettingCard(
             "profile",
             "Edit personal details",
-            <MdContacts className="w-10 h-10" />
+            <MdAccountBox size={30} />
           )}
           {renderSettingCard(
             "camera",
             "Edit camera setting",
-            <MdCameraAlt className="w-10 h-10" />
+            <HiCamera size={30} />
           )}
           {renderSettingCard(
             "price",
             "Checkout price details",
-            <MdCreditCard className="w-10 h-10" />
+            <MdCreditCard size={30} />
           )}
           {renderSettingCard(
             "notifications",
             "Customize Notification to suit your needs",
-            <FaVolumeUp className="w-10 h-10" />
+            <FaVolumeUp size={30} />
           )}
           {renderSettingCard(
             "history",
             "View all history",
-            <FaEdit className="w-10 h-10" />
+            <FaEdit size={30} />
           )}
         </div>
       </div>

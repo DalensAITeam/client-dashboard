@@ -25,8 +25,8 @@ function SettingSideBar() {
           to="profile"
           className={({ isActive }) =>
             isActive
-              ? `flex items-center justify-start p-4 rounded-md border border-gray-300 cursor-pointer gap-5 w-full bg-gradient-to-r from-[#70e000] to-[#70e000] `
-              : `flex items-center justify-start p-4 rounded-md border border-gray-300 cursor-pointer gap-5 w-full bg-gradient-to-r from-white to-white via-white to-[#1a1a1a]`
+              ? `flex items-center justify-start p-4 rounded-md border border-gray-300 cursor-pointer gap-5 w-full bg-[#70e000] `
+              : `flex items-center justify-start p-4 rounded-md border border-gray-300 cursor-pointer gap-5 w-full bg-white`
           }
           end
         >
@@ -43,8 +43,8 @@ function SettingSideBar() {
           to="camera"
           className={({ isActive }) =>
             isActive
-              ? `flex items-center justify-start p-4 rounded-md border border-gray-300 cursor-pointer gap-5 w-full bg-gradient-to-r from-[#70e000] to-[#70e000]`
-              : `flex items-center justify-start p-4 rounded-md border border-gray-300 cursor-pointer gap-5 w-full bg-gradient-to-r from-white to-white via-white to-[#1a1a1a]`
+              ? `flex items-center justify-start p-4 rounded-md border border-gray-300 cursor-pointer gap-5 w-full bg-[#70e000]`
+              : `flex items-center justify-start p-4 rounded-md border border-gray-300 cursor-pointer gap-5 w-full bg-white`
           }
           end
         >
@@ -61,8 +61,8 @@ function SettingSideBar() {
           to="price"
           className={({ isActive }) =>
             isActive
-              ? `flex items-center justify-start p-4 rounded-md border border-gray-300 cursor-pointer gap-5 w-full bg-gradient-to-r from-[#70e000] to-[#70e000]`
-              : `flex items-center justify-start p-4 rounded-md border border-gray-300 cursor-pointer gap-5 w-full bg-gradient-to-r from-white to-white via-white to-[#1a1a1a]`
+              ? `flex items-center justify-start p-4 rounded-md border border-gray-300 cursor-pointer gap-5 w-full bg-[#70e000]`
+              : `flex items-center justify-start p-4 rounded-md border border-gray-300 cursor-pointer gap-5 w-full bg-white `
           }
           end
         >
@@ -80,8 +80,8 @@ function SettingSideBar() {
           to="notifications"
           className={({ isActive }) =>
             isActive
-              ? `flex items-center justify-start p-4 rounded-md border border-gray-300 cursor-pointer gap-5 w-full bg-gradient-to-r from-[#70e000] to-[#70e000] `
-              : `flex items-center justify-start p-4 rounded-md border border-gray-300 cursor-pointer gap-5 w-full bg-gradient-to-r from-white to-white via-white to-[#1a1a1a]`
+              ? `flex items-center justify-start p-4 rounded-md border border-gray-300 cursor-pointer gap-5 w-full bg-[#70e000] `
+              : `flex items-center justify-start p-4 rounded-md border border-gray-300 cursor-pointer gap-5 w-full bg-white`
           }
           end
         >
@@ -99,8 +99,8 @@ function SettingSideBar() {
           to="history"
           className={({ isActive }) =>
             isActive
-              ? `flex items-center justify-start p-4 rounded-md border border-gray-300 cursor-pointer gap-5 w-full bg-gradient-to-r from-[#70e000] to-[#70e000] `
-              : `flex items-center justify-start p-4 rounded-md border border-gray-300 cursor-pointer gap-5 w-full bg-gradient-to-r from-white to-white via-white to-[#1a1a1a]`
+              ? `flex items-center justify-start p-4 rounded-md border border-gray-300 cursor-pointer gap-5 w-full bg-[#70e000] `
+              : `flex items-center justify-start p-4 rounded-md border border-gray-300 cursor-pointer gap-5 w-full bg-white `
           }
           end
         >
