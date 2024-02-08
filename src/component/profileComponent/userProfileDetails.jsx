@@ -20,11 +20,9 @@ function UserProfileDetailsSection() {
             />
             <FaEdit className="absolute right-4 w-6 h-6 text-green-500  cursor-pointer" />
           </div>
-          <div className="flex flex-col items-center justify-center w-full h-10 rounded-br-[10px] rounded-bl-[10px]  bg-gradient-to-r from-[#70e000] to-[#70e000] cursor-pointer">
             {/* Text for the "Save Changes" button */}
-            <div className="font-poppins text-base font-semibold text-white">
+          <div className="bg-gradient-to-r from-[#70e000] to-[#70e000] flex justify-center items-center rounded-br-[10px] rounded-bl-[10px] h-10 w-full font-poppins text-base font-semibold text-white">
               Name changed Successfully
-            </div>
           </div>
         </div>
       </div>
