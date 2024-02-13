@@ -8,6 +8,7 @@ import warning from "../assets/warning.svg";
 import search from "../assets/search.svg";
 import ChartSection from "./ChartSection";
 import { useState } from "react";
+import "./custom.css";
 
 const DataScreen = () => {
   const [searchText, setSearchText] = useState("");
@@ -101,7 +102,7 @@ const DataScreen = () => {
           </div>
         </div>
       </div>
-      <div className=" flex flex-col md:flex-row items-center justify-between">
+      <div className=" flex flex-col gap-4 md:flex-row items-center justify-between">
         <div className="border-[1px] w-full md:w-3/5 my-5 border-[solid] border-[rgb(142,141,141)] p-[10px] md:h-[60vh] h-fit rounded-[10px]">
           <div
             className="Chart-screen-wrappers-options flex items-center justify-between w-full"
@@ -126,16 +127,16 @@ const DataScreen = () => {
       </div>
       <div className="DataScreen_History mt-8 flex flex-col border-[.1px] border-[solid] border-[rgb(142,141,141)] p-[1.2rem] rounded-[10px]">
         <div className="data_screen-container md:flex-1 flex flex-wrap md:flex-nowrap  items-center justify-between">
-          <h4 className=" text-[19px] md:w-3/5">Data History</h4>
-          <div className="data-screen-select-date flex md:order-last items-center border-[.1px] md:w-1/5 border-[solid] border-[rgb(142,141,141)] p-[3px] rounded-[10px] gap-[5px]">
-            <img className="h-[30px]" src={notification} alt="" />
+          <h4 className=" text-[19px] font-bold md:w-3/5">Data History</h4>
+          <div className="data-screen-select-date flex md:order-last items-center border-[.1px] md:w-1/5 border-[solid] border-[rgb(142,141,141)] pt-[3px] pb-[3px] pl-[4px] pr-[4px] rounded-[10px] gap-[5px]">
+            <img className="h-[25px] w-[25px]" src={notification} alt="" />
             <select
               name=""
-              className="chart-screen-history-select w-full border-[none] outline-[none]"
+              className="chart-screen-history-select text-xs w-full outline-none border-none"
               id=""
             >
-              <option value="">Select Date</option>
-              <option value="">2024</option>
+              <option className="text-base" value="">Select Date</option>
+              <option className="text-base" value="">2024</option>
             </select>
           </div>
           <form
@@ -157,28 +158,65 @@ const DataScreen = () => {
             </button>
           </form>
         </div>
-        <div className="data-screen-history-body w-full overflow-x-scroll">
-          <table>
-            <tr className="top-table">
-              <th>No</th>
-              <th>Total Animals Count</th>
-              <th>Health Status</th>
-              <th>Feedback</th>
-              <th>Feeding Behaviour</th>
-              <th>Animal Type</th>
-              <th>Weight Measurements</th>
+        <div className=" w-full overflow-x-scroll">
+          <table className="border-b flex flex-col w-full">
+            <tr className=" border-b flex items-center  justify-between px-6">
+              <th className="font-light">Date</th>
+              <th className="font-light">Animals Count (Day)</th>
+              <th className="font-light">Animals Count (Night)</th>
+              <th className="font-light">Threats</th>
+              <th className="font-light">Health Status</th>
             </tr>
 
-            <tr>
-              <td>1</td>
-              <td>1</td>
-              <td>1</td>
-              <td>1</td>
-              <td>1</td>
-              <td>1</td>
-              <td>1</td>
+            <tr className="table-shape  ">
+              <td className="font-semibold  underline pl-1">25/01/2024</td>
+              <td className="pl-4">260</td>
+              <td className="">250</td>
+              <td className="pl-2">No threats</td>
+              <td className="pl-1">Perfect</td>
+            </tr>
+            <tr className="table-shape  ">
+              <td className="font-semibold underline pl-1 ">25/01/2024</td>
+              <td className="pl-4">260</td>
+              <td className="">250</td>
+              <td className="pl-2">No threats</td>
+              <td className="pl-1">Perfect</td>
+            </tr>
+            <tr className="table-shape  ">
+              <td className="font-semibold underline  pl-1">25/01/2024</td>
+              <td className="pl-4">260</td>
+              <td className="">250</td>
+              <td className="pl-2">No threats</td>
+              <td className="pl-1">Perfect</td>
+            </tr>
+            <tr className="table-shape  ">
+              <td className="font-semibold underline pl-1 ">25/01/2024</td>
+              <td className="pl-4">260</td>
+              <td className="">250</td>
+              <td className="pl-2">No threats</td>
+              <td className="pl-1">Perfect</td>
+            </tr>
+            <tr className="table-shape  ">
+              <td className="font-semibold  underline pl-1">25/01/2024</td>
+              <td className="pl-4">260</td>
+              <td className="">250</td>
+              <td className="pl-2">No threats</td>
+              <td className="pl-1">Perfect</td>
+            </tr>
+            <tr className="table-shape  ">
+              <td className="font-semibold underline pl-1 ">25/01/2024</td>
+              <td className="pl-4">260</td>
+              <td className="">250</td>
+              <td className="pl-2">No threats</td>
+              <td className="pl-1">Perfect</td>
             </tr>
           </table>
+        </div>
+        <div className="flex items-center mt-6">
+          <p className="font-light text-sm">
+            Showing data entry of 1 to 6 of 100k entries
+          </p>
+          <div className="">Will Add Pagination before</div>
         </div>
       </div>
     </div>
