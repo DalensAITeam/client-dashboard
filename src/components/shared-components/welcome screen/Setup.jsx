@@ -11,6 +11,7 @@ function Camera() {
   const [isCamera, setIsCamera] = useState(true);
   const [cameraNumber, setCameraNumber] = useState();
   const [ipAddressFill, setIpAddressFill] = useState(0);
+  const [animalType, setAnimalType] = useState(0)
 
   const handleInput = (index, value) => {
     const newLength = value.length;
@@ -21,6 +22,14 @@ function Camera() {
       setIpAddressFill(ipAddressFill - 1);
     }
   };
+  const handleInputAnimal = (index, value) => {
+    const newLength = value.length;
+    if (newLength === 1 && animalType < index + 1) {
+      setAnimalType(index + 1);
+    } else if (newLength === 0 && animalType > 0) {
+      setAnimalType(animalType - 1);
+    }
+  }
 
   const cameraHandler = () => {
     // alert('kjj')
@@ -144,33 +153,31 @@ function Camera() {
             <div className="border-b-2 mt-[1.8rem] w-[100%] border-b-[#4D4D4D]">
               {/* This was suppossed to be a drop down, uncomment this line below to debug or just use a select tag like it was used for the camera ip addresses */}
               {/* <CustomDropdown /> */}
-            </div>{" "}
+            </div>
             <div>
               <input
+              onInput={e => handleInputAnimal(0, e.target.value)}
                 className="border-b-2 py-2 w-[100%] focus:outline-none border-b-[#4D4D4D]"
                 placeholder="Animal to monitor with camera 1"
                 type="ip address"
                 name="id="
-              />{" "}
-              {/* <br />
-              <br />  I removed All br tags*/}
-            </div>
-            <div>
-              <input
-                className="border-b-2 py-2 w-[100%] focus:outline-none border-b-[#4D4D4D]"
-                placeholder="Animal to monitor with camera 2"
-                type="ip address"
-                name="id="
               />
             </div>
-            <div>
-              <input
-                className="border-b-2 py-2 focus:outline-none w-[100%] border-b-[#4D4D4D]"
-                placeholder="Animal to monitor with camera 3"
-                type="ip address"
-                name="id="
-              />
-            </div>
+            {
+              Array(animalType).fill().map((_, index) => {
+                return (
+                  <div key={index}>
+                    <input
+                      onInput={e => handleInputAnimal(index + 1, e.target.value)}
+                      className="border-b-2 py-2 w-[100%] focus:outline-none border-b-[#4D4D4D]"
+                      placeholder={`Animal to monitor with camera ${index + 2} `}
+                      type="ip address"
+                      name="id="
+                    />
+                  </div>
+                );
+              })
+            }
           </div>
 
           <div className="flex justify-center  ">
