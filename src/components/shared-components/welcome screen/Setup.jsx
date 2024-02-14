@@ -1,5 +1,5 @@
 // eslint-disable-next-line no-unused-vars
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Navbar from "../navbar/navbar";
 import { Link } from "react-router-dom";
 import { Button } from "flowbite-react";
@@ -9,7 +9,18 @@ import Modal from "../../modalComponent/modal";
 
 function Camera() {
   const [isCamera, setIsCamera] = useState(true);
-  const [cameraNumber, setCameraNumber] = useState('');
+  const [cameraNumber, setCameraNumber] = useState();
+  const [ipAddressFill, setIpAddressFill] = useState(0);
+
+  const handleInput = (index, value) => {
+    const newLength = value.length;
+
+    if (newLength === 1 && ipAddressFill < index + 1) {
+      setIpAddressFill(index + 1);
+    } else if (newLength === 0 && ipAddressFill > 0) {
+      setIpAddressFill(ipAddressFill - 1);
+    }
+  };
 
   const cameraHandler = () => {
     // alert('kjj')
@@ -23,6 +34,10 @@ function Camera() {
   // const cameraSelectHandler = (cameraNumber) => {
   //   alert('kjj')
   // }
+
+  useEffect(() => {
+    console.log(ipAddressFill)
+  }, [ipAddressFill])
   return (
     <div className="">
       <Navbar back={"Go back to Dashboard"} />
@@ -45,7 +60,9 @@ function Camera() {
        
         <form className=" text-black   flex flex-col gap-[2rem]">
           <div className="text-black font-medium flex flex-col gap-[1.3rem] font-poppins text-[15px] leading-[20px]">
-            <select  className="border-b-2 w-[100%] mt-[1.8rem] focus:outline-none focus:border-b-[#70E000]">
+            <select  className="border-b-2 w-[100%] mt-[1.8rem] focus:outline-none focus:border-b-[#70E000]"
+            onChange={(e) => setCameraNumber(e.target.value)}
+            >
               <option value="" selected disabled className="text-lg text-gray-400"> Amount of Camera</option>
               <option
                 value="1"
@@ -64,28 +81,37 @@ function Camera() {
               <option value=""> 10</option> */}
             </select>{" "}
             <div>
-              <input
-                className="border-b-2 py-2 focus:outline-none focus:border-b-[#70E000] w-[100%] border-b-[#4D4D4D]"
-                placeholder="Ip address(Camera1)"
-                type="ip address"
-                name="id="
-              />{" "}
-            </div>
-            <div>
-              <input
-                className="border-b-2 w-[100%] py-2 focus:border-b-[#70E000] focus:outline-none border-b-[#4D4D4D]"
-                placeholder="Ip address(Camera2)"
-                type="ip address"
-                name="id="
-              />
-            </div>
-            <div>
-              <input
-                className="border-b-2 py-2 focus:border-b-[#70E000] w-[100%] focus:outline-none border-b-[#4D4D4D]"
-                placeholder="Ip address(Camera3)"
-                type="ip address"
-                name="id="
-              />
+            {
+  cameraNumber === '1' ? (
+    <input
+      className="border-b-2 py-2 focus:outline-none focus:border-b-[#70E000] w-[100%] border-b-[#4D4D4D]"
+      placeholder="Ip address(Camera1)"
+      type="ip address"
+      name="id"
+    />
+  ) : cameraNumber === 'multiple' ? (
+    <>
+    <input
+      onInput={e => handleInput(0, e.target.value)}
+      className="border-b-2 py-2 focus:outline-none focus:border-b-[#70E000] w-[100%] border-b-[#4D4D4D]"
+      placeholder="Ip address(Camera1)"
+      type="ip address"
+      name="id1"
+    />
+    {Array(ipAddressFill).fill().map((_, index) => (
+      <input
+        key={index}
+        onInput={e => handleInput(index + 1, e.target.value)}
+        className="border-b-2 py-2 focus:outline-none focus:border-b-[#70E000] w-[100%] border-b-[#4D4D4D]"
+        placeholder={`Ip address(Camera${index + 2})`}
+        type="ip address"
+        name={`id${index + 2}`}
+      />
+    ))}
+  </>
+  ) : null
+}
+
             </div>
           </div>
 
