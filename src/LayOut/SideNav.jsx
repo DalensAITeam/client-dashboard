@@ -24,26 +24,46 @@ const SideNav = ({
 }) => {
   const dispatch = useDispatch();
   const openSideNav = useSelector((state) => state.actions.openSideNav);
+  const [displayIconName, setDisplayIconName]= useState(false)
 
   return (
+    <>
+<div
+
+ className={`bg-green-400 h-[4.4vw] w-[20px] z-[100] absolute top-0 items-center justify-center ${openSideNav?'left-[22.5%]':'left-[0%]', displayIconName?'!left-[0%]':'left-[6.3%]'} flex `}
+ onClick={()=>{
+  setDisplayIconName(!displayIconName)
+ }}
+ >
+  <img
+    src={arrow}
+    onClick={() => dispatch(SideNavToggle())}
+    style={{
+
+      cursor: 'pointer',
+      height: '60px',
+      width: '60px',
+      duration: '100ms',
+      ease: 'ease',
+      transform: openSideNav ? 'none' : 'rotate(180deg)',
+      transform: displayIconName?'rotate(180deg)': 'none'
+    }}
+    alt=""
+  />
+</div>
+
     <div
       className={`${
-        openSideNav ? "w-72 " : "w-20 -left-20"
+        openSideNav ? "w-72 " : "w-20 -left-20 hidden",
+        displayIconName? 'w-20 -left-20 hidden':'w-20'
       } duration-300 bg-[#393939] h-full md:left-0 fixed z-[100] top-0`}
     >
-      <img
-        src={arrow}
-        onClick={() => dispatch(SideNavToggle())}
-        className={`absolute cursor-pointer rounded-full h-10 duration-100 ease -right-6 top-5 w-10 border ${
-          !openSideNav && "rotate-180"
-        }`}
-        alt=""
-      />
       <div className="flex justify-center items-center pt-2">
         <Link className="" to="/">
           <img
             src={logo}
-            className={`${openSideNav ? "max-w-[25]" : "max-w-[20]"}`}
+            // className={`${openSideNav ? "" : "max-w-[20]"}`}
+            className={`${displayIconName? 'max-w-[25]' : 'max-w-[100px]'}`}
             alt="DalensAI"
           />
         </Link>
@@ -63,9 +83,10 @@ const SideNav = ({
             className={`${openSideNav ? "max-w-lg" : "max-w-[20]"}`}
             alt=""
           />
-          <span className={` text-white ${openSideNav ? "" : "hidden"}`}>
+          {displayIconName&&
+            <span className={` text-white ${openSideNav ? "" : "hidden"}`}>
             Dashboard
-          </span>
+          </span>}
         </Link>
         <Link
           onClick={() => openSideNav && dispatch(SideNavToggle())}
@@ -81,9 +102,9 @@ const SideNav = ({
             className={`${openSideNav ? "max-w-lg" : "max-w-[20]"}`}
             alt=""
           />
-          <span className={` text-white ${openSideNav ? "" : "hidden"}`}>
+         {displayIconName&& <span className={` text-white ${openSideNav ? "" : "hidden"}`}>
             Farm Monitor
-          </span>
+          </span>}
         </Link>
         <Link
           onClick={() => openSideNav && dispatch(SideNavToggle())}
@@ -99,9 +120,9 @@ const SideNav = ({
             className={`${openSideNav ? "max-w-lg" : "max-w-[20]"}`}
             alt=""
           />
-          <span className={` text-white ${openSideNav ? "" : "hidden"}`}>
+          {displayIconName && <span className={` text-white ${openSideNav ? "" : "hidden"}`}>
             Data Manager
-          </span>
+          </span>}
         </Link>
         <Link
           onClick={() => openSideNav && dispatch(SideNavToggle())}
@@ -118,9 +139,9 @@ const SideNav = ({
             className={`${openSideNav ? "max-w-lg" : "max-w-[20]"}`}
             alt=""
           />
-          <span className={`text-white ${openSideNav ? "" : "hidden"}`}>
+         {displayIconName&& <span className={`text-white ${openSideNav ? "" : "hidden"}`}>
             Settings
-          </span>
+          </span>}
         </Link>
         <br />
         <Link
@@ -137,12 +158,13 @@ const SideNav = ({
             className={`${openSideNav ? "max-w-lg" : "max-w-[20]"}`}
             alt=""
           />
-          <span className={`${openSideNav ? "" : "hidden"} text-white`}>
+         {displayIconName&& <span className={`${openSideNav ? "" : "hidden"} text-white`}>
             Logout
-          </span>
+          </span>}
         </Link>
       </div>
     </div>
+    </>
   );
 };
 
