@@ -25,7 +25,7 @@ const Header = () => {
         </Link>
         <Link
           onClick={() => openSideNav && dispatch(SideNavToggle())}
-          to="/profile"
+          to="/settings/profile"
         >
           <button className="rounded-full w-10 h-10 bg-lime-300">{'HF'}</button>
         </Link>

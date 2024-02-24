@@ -22,6 +22,8 @@ import CameraSettings from "./pages/cameraSetting/cameraSetting";
 import UserProfileSetting from "./pages/profileSetting/userProfileSetting";
 import FarmMonitor from "./Screens/FarmMonitor/FarmMonitor";
 
+import LoginPage from "./components/auth/login";
+
 //The new notifications screen
 
 import { useState } from "react";
@@ -65,6 +67,7 @@ const router = createBrowserRouter(
           <Route path="history" element={<History/>} />
         </Route>
       </Route>
+      <Route path="/login" element={<LoginPage />} />
     </Route>
   )
 );

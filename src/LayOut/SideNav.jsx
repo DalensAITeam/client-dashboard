@@ -29,35 +29,31 @@ const SideNav = ({
   return (
     <>
 <div
-
- className={`bg-green-400 h-[4.4vw] w-[20px] z-[100] absolute top-0 items-center justify-center ${openSideNav?'left-[22.5%]':'left-[0%]', displayIconName?'!left-[0%]':'left-[6.3%]'} flex `}
- onClick={()=>{
-  setDisplayIconName(!displayIconName)
- }}
- >
+  className={`bg-green-400 h-[4.4vw] w-[20px] z-[100] absolute top-0 items-center justify-center ${openSideNav ? 'left-[22.5%]' : displayIconName ? 'left-6.3%' : 'left-0%'} flex `}
+  onClick={() => {
+    setDisplayIconName(!displayIconName);
+  }}
+>
   <img
     src={arrow}
-    onClick={() => dispatch(SideNavToggle())}
-    style={{
 
+    style={{
       cursor: 'pointer',
       height: '60px',
       width: '60px',
-      duration: '100ms',
-      ease: 'ease',
-      transform: openSideNav ? 'none' : 'rotate(180deg)',
-      transform: displayIconName?'rotate(180deg)': 'none'
+      transition: 'transform 100ms ease',
+      transform:displayIconName ? 'rotate(180deg)' : ' none',
     }}
     alt=""
   />
 </div>
 
-    <div
-      className={`${
-        openSideNav ? "w-72 " : "w-20 -left-20 hidden",
-        displayIconName? 'w-20 -left-20 hidden':'w-20'
-      } duration-300 bg-[#393939] h-full md:left-0 fixed z-[100] top-0`}
-    >
+<div
+  className={`${
+    openSideNav ? "w-72 " : "w-20 -left-20 hidden",
+    displayIconName ? 'left-20 hidden' : 'left-0'
+  } duration-300 bg-[#393939] h-full md:left-0 fixed z-[100] top-0`}
+>
       <div className="flex justify-center items-center pt-2">
         <Link className="" to="/">
           <img
@@ -83,10 +79,10 @@ const SideNav = ({
             className={`${openSideNav ? "max-w-lg" : "max-w-[20]"}`}
             alt=""
           />
-          {displayIconName&&
+          
             <span className={` text-white ${openSideNav ? "" : "hidden"}`}>
             Dashboard
-          </span>}
+          </span>
         </Link>
         <Link
           onClick={() => openSideNav && dispatch(SideNavToggle())}
@@ -102,9 +98,9 @@ const SideNav = ({
             className={`${openSideNav ? "max-w-lg" : "max-w-[20]"}`}
             alt=""
           />
-         {displayIconName&& <span className={` text-white ${openSideNav ? "" : "hidden"}`}>
+          <span className={` text-white ${openSideNav ? "" : "hidden"}`}>
             Farm Monitor
-          </span>}
+          </span>
         </Link>
         <Link
           onClick={() => openSideNav && dispatch(SideNavToggle())}
@@ -120,9 +116,9 @@ const SideNav = ({
             className={`${openSideNav ? "max-w-lg" : "max-w-[20]"}`}
             alt=""
           />
-          {displayIconName && <span className={` text-white ${openSideNav ? "" : "hidden"}`}>
+          <span className={` text-white ${openSideNav ? "" : "hidden"}`}>
             Data Manager
-          </span>}
+          </span>
         </Link>
         <Link
           onClick={() => openSideNav && dispatch(SideNavToggle())}
@@ -139,9 +135,9 @@ const SideNav = ({
             className={`${openSideNav ? "max-w-lg" : "max-w-[20]"}`}
             alt=""
           />
-         {displayIconName&& <span className={`text-white ${openSideNav ? "" : "hidden"}`}>
+         <span className={`text-white ${openSideNav ? "" : "hidden"}`}>
             Settings
-          </span>}
+          </span>
         </Link>
         <br />
         <Link

@@ -10,6 +10,10 @@
     height: 15px;
   }
 
+  .active{
+    @apply "outline outline-green-500 text-black-500 focus:outline-green-500"
+  }
+
   .scrollbar::-webkit-scrollbar-track {
     border-radius: 100vh;
     background: #f7f4ed;
