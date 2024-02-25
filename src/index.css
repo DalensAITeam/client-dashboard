@@ -1,5 +1,6 @@
-/* adding fonts */
+/* Adding fonts */
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -10,8 +11,8 @@
     height: 15px;
   }
 
-  .active{
-    @apply "outline outline-green-500 text-black-500 focus:outline-green-500"
+  .active {
+    @apply outline outline-green-500 text-black focus:outline-green-500;
   }
 
   .scrollbar::-webkit-scrollbar-track {
@@ -31,20 +32,22 @@
 }
 
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Inter', system-ui, 'Avenir', 'Helvetica', 'Arial', sans-serif;
 
-  --clipPathStart: 0% 30%;
-  --clipPathEnd: 100% 30%;
   --accentColor: #70e000;
   --lightAccentColor: #a3ff47;
+  --text-color: #333; /* Your custom text color */
 }
+
 .width-calculator {
   width: calc(100% - 200px);
 }
+
 .width-data-manager {
   width: calc(100% - 100px);
   margin-left: 100px;
 }
+
 .main-data-manager {
   min-height: 100vh;
   display: flex;
@@ -56,33 +59,27 @@ a {
   color: #646cff;
   text-decoration: inherit;
 }
+
 a:hover {
   color: #535bf2;
 }
-
-/* reasonable */
-/* clip-path: polygon(0 30%, 16% 36%, 37% 39%, 54% 36%, 74% 29%, 93% 34%, 100% 40%, 100% 99%, 0% 99%); */
 
 .main {
   min-height: 100vh;
   display: grid;
   grid-template-columns: 2fr 1fr;
-  width: 100%;
   gap: 5px;
 }
+
 .monitor {
   border-right: 1px #d6d6d6 solid;
-  /* display: flex;
-  flex-direction: column;
-  justify-content: space-between; */
 }
 
 .stats {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center; /* or space-between depending on your design */
   gap: 5px;
   height: 100%;
 }
@@ -96,18 +93,9 @@ body ::-webkit-scrollbar {
     display: block;
   }
 }
+
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
-/* .Screen{
-    display: flex; 
-}
-.Header-body{
-    min-width: calc(100vw - 100px);
-    padding: .7rem 1.2rem;
-    display: flex;
-    min-height: 100vh;
-    flex-direction: column; 
-} */

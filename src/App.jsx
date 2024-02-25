@@ -23,6 +23,7 @@ import UserProfileSetting from "./pages/profileSetting/userProfileSetting";
 import FarmMonitor from "./Screens/FarmMonitor/FarmMonitor";
 
 import LoginPage from "./components/auth/login";
+import SignupPage from "./components/auth/signup";
 
 //The new notifications screen
 
@@ -68,6 +69,7 @@ const router = createBrowserRouter(
         </Route>
       </Route>
       <Route path="/login" element={<LoginPage />} />
+      <Route path="/signup" element={<SignupPage />} />
     </Route>
   )
 );
