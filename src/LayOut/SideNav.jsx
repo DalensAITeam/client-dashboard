@@ -1,10 +1,10 @@
 import { useState } from "react";
-import logo from "../assets/logo.svg";
-import grid from "../assets/grid.svg";
-import logout from "../assets/logout.svg";
-import group from "../assets/group.svg";
-import settings from "../assets/settings.svg";
-import topic from "../assets/topic.svg";
+import logo from "../Layouts/assets/logo.svg";
+import grid from "../Layouts/assets/grid.svg";
+import logout from "../Layouts/assets/logout.svg";
+import group from "../Layouts/assets/group.svg";
+import settings from "../Layouts/assets/settings.svg";
+import topic from "../Layouts/assets/topic.svg";
 import dashboard_highlight from "../assets/dashboard_highlight.svg";
 import farmMonitor_highlight from "../assets/farmMonitor_highlight.svg";
 import dataManager_nohighlight from "../assets/dataManager_nohighlight.svg";

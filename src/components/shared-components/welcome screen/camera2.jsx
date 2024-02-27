@@ -9,11 +9,28 @@ import styles from "../../modalComponent/Modal.module.css";
 import Modal from "../../modalComponent/modal";
 
 function Camera2() {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false)
+  const[formData,setFormData] = useState({})
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-  };
+  const handleChange = (e) => {
+    setFormData(prevState => ({...prevState,[e.target.name]: e.target.value}))
+  }
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+
+    try {
+     await axios.post('http://localhost:8000/setup-animal',formData,{
+        headers: {
+          'Content-Type':'application/json',
+        }
+      }
+      )
+    }
+    catch(e){
+      console.error(e)
+    }
+  }
 
   return (
     <div className="flex flex-col">
@@ -43,8 +60,8 @@ function Camera2() {
               <input
                 className="border-b-2 py-2 w-[100%] focus:outline-none border-b-[#4D4D4D]"
                 placeholder="Animal to monitor with camera 1"
-                type="ip address"
-                name="id="
+                type="text"
+                name="animal_1"
               />{" "}
               {/* <br />
               <br />  I removed All br tags*/}
@@ -53,16 +70,16 @@ function Camera2() {
               <input
                 className="border-b-2 py-2 w-[100%] focus:outline-none border-b-[#4D4D4D]"
                 placeholder="Animal to monitor with camera 2"
-                type="ip address"
-                name="id="
+                type="text"
+                name="animal_2"
               />
             </div>
             <div>
               <input
                 className="border-b-2 py-2 focus:outline-none w-[100%] border-b-[#4D4D4D]"
                 placeholder="Animal to monitor with camera 3"
-                type="ip address"
-                name="id="
+                type="text"
+                name="animal_3"
               />
             </div>
           </div>

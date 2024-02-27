@@ -1,6 +1,6 @@
-import headline from "../assets/headline.svg";
-import bell from "../assets/bell.svg";
-import user from "../assets/user.svg";
+import headline from "../Layouts/assets/headline.svg";
+import bell from "../Layouts/assets/bell.svg";
+import user from "../Layouts/assets/user.svg";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { SideNavToggle } from "../Redux/ActionSlice";

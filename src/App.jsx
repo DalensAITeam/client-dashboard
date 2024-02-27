@@ -22,11 +22,13 @@ import CameraContainer from "./pages/cameraSetting/cameraContainer";
 import CameraSettings from "./pages/cameraSetting/cameraSetting";
 import UserProfileSetting from "./pages/profileSetting/userProfileSetting";
 import FarmMonitor from "./Screens/FarmMonitor/FarmMonitor";
+import LoginPage from "./components/auth/login"
+import SignupPage from "./components/auth/signup"
 
 //The new notifications screen
 
 import { useState } from "react";
-import reactLogo from "./assets/react.svg";
+//import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 // import './App.css'
 import ToggleButtonOnOff from "./pages/notification";
@@ -38,9 +40,10 @@ const router = createBrowserRouter(
     <Route>
       {/* Indivial Routes Are Added Here */}
       <Route path="/" element={<WelcomeScreen />} />
-
-      <Route path="camera" element={<Camera />} />
-      <Route path="camera2" element={<Camera2 />} />
+      <Route path="/login" element={<LoginPage/>} />
+      <Route path="/signup" element={<SignupPage/>} />
+      <Route path="setup-camera" element={<Camera />} />
+      <Route path="setup-animal" element={<Camera2 />} />
       <Route path="/data-manager" element={<DataManager />} />
       <Route path="/dashboard" element={<DashboardMain />} />
       <Route path="/farm" element={<FarmMonitor />} />
