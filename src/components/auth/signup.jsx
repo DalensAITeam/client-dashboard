@@ -19,12 +19,7 @@ function SignupPage() {
            justifyContent: 'center',
            alignItems: 'center'
         }}>
-            <div style={{
-                width:'40vw',
-                height: '80vh',
-                borderRadius: '10px',
-                background:'white',
-            }}>
+            <div className='bg-white min-w-[35vw] rounded-md min-h-[50vh]'>
                 <div style={{
                     display: 'flex',
                     flexDirection: 'column',
@@ -55,7 +50,7 @@ function SignupPage() {
                     </div>
                     <div className='flex flex-col'>
                         <div className='flex item-center justify-center mt-2'>
-                        <button className='bg-[#70E000] text-white rounded-[5px] p-3'>Create account</button>
+                        <button className='bg-[#70E000] text-white rounded-[5px] p-2'>Create account</button>
                         </div>
                         <div className='flex items-center justify-center mt-2'>
                             <p className='text-[12px]'>Already have an account?</p><span onClick={handleGoToLogin} className='text-[#70E000] cursor-pointer'>login</span>

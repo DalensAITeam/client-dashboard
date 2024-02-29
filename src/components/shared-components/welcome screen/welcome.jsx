@@ -28,7 +28,7 @@ function WelcomeScreen() {
         <div className="text-center">
           <img src={welcomeScreenImg} alt="" />
           <h2 className="font-inter mt-8 font-medium text-2xl md:text-[40px] leading-[48.41px]">
-            Welcome To Dalens AI
+            Welcome To DalensAI
           </h2>
           <p className="font-poppins font-[500px] text-[19px] leading-[28.5px]">
             To start setting up your farm,
