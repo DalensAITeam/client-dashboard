@@ -137,32 +137,32 @@ const DataScreen = () => {
           <div className="flex gap-5 justify-between ">
 
             <div className="flex flex-col items-center mb-[1px]">
-          <div className="w-[7vh] h-[45vh] bg-gray-400 rounded-[10px]" style={{ transform: 'rotate(180deg)' }}>
-            <div className="bg-green-500 w-7vh h-[20vh] rounded-[10px]">
+          <div className="w-[7vh] h-[45vh] bg-[#D9D9D9] rounded-[10px]" style={{ transform: 'rotate(180deg)' }}>
+            <div className="bg-[#01A9F2] w-7vh h-[20vh] rounded-[10px]">
             </div>
           </div>
           <p>05.02.2024</p>
           </div>
 
           <div className="flex flex-col items-center mb-[1px]">
-          <div className="w-[7vh] h-[45vh] bg-gray-400 rounded-[10px]" style={{ transform: 'rotate(180deg)' }}>
-          <div className="bg-green-500 w-7vh h-[30vh] rounded-[10px]">
+          <div className="w-[7vh] h-[45vh] bg-[#D9D9D9] rounded-[10px]" style={{ transform: 'rotate(180deg)' }}>
+          <div className="bg-[#01A9F2] w-7vh h-[15vh] rounded-[10px]">
             </div>
           </div>
           <p>06.02.2024</p>
           </div>
 
           <div className="flex flex-col items-center mb-[1px]">
-          <div className="w-[7vh] h-[45vh] bg-gray-400 rounded-[10px]" style={{ transform: 'rotate(180deg)' }}>
-          <div className="bg-green-500 w-7vh h-[10vh] rounded-[10px]">
+          <div className="w-[7vh] h-[45vh] bg-[#D9D9D9] rounded-[10px]" style={{ transform: 'rotate(180deg)' }}>
+          <div className="bg-[#01A9F2] w-7vh h-[10vh] rounded-[10px]">
             </div>
           </div>
           <p>07.02.2024</p>
           </div>
 
           <div className="flex flex-col items-center mb-[1px]">
-          <div className="w-[7vh] h-[45vh] bg-gray-400 rounded-[10px]" style={{ transform: 'rotate(180deg)' }}>
-          <div className="bg-green-500 w-7vh h-[25vh] rounded-[10px]">
+          <div className="w-[7vh] h-[45vh] bg-[#D9D9D9] rounded-[10px]" style={{ transform: 'rotate(180deg)' }}>
+          <div className="bg-[#01A9F2] w-7vh h-[25vh] rounded-[10px]">
             </div>
           </div>
           <p>08.02.2024</p>
