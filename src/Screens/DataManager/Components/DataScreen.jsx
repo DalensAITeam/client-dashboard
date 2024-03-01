@@ -123,7 +123,53 @@ const DataScreen = () => {
         <div
           className="Chart-screen-wrappers w-full  md:w-[450px] md:h-[60vh] h-fit  border-[1px] border-[solid] border-[rgb(142,141,141)] p-[10px] rounded-[10px]"
           id="Chart-screen-wrappers-without-chart"
-        ></div>
+        >
+          <div className="flex items-center justify-between p-2">
+            <h1>Threat Analytics</h1>
+            <div className="flex items-center border-[1px] border-[solid] border-black rounded-[5px] p-1">
+              <img
+              src={notification}
+              alt="date"
+              />
+              <p className="text-gray-800">Date</p>
+            </div>
+          </div>
+          <div className="flex gap-5 justify-between ">
+
+            <div className="flex flex-col items-center mb-[1px]">
+          <div className="w-[7vh] h-[45vh] bg-gray-400 rounded-[10px]" style={{ transform: 'rotate(180deg)' }}>
+            <div className="bg-green-500 w-7vh h-[20vh] rounded-[10px]">
+            </div>
+          </div>
+          <p>05.02.2024</p>
+          </div>
+
+          <div className="flex flex-col items-center mb-[1px]">
+          <div className="w-[7vh] h-[45vh] bg-gray-400 rounded-[10px]" style={{ transform: 'rotate(180deg)' }}>
+          <div className="bg-green-500 w-7vh h-[30vh] rounded-[10px]">
+            </div>
+          </div>
+          <p>06.02.2024</p>
+          </div>
+
+          <div className="flex flex-col items-center mb-[1px]">
+          <div className="w-[7vh] h-[45vh] bg-gray-400 rounded-[10px]" style={{ transform: 'rotate(180deg)' }}>
+          <div className="bg-green-500 w-7vh h-[10vh] rounded-[10px]">
+            </div>
+          </div>
+          <p>07.02.2024</p>
+          </div>
+
+          <div className="flex flex-col items-center mb-[1px]">
+          <div className="w-[7vh] h-[45vh] bg-gray-400 rounded-[10px]" style={{ transform: 'rotate(180deg)' }}>
+          <div className="bg-green-500 w-7vh h-[25vh] rounded-[10px]">
+            </div>
+          </div>
+          <p>08.02.2024</p>
+          </div>
+
+        </div>
+        </div>
       </div>
       <div className="DataScreen_History mt-8 flex flex-col border-[.1px] border-[solid] border-[rgb(142,141,141)] p-[1.2rem] rounded-[10px]">
         <div className="data_screen-container md:flex-1 flex flex-wrap md:flex-nowrap  items-center justify-between">
