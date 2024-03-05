@@ -15,7 +15,7 @@ const Header = () => {
     <div className="flex items-center justify-between border-b-2 px-[.9rem] py-[.4rem]">
       <img
         onClick={() => dispatch(SideNavToggle())}
-        className="h-[40px] w-[40px] cursor-pointer"
+        className="h-[40px] w-[40px] cursor-pointer ml-[20px]"
         src={headline}
         alt=""
       />

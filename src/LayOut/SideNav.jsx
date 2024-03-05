@@ -26,13 +26,21 @@ const SideNav = ({
   const openSideNav = useSelector((state) => state.actions.openSideNav);
   const [displayIconName, setDisplayIconName]= useState(false)
 
+  const toogleSidebar = ()=>{
+    setDisplayIconName(!displayIconName)
+    if (openSideNav === true){
+      dispatch(SideNavToggle())
+    }
+    else if(openSideNav === false){
+      setDisplayIconName(!displayIconName)
+    }
+  }
+
   return (
     <>
 <div
-  className={`bg-green-400 h-[4.4vw] w-[20px] z-[100] absolute top-0 items-center justify-center ${openSideNav ? 'left-[22.5%]' : displayIconName ? 'left-6.3%' : 'left-0%'} flex `}
-  onClick={() => {
-    setDisplayIconName(!displayIconName);
-  }}
+  className={`bg-green-400 h-[4.4vw] w-[18px] z-[100] absolute top-0 items-center justify-center ${openSideNav ? 'left-[14%]' : displayIconName ? 'left-[0%]' : 'left-[7.9%]'} flex `}
+  onClick={toogleSidebar}
 >
   <img
     src={arrow}
