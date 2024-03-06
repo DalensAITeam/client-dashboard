@@ -1,9 +1,17 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
+import VisibilityIcon from '@mui/icons-material/Visibility';
+import { useState } from'react';
 
 
 function SignupPage() {
+
+    const [password, setPassword] = useState('');
+    const[confirmPassword, setConfirmPassword]= useState('');
+    const[displayPassword, setDisplayPassword]= useState(false)
+    const[displayConfirmPassword, setDisplayConfirmPassword]= useState(false)
+
         const navigate=useNavigate();
 
         const handleGoToLogin=()=>{
@@ -41,12 +49,14 @@ function SignupPage() {
                 <form className='p-8'>
                     <input placeholder='Email' className='w-full  outline-none'/>
                     <div className='relative'>
-                        <input type='password' placeholder='Password' className='w-full mt-5 outline-none' />
-                        <VisibilityOffIcon className='absolute top-[-8px] right-0 mt-6 mr-4 text-gray-500 cursor-pointer' />
+                        <input type={displayPassword ? 'text': 'password'} placeholder='Password' className='w-full mt-5 outline-none'  value={password} onChange={(e) => setPassword(e.target.value)}/>
+                        { displayPassword?<VisibilityOffIcon className='absolute top-[-8px] right-0 mt-6 mr-4 text-gray-500 cursor-pointer' onClick={()=>setDisplayPassword(!displayPassword)} />
+                        :<VisibilityIcon className='absolute top-[-8px] right-0 mt-6 mr-4 text-gray-500 cursor-pointer' onClick={() => setDisplayPassword(!displayPassword)}/>}
                     </div>
                     <div className='relative'>
-                        <input type='password' placeholder='Confirm password' className='w-full mt-5 outline-none' />
-                        <VisibilityOffIcon className='absolute top-[-8px] right-0 mt-6 mr-4 text-gray-500 cursor-pointer' />
+                        <input type={displayConfirmPassword ? 'text': 'password'} placeholder='Confirm password' className='w-full mt-5 outline-none' value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)}/>
+                     {displayConfirmPassword?<VisibilityOffIcon className='absolute top-[-8px] right-0 mt-6 mr-4 text-gray-500 cursor-pointer' onClick={() => setDisplayConfirmPassword(!displayConfirmPassword)}/>
+                       : <VisibilityIcon className='absolute top-[-8px] right-0 mt-6 mr-4 text-gray-500 cursor-pointer' onClick={() => setDisplayConfirmPassword(!displayConfirmPassword)}/>}
                     </div>
                     <div className='flex flex-col'>
                         <div className='flex item-center justify-center mt-2'>
