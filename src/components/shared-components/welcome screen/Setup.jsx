@@ -1,5 +1,5 @@
 // eslint-disable-next-line no-unused-vars
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import Navbar from "../navbar/navbar";
 import { Link } from "react-router-dom";
 import { Button } from "flowbite-react";
@@ -12,6 +12,71 @@ function Camera() {
   const [cameraNumber, setCameraNumber] = useState();
   const [ipAddressFill, setIpAddressFill] = useState(0);
   const [animalType, setAnimalType] = useState(0)
+
+  const webcamRef = useRef(null);
+  const mediaRecorderRef = useRef(null);
+  const [ws, setWebSocket] = useState(null);
+  const [recordedChunks, setRecordedChunks] = useState([]);
+
+ 
+  useEffect(() => {
+    const handleDataAvailable = (event) => {
+      if (event.data.size > 0) {
+        setRecordedChunks((prev) => [...prev, event.data]);
+
+        if (ws && ws.readyState === WebSocket.OPEN) {
+          ws.send(event.data);
+        }
+      }
+    };
+
+    const handleWebSocketOpen = () => {
+      console.log('WebSocket connection established.');
+    };
+
+    const handleWebSocketError = (error) => {
+      console.error('WebSocket error:', error);
+    };
+
+    const handleWebSocketClose = (event) => {
+      console.log(`WebSocket connection closed: code=${event.code}, reason=${event.reason}`);
+    };
+
+    const startCapture = async () => {
+      try {
+        const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+
+        const newWebSocket = new WebSocket('ws://127.0.0.1:8000/feed/');
+        newWebSocket.onopen = handleWebSocketOpen;
+        newWebSocket.onerror = handleWebSocketError;
+        newWebSocket.onclose = handleWebSocketClose;
+
+        mediaRecorderRef.current = new MediaRecorder(stream);
+        mediaRecorderRef.current.ondataavailable = handleDataAvailable;
+        mediaRecorderRef.current.start();
+
+        setWebSocket(newWebSocket);
+      } catch (error) {
+        console.error('Error accessing webcam:', error);
+      }
+    };
+
+    const cleanup = () => {
+      if (mediaRecorderRef.current && mediaRecorderRef.current.state === 'recording') {
+        mediaRecorderRef.current.stop();
+      }
+
+      if (ws && ws.readyState === WebSocket.OPEN) {
+        ws.close();
+      }
+    };
+
+    startCapture();
+
+    return cleanup;
+  }, []); 
+  
+
 
   const handleInput = (index, value) => {
     const newLength = value.length;

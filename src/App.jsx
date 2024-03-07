@@ -28,7 +28,6 @@ import SignupPage from "./components/auth/signup";
 //The new notifications screen
 
 import { useState } from "react";
-import reactLogo from "./assets/react.svg";
 // import './App.css'
 import ToggleButtonOnOff from "./pages/notification";
 import History from "./pages/History";
