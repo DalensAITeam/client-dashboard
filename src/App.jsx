@@ -24,6 +24,7 @@ import FarmMonitor from "./Screens/FarmMonitor/FarmMonitor";
 
 import LoginPage from "./components/auth/login";
 import SignupPage from "./components/auth/signup";
+import ForgotPassword from "./components/auth/forgotPassword";
 
 //The new notifications screen
 
@@ -69,6 +70,7 @@ const router = createBrowserRouter(
       </Route>
       <Route path="/login" element={<LoginPage />} />
       <Route path="/signup" element={<SignupPage />} />
+      <Route path="/forgotPassword" element={<ForgotPassword />} />
     </Route>
   )
 );

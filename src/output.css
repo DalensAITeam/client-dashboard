@@ -699,10 +699,6 @@ video {
   top: -10px;
 }
 
-.top-\[-18px\]{
-  top: -18px;
-}
-
 .top-\[-8px\]{
   top: -8px;
 }
@@ -721,22 +717,6 @@ video {
 
 .top-\[602px\]{
   top: 602px;
-}
-
-.top-\[-19px\]{
-  top: -19px;
-}
-
-.top-\[-20px\]{
-  top: -20px;
-}
-
-.top-\[-21px\]{
-  top: -21px;
-}
-
-.top-\[-22px\]{
-  top: -22px;
 }
 
 .-z-0{
@@ -918,6 +898,42 @@ video {
   margin-top: 8px;
 }
 
+.mt-\[10px\]{
+  margin-top: 10px;
+}
+
+.mt-\[10vw\]{
+  margin-top: 10vw;
+}
+
+.mt-\[20px\]{
+  margin-top: 20px;
+}
+
+.mt-\[25px\]{
+  margin-top: 25px;
+}
+
+.mt-\[30px\]{
+  margin-top: 30px;
+}
+
+.mt-\[5px\]{
+  margin-top: 5px;
+}
+
+.mt-\[16px\]{
+  margin-top: 16px;
+}
+
+.mt-\[35px\]{
+  margin-top: 35px;
+}
+
+.mt-\[45px\]{
+  margin-top: 45px;
+}
+
 .flex{
   display: flex;
 }
@@ -968,6 +984,10 @@ video {
 
 .h-6{
   height: 1.5rem;
+}
+
+.h-\[100vh\]{
+  height: 100vh;
 }
 
 .h-\[10vh\]{
@@ -1083,12 +1103,32 @@ video {
   height: 100vh;
 }
 
+.h-\[30vh\]{
+  height: 30vh;
+}
+
+.h-\[35vh\]{
+  height: 35vh;
+}
+
 .min-h-\[50vh\]{
   min-height: 50vh;
 }
 
 .min-h-screen{
   min-height: 100vh;
+}
+
+.min-h-\[45vh\]{
+  min-height: 45vh;
+}
+
+.min-h-\[52vh\]{
+  min-height: 52vh;
+}
+
+.min-h-\[48vh\]{
+  min-height: 48vh;
 }
 
 .w-1\/2{
@@ -1149,6 +1189,10 @@ video {
 
 .w-\[100\%\]{
   width: 100%;
+}
+
+.w-\[100vw\]{
+  width: 100vw;
 }
 
 .w-\[18px\]{
@@ -1232,12 +1276,36 @@ video {
   width: 100vw;
 }
 
+.w-\[10px\]{
+  width: 10px;
+}
+
+.w-\[10vw\]{
+  width: 10vw;
+}
+
+.w-\[8vw\]{
+  width: 8vw;
+}
+
+.w-\[5vw\]{
+  width: 5vw;
+}
+
+.w-\[6vw\]{
+  width: 6vw;
+}
+
 .min-w-\[18rem\]{
   min-width: 18rem;
 }
 
 .min-w-\[35vw\]{
   min-width: 35vw;
+}
+
+.min-w-\[6vw\]{
+  min-width: 6vw;
 }
 
 .max-w-\[100px\]{
@@ -1846,6 +1914,10 @@ video {
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
 
+.bg-\[url\(\/womanFeeding\.png\)\]{
+  background-image: url(/womanFeeding.png);
+}
+
 .bg-gradient-to-r{
   background-image: linear-gradient(to right, var(--tw-gradient-stops));
 }
@@ -1872,6 +1944,14 @@ video {
 
 .to-blue-500{
   --tw-gradient-to: #3b82f6 var(--tw-gradient-to-position);
+}
+
+.bg-cover{
+  background-size: cover;
+}
+
+.bg-center{
+  background-position: center;
 }
 
 .object-contain{
@@ -1945,6 +2025,10 @@ video {
 
 .p-\[3px\]{
   padding: 3px;
+}
+
+.p-9{
+  padding: 2.25rem;
 }
 
 .px-2{
@@ -2261,6 +2345,10 @@ video {
 .text-xs{
   font-size: 0.75rem;
   line-height: 1rem;
+}
+
+.text-\[18px\]{
+  font-size: 18px;
 }
 
 .font-\[400px\]{
@@ -2932,6 +3020,14 @@ body ::-webkit-scrollbar {
 
   .md\:max-w-\[60vw\]{
     max-width: 60vw;
+  }
+
+  .md\:max-w-\[65vw\]{
+    max-width: 65vw;
+  }
+
+  .md\:max-w-\[70vw\]{
+    max-width: 70vw;
   }
 
   .md\:flex-1{

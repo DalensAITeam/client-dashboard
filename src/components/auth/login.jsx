@@ -14,6 +14,9 @@ function LoginPage() {
     const handleGoToSignup=()=>{
         navigate('/signup');
     }
+    const handleGoToForgotPassword=()=>{
+        navigate('/forgotPassword');
+    }
     return <div style={{
         background: `url(/loginBackgroundImage.png)`,
         height: '100vh',
@@ -53,7 +56,7 @@ function LoginPage() {
                         <input type="checkbox"/>
                         <p className='text-[11px] ml-1'>Remember me</p>
                     </div>
-                    <p className='text-[11px] text-[#70E000] cursor-pointer'>Forgot Password?</p>
+                    <p className='text-[11px] text-[#70E000] cursor-pointer' onClick={handleGoToForgotPassword}>Forgot Password?</p>
                 </div>
                 <div className='flex flex-col'>
                     <div className='flex item-center justify-center mt-2'>
