@@ -6,7 +6,7 @@ import { RiCloseLine } from "react-icons/ri";
 import { Link } from "react-router-dom";
 import "animate.css";
 // eslint-disable-next-line react/prop-types
-const Modal = ({ setIsOpen, isOpen }) => {
+const Modal = ({ setIsOpen, text, buttonText, dashboard }) => {
   return (
     <>
       <div
@@ -23,17 +23,17 @@ const Modal = ({ setIsOpen, isOpen }) => {
           </div>
           <br />
           <div className="flex justify-center font-medium text-2xl font-inter text-[#1a1a1a] leading-48.41">
-            <h2>Your Farm is set!</h2>
+            <h2>{text}</h2>
           </div>
           <div className=" w-full">
             <div className="flex justify-around mt-5 items-center ">
-              <Link
-                to="/dashboard"
+              {buttonText &&<Link
+                to={dashboard&& "/dashboard"}
                 className=" font-medium border hover:bg-white hover:text-[#70e000]  bg-[#70e000] p-2 rounded-md text-xl text-white  transition-all duration-250 ease"
                 onClick={() => setIsOpen(false)}
               >
-                Go to Dashboard
-              </Link>
+                {buttonText}
+              </Link>}
             </div>
           </div>
         </div>

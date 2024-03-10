@@ -890,48 +890,28 @@ video {
   margin-top: 15px;
 }
 
+.mt-\[16px\]{
+  margin-top: 16px;
+}
+
 .mt-\[1rem\]{
   margin-top: 1rem;
 }
 
-.mt-\[8px\]{
-  margin-top: 8px;
-}
-
-.mt-\[10px\]{
-  margin-top: 10px;
-}
-
-.mt-\[10vw\]{
-  margin-top: 10vw;
-}
-
-.mt-\[20px\]{
-  margin-top: 20px;
-}
-
-.mt-\[25px\]{
-  margin-top: 25px;
-}
-
-.mt-\[30px\]{
-  margin-top: 30px;
+.mt-\[45px\]{
+  margin-top: 45px;
 }
 
 .mt-\[5px\]{
   margin-top: 5px;
 }
 
-.mt-\[16px\]{
-  margin-top: 16px;
+.mt-\[8px\]{
+  margin-top: 8px;
 }
 
-.mt-\[35px\]{
-  margin-top: 35px;
-}
-
-.mt-\[45px\]{
-  margin-top: 45px;
+.mb-\[-10px\]{
+  margin-bottom: -10px;
 }
 
 .flex{
@@ -1030,6 +1010,10 @@ video {
   height: 30px;
 }
 
+.h-\[30vh\]{
+  height: 30vh;
+}
+
 .h-\[345px\]{
   height: 345px;
 }
@@ -1103,32 +1087,16 @@ video {
   height: 100vh;
 }
 
-.h-\[30vh\]{
-  height: 30vh;
-}
-
-.h-\[35vh\]{
-  height: 35vh;
-}
-
 .min-h-\[50vh\]{
   min-height: 50vh;
-}
-
-.min-h-screen{
-  min-height: 100vh;
-}
-
-.min-h-\[45vh\]{
-  min-height: 45vh;
 }
 
 .min-h-\[52vh\]{
   min-height: 52vh;
 }
 
-.min-h-\[48vh\]{
-  min-height: 48vh;
+.min-h-screen{
+  min-height: 100vh;
 }
 
 .w-1\/2{
@@ -1211,6 +1179,10 @@ video {
   width: 20px;
 }
 
+.w-\[20vh\]{
+  width: 20vh;
+}
+
 .w-\[25px\]{
   width: 25px;
 }
@@ -1276,24 +1248,8 @@ video {
   width: 100vw;
 }
 
-.w-\[10px\]{
-  width: 10px;
-}
-
-.w-\[10vw\]{
-  width: 10vw;
-}
-
-.w-\[8vw\]{
-  width: 8vw;
-}
-
-.w-\[5vw\]{
-  width: 5vw;
-}
-
-.w-\[6vw\]{
-  width: 6vw;
+.w-\[30vh\]{
+  width: 30vh;
 }
 
 .min-w-\[18rem\]{
@@ -2003,6 +1959,10 @@ video {
   padding: 2rem;
 }
 
+.p-9{
+  padding: 2.25rem;
+}
+
 .p-\[\.9rem\]{
   padding: .9rem;
 }
@@ -2025,10 +1985,6 @@ video {
 
 .p-\[3px\]{
   padding: 3px;
-}
-
-.p-9{
-  padding: 2.25rem;
 }
 
 .px-2{
@@ -2302,6 +2258,10 @@ video {
   font-size: 15px;
 }
 
+.text-\[18px\]{
+  font-size: 18px;
+}
+
 .text-\[19px\]{
   font-size: 19px;
 }
@@ -2345,10 +2305,6 @@ video {
 .text-xs{
   font-size: 0.75rem;
   line-height: 1rem;
-}
-
-.text-\[18px\]{
-  font-size: 18px;
 }
 
 .font-\[400px\]{
@@ -2552,6 +2508,11 @@ video {
 .text-zinc-900{
   --tw-text-opacity: 1;
   color: rgb(24 24 27 / var(--tw-text-opacity));
+}
+
+.text-\[red\]{
+  --tw-text-opacity: 1;
+  color: rgb(255 0 0 / var(--tw-text-opacity));
 }
 
 .underline{
@@ -3020,10 +2981,6 @@ body ::-webkit-scrollbar {
 
   .md\:max-w-\[60vw\]{
     max-width: 60vw;
-  }
-
-  .md\:max-w-\[65vw\]{
-    max-width: 65vw;
   }
 
   .md\:max-w-\[70vw\]{

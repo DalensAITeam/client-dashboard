@@ -19,62 +19,62 @@ function Camera() {
   const [recordedChunks, setRecordedChunks] = useState([]);
 
  
-  useEffect(() => {
-    const handleDataAvailable = (event) => {
-      if (event.data.size > 0) {
-        setRecordedChunks((prev) => [...prev, event.data]);
+  // useEffect(() => {
+  //   const handleDataAvailable = (event) => {
+  //     if (event.data.size > 0) {
+  //       setRecordedChunks((prev) => [...prev, event.data]);
 
-        if (ws && ws.readyState === WebSocket.OPEN) {
-          ws.send(event.data);
-        }
-      }
-    };
+  //       if (ws && ws.readyState === WebSocket.OPEN) {
+  //         ws.send(event.data);
+  //       }
+  //     }
+  //   };
 
-    const handleWebSocketOpen = () => {
-      console.log('WebSocket connection established.');
-    };
+  //   const handleWebSocketOpen = () => {
+  //     console.log('WebSocket connection established.');
+  //   };
 
-    const handleWebSocketError = (error) => {
-      console.error('WebSocket error:', error);
-    };
+  //   const handleWebSocketError = (error) => {
+  //     console.error('WebSocket error:', error);
+  //   };
 
-    const handleWebSocketClose = (event) => {
-      console.log(`WebSocket connection closed: code=${event.code}, reason=${event.reason}`);
-    };
+  //   const handleWebSocketClose = (event) => {
+  //     console.log(`WebSocket connection closed: code=${event.code}, reason=${event.reason}`);
+  //   };
 
-    const startCapture = async () => {
-      try {
-        const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+  //   const startCapture = async () => {
+  //     try {
+  //       const stream = await navigator.mediaDevices.getUserMedia({ video: true });
 
-        const newWebSocket = new WebSocket('ws://127.0.0.1:8000/feed/');
-        newWebSocket.onopen = handleWebSocketOpen;
-        newWebSocket.onerror = handleWebSocketError;
-        newWebSocket.onclose = handleWebSocketClose;
+  //       const newWebSocket = new WebSocket('ws://127.0.0.1:8000/feed/');
+  //       newWebSocket.onopen = handleWebSocketOpen;
+  //       newWebSocket.onerror = handleWebSocketError;
+  //       newWebSocket.onclose = handleWebSocketClose;
 
-        mediaRecorderRef.current = new MediaRecorder(stream);
-        mediaRecorderRef.current.ondataavailable = handleDataAvailable;
-        mediaRecorderRef.current.start();
+  //       mediaRecorderRef.current = new MediaRecorder(stream);
+  //       mediaRecorderRef.current.ondataavailable = handleDataAvailable;
+  //       mediaRecorderRef.current.start();
 
-        setWebSocket(newWebSocket);
-      } catch (error) {
-        console.error('Error accessing webcam:', error);
-      }
-    };
+  //       setWebSocket(newWebSocket);
+  //     } catch (error) {
+  //       console.error('Error accessing webcam:', error);
+  //     }
+  //   };
 
-    const cleanup = () => {
-      if (mediaRecorderRef.current && mediaRecorderRef.current.state === 'recording') {
-        mediaRecorderRef.current.stop();
-      }
+  //   const cleanup = () => {
+  //     if (mediaRecorderRef.current && mediaRecorderRef.current.state === 'recording') {
+  //       mediaRecorderRef.current.stop();
+  //     }
 
-      if (ws && ws.readyState === WebSocket.OPEN) {
-        ws.close();
-      }
-    };
+  //     if (ws && ws.readyState === WebSocket.OPEN) {
+  //       ws.close();
+  //     }
+  //   };
 
-    startCapture();
+  //   startCapture();
 
-    return cleanup;
-  }, []); 
+  //   return cleanup;
+  // }, []); 
   
 
 
@@ -252,7 +252,7 @@ function Camera() {
             >
               Done
             </button>
-            {isOpen && <Modal isOpen={isOpen} setIsOpen={setIsOpen} />}
+            {isOpen && <Modal isOpen={isOpen} setIsOpen={setIsOpen} text='Your Farm is set!' buttonText='Go to Dashboard' dashboard/>}
           </div>
         </form>
         </div>
