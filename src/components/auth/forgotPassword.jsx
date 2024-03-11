@@ -22,6 +22,7 @@ function ForgotPassword() {
     } else {
       setIsOpen(true);
       setError(false);
+      setEmail('')
     }
   };
 

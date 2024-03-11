@@ -33,6 +33,7 @@ import { useState } from "react";
 import ToggleButtonOnOff from "./pages/notification";
 import History from "./pages/History";
 import Pricing from "./pages/Price";
+import ChangePassword from "./components/auth/changePassword";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -71,6 +72,7 @@ const router = createBrowserRouter(
       <Route path="/login" element={<LoginPage />} />
       <Route path="/signup" element={<SignupPage />} />
       <Route path="/forgotPassword" element={<ForgotPassword />} />
+      <Route path="/changePassword" element={<ChangePassword/>} />
     </Route>
   )
 );
