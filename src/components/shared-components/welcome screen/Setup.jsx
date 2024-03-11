@@ -12,6 +12,7 @@ function Camera() {
   const [cameraNumber, setCameraNumber] = useState();
   const [ipAddressFill, setIpAddressFill] = useState(0);
   const [animalType, setAnimalType] = useState(0)
+  const [camera,setCamera]=useState('')
 
   const webcamRef = useRef(null);
   const mediaRecorderRef = useRef(null);
@@ -98,7 +99,12 @@ function Camera() {
 
   const cameraHandler = () => {
     // alert('kjj')
-    setIsCamera(false);
+    if(camera.length === 0){
+      alert('Please enter atleast one ip address')
+      return
+    }else{
+      setIsCamera(false);
+    }
   }
   const [isOpen, setIsOpen] = useState(false);
 
@@ -116,7 +122,7 @@ function Camera() {
     <div className="">
       <Navbar back={"Go back to Dashboard"} />
 
-      <div className="mx-auto pt-[2rem] w-full md:p-5 h-[80vh] md:w-fit flex flex-col ">
+      <div className="mx-auto pt-[2rem] max-w-[50vw] w-full md:p-5 h-[80vh] md:w-fit flex flex-col ">
        
         { isCamera ? 
         <div>
@@ -161,7 +167,9 @@ function Camera() {
       className="border-b-2 py-2 focus:outline-none focus:border-b-[#70E000] w-[100%] border-b-[#4D4D4D]"
       placeholder="Ip address(Camera1)"
       type="ip address"
+      value={camera}
       name="id"
+      onChange={e => setCamera(e.target.value)}
     />
   ) : cameraNumber === 'multiple' ? (
     <>
@@ -171,6 +179,7 @@ function Camera() {
       placeholder="Ip address(Camera1)"
       type="ip address"
       name="id1"
+      onChange={e => setCamera(e.target.value)}
     />
     {Array(ipAddressFill).fill().map((_, index) => (
       <input
