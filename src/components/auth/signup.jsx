@@ -1,17 +1,47 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import { useState } from'react';
-
+import { useDispatch,useSelector } from 'react-redux';
+import { signup } from '../../Redux/UserDataSlice';
+import { setEmail,setFirstName,setLastName,google_signup } from '../../Redux/UserDataSlice';
+import { GoogleLogin }from '@react-oauth/google';
+import { jwtDecode } from 'jwt-decode'
 
 function SignupPage() {
 
     const [password, setPassword] = useState('');
+    const [email, setMail] = useState('')
     const[confirmPassword, setConfirmPassword]= useState('');
     const[displayPassword, setDisplayPassword]= useState(false)
     const[displayConfirmPassword, setDisplayConfirmPassword]= useState(false)
 
+    const dispatch = useDispatch()
+
+    
+
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        const data = new FormData(e.currentTarget)
+        const formData = Object.fromEntries(data)
+        dispatch(signup(formData))
+    }
+    
+        const {isError,isSuccess,error} = useSelector((state) => state.userdata)
+
+        useEffect(() => {
+            if (isSuccess){
+                //toast.success("An activation link has been sent to your email")
+                console.log("An activation link has been sent to your email");
+                navigate('/login')
+            }
+            if (isError){
+                //toast.error(error)
+                console.log(error);
+            }
+        },[isSuccess,isError,error])
+        
         const navigate=useNavigate();
 
         const handleGoToLogin=()=>{
@@ -39,28 +69,62 @@ function SignupPage() {
                 <img src="./dalensAI.svg" alt="dalensAI" width={'120px'}/>
                 <h1 className='text-2xl mt-5'>Sign up</h1>
                 <div className='mt-2 flex items-center justify-center'>
-                    <div className='mr-[2px] shadow'>
-                    <img src="./googleLogo.png" alt="googlesignin" width={'30px'}/>
-                    </div>
-                    <p className='ml-[5px] text-[15px]'>Continue with Google</p>
+                <GoogleLogin
+                      onSuccess={ response => {
+                        console.log(response);
+                        const data = jwtDecode(response.credential)
+                        
+                        const { email,given_name,family_name,sub,picture} = data
+
+                        console.log(sub);
+
+                        const formData = new FormData()
+                        formData.append('email', email)
+                        formData.append('first_name', given_name)
+                        formData.append('last_name', family_name)
+                        formData.append('google',true)
+                        formData.append('sub', sub )
+                        formData.append('google_picture',picture)
+                        
+
+                        const userdata = {email,given_name,family_name}
+                        
+                        dispatch(google_signup(formData))
+                        dispatch(setEmail(data.email))
+                        dispatch(setFirstName(data.given_name))
+                        dispatch(setLastName(data.family_name))
+
+                        //toast.success("Account created")
+                        console.log("Account created")
+                        
+                        useEffect(() => {
+                            if(isSuccess){
+                                navigate('/settings/profile')
+                            }else{
+                                console.log('An error occurred')
+                            }
+                        },[isSuccess])
+                    }} onError={console.log('Signup failed')}></GoogleLogin>
                 </div>
                 <h5 className='mt-[15px]'>OR</h5>
                 </div>
-                <form className='p-8'>
-                    <input placeholder='Email' className='w-full  outline-none'/>
+                <form className='p-8' onSubmit={handleSubmit} method='post'>
+                    <input placeholder='Email' name='email' value={email} onChange={(e) => {setMail(e.target.value)}} className='w-full  outline-none'/>
                     <div className='relative'>
-                        <input type={displayPassword ? 'text': 'password'} placeholder='Password' className='w-full mt-5 outline-none'  value={password} onChange={(e) => setPassword(e.target.value)}/>
+                        <input name='password' type={displayPassword ? 'text': 'password'} placeholder='Password' className='w-full mt-5 outline-none'  value={password} onChange={(e) =>{ 
+                            setPassword(e.target.value)
+                            }}/>
                         { displayPassword?<VisibilityOffIcon className='absolute top-[-8px] right-0 mt-6 mr-4 text-gray-500 cursor-pointer' onClick={()=>setDisplayPassword(!displayPassword)} />
                         :<VisibilityIcon className='absolute top-[-8px] right-0 mt-6 mr-4 text-gray-500 cursor-pointer' onClick={() => setDisplayPassword(!displayPassword)}/>}
                     </div>
                     <div className='relative'>
-                        <input type={displayConfirmPassword ? 'text': 'password'} placeholder='Confirm password' className='w-full mt-5 outline-none' value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)}/>
+                        <input name='re_password' type={displayConfirmPassword ? 'text': 'password'} placeholder='Confirm password' className='w-full mt-5 outline-none' value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)}/>
                      {displayConfirmPassword?<VisibilityOffIcon className='absolute top-[-8px] right-0 mt-6 mr-4 text-gray-500 cursor-pointer' onClick={() => setDisplayConfirmPassword(!displayConfirmPassword)}/>
                        : <VisibilityIcon className='absolute top-[-8px] right-0 mt-6 mr-4 text-gray-500 cursor-pointer' onClick={() => setDisplayConfirmPassword(!displayConfirmPassword)}/>}
                     </div>
                     <div className='flex flex-col'>
                         <div className='flex item-center justify-center mt-2'>
-                        <button className='bg-[#70E000] text-white rounded-[5px] p-2'>Create account</button>
+                        <button className='bg-[#70E000] text-white rounded-[5px] p-2' type='submit'>Create account</button>
                         </div>
                         <div className='flex items-center justify-center mt-2'>
                             <p className='text-[12px]'>Already have an account?</p><span onClick={handleGoToLogin} className='text-[#70E000] cursor-pointer'>login</span>
