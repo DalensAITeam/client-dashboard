@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import UserProfileDetailsSection from "../../component/profileComponent/userProfileDetails";
 import { FaArrowLeft, FaEdit } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 function UserProfileSetting() {
   const navigator = useNavigate();
@@ -38,6 +39,9 @@ function UserProfileSetting() {
     }
   }
 
+  const { email, first_name } = useSelector((state) => state.userdata || {});
+  console.log(email, first_name)
+
   return (
     <div className="flex flex-col items-start gap-5 w-full p-3 ">
       <h2 className="flex flex-row items-center font-inter text-2xl gap-5 font-semibold text-gray-800">
@@ -70,10 +74,10 @@ function UserProfileSetting() {
           </div>
           <div className="flex flex-col align-center justify-center ">
             <h4 className="flex items-center justify-center font-poppins text-lg font-semibold text-gray-800">
-              HF
+              {first_name}
             </h4>
             <h6 className="flex items-center justify-center font-poppins text-sm font-normal text-gray-400">
-              email
+              {email}
             </h6>
           </div>
         </div>

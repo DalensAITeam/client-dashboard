@@ -72,7 +72,7 @@ const router = createBrowserRouter(
       <Route path="/login" element={<LoginPage />} />
       <Route path="/signup" element={<SignupPage />} />
       <Route path="/forgotPassword" element={<ForgotPassword />} />
-      <Route path="/changePassword" element={<ChangePassword/>} />
+      <Route path="/changePassword/:token" element={<ChangePassword/>} />
     </Route>
   )
 );
