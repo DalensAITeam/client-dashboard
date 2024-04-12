@@ -161,8 +161,8 @@ export const activate = createAsyncThunk(
   }
 );
 
-export const logout = createAsyncThunk("auth/logout", async () => {
-  localStorage.removeItem("user");
+export const logOut = createAsyncThunk("auth/logout", async () => {
+  localStorage.clear();
 });
 
 export const resetPassword = createAsyncThunk(
@@ -328,8 +328,9 @@ export const UserDataSlice = createSlice({
         state.error = action.payload;
         state.userinfo = null;
       })
-      .addCase(logout.fulfilled, (state) => {
+      .addCase(logOut.fulfilled, (state) => {
         state.userinfo = null;
+        state.isSuccess= false
       })
       .addCase(resetPassword.fulfilled, (state, action) => {
         state.isSuccess = true;

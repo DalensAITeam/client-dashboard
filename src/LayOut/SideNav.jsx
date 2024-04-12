@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import { useState } from "react";
 import logo from "../assets/Images/logo.svg";
 import grid from "../assets/grid.svg";
@@ -14,6 +15,7 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { SideNavToggle } from "../Redux/ActionSlice";
 import { HiMenu } from "react-icons/hi";
+import {logOut} from '../Redux/UserDataSlice'
 
 const SideNav = ({
   activeDashboard,
@@ -23,6 +25,7 @@ const SideNav = ({
   active,
 }) => {
   const dispatch = useDispatch();
+  const navigate = useNavigate()
   const openSideNav = useSelector((state) => state.actions.openSideNav);
   const [displayIconName, setDisplayIconName]= useState(false)
 
@@ -35,7 +38,22 @@ const SideNav = ({
       setDisplayIconName(!displayIconName)
     }
   }
-
+  const handleLogOut = () => {
+    try {
+      // Dispatch the logout action
+      dispatch(logOut()).then(() => {
+        // Once the logout action is completed, clear localStorage and navigate
+        localStorage.clear();
+        navigate('/login');
+        if (openSideNav) {
+          dispatch(SideNavToggle());
+        }
+      });
+    } catch (error) {
+      // Handle any potential errors here
+      console.error('Logout failed:', error);
+    }
+  };
   return (
     <>
 <div
@@ -149,20 +167,20 @@ const SideNav = ({
         </Link>
         <br />
         <Link
-          onClick={() => openSideNav && dispatch(SideNavToggle())}
           className={`w-full py-3 ${
             openSideNav ? "   px-2" : "flex justify-center items-center"
           } flex items-center gap-3  ${
             active && "bg-[#a3ff47]/50 border-l-4 border-[#a3ff47] "
           } hover:bg-[#a3ff47] hover:border-l-[4px_solid_#4b9302]`}
-          to="/"
+          
         >
           <img
+           onClick={handleLogOut}
             src={logout}
             className={`${openSideNav ? "max-w-lg" : "max-w-[20]"}`}
             alt=""
           />
-         {displayIconName&& <span className={`${openSideNav ? "" : "hidden"} text-white`}>
+         {displayIconName&& <span onClick={handleLogOut} className={`${openSideNav ? "" : "hidden"} text-white`}>
             Logout
           </span>}
         </Link>

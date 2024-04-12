@@ -39,8 +39,8 @@ function UserProfileSetting() {
     }
   }
 
-  const { email, first_name } = useSelector((state) => state.userdata || {});
-  console.log(email, first_name)
+  const { email, first_name, last_name } = useSelector((state) => state.userdata || {});
+  // console.log(email, first_name)
 
   return (
     <div className="flex flex-col items-start gap-5 w-full p-3 ">
@@ -74,7 +74,7 @@ function UserProfileSetting() {
           </div>
           <div className="flex flex-col align-center justify-center ">
             <h4 className="flex items-center justify-center font-poppins text-lg font-semibold text-gray-800">
-              {first_name}
+              {`${first_name} ${last_name}`}
             </h4>
             <h6 className="flex items-center justify-center font-poppins text-sm font-normal text-gray-400">
               {email}

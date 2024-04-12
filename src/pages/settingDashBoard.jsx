@@ -3,10 +3,12 @@ import { MdAccountBox, MdCreditCard } from "react-icons/md";
 import { HiCamera } from "react-icons/hi2";
 import { FaVolumeUp, FaEdit } from "react-icons/fa";
 import { useNavigate, useParams } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 function SettingDashBoard() {
   const navigate = useNavigate();
 
+  const {email, first_name } = useSelector((state) => state.userdata || {});
   const renderSettingCard = (title, description, icon) => (
     <div
       onClick={() => navigate(`/settings/${title}`)}
@@ -31,10 +33,10 @@ function SettingDashBoard() {
       <div className="flex flex-col gap-10 p-10-10 w-full">
         <div className="flex flex-col items-start justify-start gap-5">
           <h2 className="font-inter text-4xl font-semibold text-gray-800">
-            Welcome, HF
+           {`Welcome ${first_name}`}
           </h2>
           <h6 className="font-poppins text-base font-normal text-gray-600">
-            Email
+            {email}
           </h6>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-10 w-full">

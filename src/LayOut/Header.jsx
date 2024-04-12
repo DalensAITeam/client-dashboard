@@ -10,6 +10,7 @@ import { SideNavToggle } from "../Redux/ActionSlice";
 const Header = () => {
   const dispatch = useDispatch();
   const openSideNav = useSelector((state) => state.actions.openSideNav);
+  const {first_name,} = useSelector((state) => state.userdata || {});
 
   return (
     <div className="flex items-center justify-between border-b-2 px-[.9rem] py-[.4rem]">
@@ -27,7 +28,7 @@ const Header = () => {
           onClick={() => openSideNav && dispatch(SideNavToggle())}
           to="/settings/profile"
         >
-          <button className="rounded-full w-10 h-10 bg-lime-300">{'HF'}</button>
+          <button className="rounded-full w-10 h-10 bg-lime-300">{first_name[0]}</button>
         </Link>
       </div>
     </div>
