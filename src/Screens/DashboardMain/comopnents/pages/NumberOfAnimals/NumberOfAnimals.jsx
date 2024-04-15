@@ -1,8 +1,41 @@
-import { useState } from "react";
+import { useState, useEffect} from "react";
 import "./NumberOfAnimals.css";
 
 const NumberOfAnimals = () => {
   const [number, setNumber] = useState(250);
+  const [animalNumber, setAnimalNumber] = useState('');
+
+  useEffect(()=>{
+    fetch('http://localhost:8000/model/animal_number/Chicken/0')
+    .then(response => {
+        const reader = response.body.getReader();
+
+  
+        return new ReadableStream({
+            start(controller) {
+             
+                function read() {
+                    reader.read().then(({ done, value }) => {
+                        
+                         setAnimalNumber(new TextDecoder().decode(value))
+                         console.log(animalNumber);
+
+                      
+                        if (!done) {
+                            read();
+                        }
+                    });
+                }
+
+                // Start reading from the stream
+                read();
+            }
+        });
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+  },[animalNumber])
   return (
     <div className="flex border-b-2 pb-1 border-solid border-var(--accentColor) flex-col justify-between  items-center h-auto gap-2 my-6 w-6/12 md:justify-evenly md:w-2/3 md:mx-auto  md:h-[150px] ">
       <h2 className="text-sm w-full md:text-center font-medium">

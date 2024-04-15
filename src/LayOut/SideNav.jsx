@@ -167,6 +167,7 @@ const SideNav = ({
         </Link>
         <br />
         <Link
+        onClick={handleLogOut}
           className={`w-full py-3 ${
             openSideNav ? "   px-2" : "flex justify-center items-center"
           } flex items-center gap-3  ${
