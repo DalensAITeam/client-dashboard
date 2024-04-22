@@ -8,9 +8,12 @@ import warning from "../assets/warning.svg";
 import search from "../assets/search.svg";
 import ChartSection from "./ChartSection";
 import { useState } from "react";
+import { useSelector } from "react-redux";
 
 const DataScreen = () => {
   const [searchText, setSearchText] = useState("");
+  const threatState = useSelector((state) => state.actions.threatState);
+  console.log(threatState);
   const handleSearch = (ev) => {
     ev.preventDefault();
     alert(searchText);
@@ -69,7 +72,7 @@ const DataScreen = () => {
             <div className="group-wrapper flex items-center gap-[.3rem]">
               <img className="warning-img w-[20px]" src={warning} alt="" />
               <p className="smaller-text">
-                Threats:<span>0</span>
+                Threats:<span>{threatState}</span>
               </p>
             </div>
             <p className="smaller-text">

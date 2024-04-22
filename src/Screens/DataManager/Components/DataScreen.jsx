@@ -9,9 +9,13 @@ import search from "../assets/search.svg";
 import ChartSection from "./ChartSection";
 import { useState } from "react";
 import "./custom.css";
+import { useSelector } from "react-redux";
 
 const DataScreen = () => {
   const [searchText, setSearchText] = useState("");
+  const threatState = useSelector((state) => state.actions.threatState);
+  const animalNumber = useSelector((state)=>state.actions.animalNumber);
+  console.log(animalNumber);
   const handleSearch = (ev) => {
     ev.preventDefault();
     alert(searchText);
@@ -52,7 +56,7 @@ const DataScreen = () => {
             Total Animal Count
           </h4>
           <h3 className="DataCreen-group-container-number text-[30px] font-extrabold">
-            250
+            {animalNumber? animalNumber : 'loading...'}
           </h3>
         </div>
 
@@ -62,7 +66,7 @@ const DataScreen = () => {
             Total Animal Count
           </h4>
           <h3 className="DataCreen-group-container-number text-[30px] font-extrabold">
-            250
+          {animalNumber? animalNumber : 'loading...'}
           </h3>
         </div>
 
@@ -73,10 +77,13 @@ const DataScreen = () => {
           </h4>
           <div className="DataCreen-group-container-text-wrapper flex-col flex md:flex-row md:w-full justify-between">
             <div className="group-wrapper flex">
-              <p className="smaller-text flex">
+              {threatState?<p className="smaller-text flex">
+                <img className=" w-[20px]" src={warning} alt="" />
+                {threatState}
+              </p>:<p className="smaller-text flex">
                 <img className=" w-[20px]" src={warning} alt="" />
                 Threats:<span>0</span>
-              </p>
+              </p>}
             </div>
             <p className="smaller-text">
               Status:<span>Perfect</span>
