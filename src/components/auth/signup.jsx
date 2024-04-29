@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import { useDispatch, useSelector } from 'react-redux';
-import { signup, setEmail, setFirstName, setLastName, google_signup } from '../../Redux/UserDataSlice';
+import { signup, setEmail, setFirstName, setLastName, google_signup, setMobileNumber, setPicture } from '../../Redux/UserDataSlice';
 import { GoogleLogin } from '@react-oauth/google';
 import { jwtDecode } from 'jwt-decode';
 
@@ -83,6 +83,7 @@ function SignupPage() {
                                 dispatch(setEmail(data.email));
                                 dispatch(setFirstName(data.given_name));
                                 dispatch(setLastName(data.family_name));
+                                dispatch(setPicture(data.picture));
 
                                 console.log("Account created");
                                 navigate('/settings/profile');

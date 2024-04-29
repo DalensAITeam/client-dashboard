@@ -3,7 +3,7 @@ import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { login, google_login, setEmail, setFirstName, setLastName } from '../../Redux/UserDataSlice';
+import { login, google_login, setEmail, setFirstName, setLastName, setMobileNumber, setPicture } from '../../Redux/UserDataSlice';
 import { GoogleLogin } from '@react-oauth/google';
 import { jwtDecode } from 'jwt-decode';
 
@@ -81,11 +81,12 @@ console.log(isSuccess);
                         <GoogleLogin
                             onSuccess={(response) => {
                                 const data = jwtDecode(response.credential);
-                                const { email, given_name, family_name } = data;
+                                const { email, given_name, family_name, picture } = data;
                                 dispatch(google_login({ email, sub: data.sub }));
                                 dispatch(setEmail(email));
                                 dispatch(setFirstName(given_name));
                                 dispatch(setLastName(family_name));
+                                dispatch(setPicture(picture))
 
                                 console.log("Account created");
 

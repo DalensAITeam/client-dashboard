@@ -1,6 +1,12 @@
 import "./monitoring.css";
+import { useEffect, useState } from "react";
 
 const QuickMonitoring = () => {
+  const imageUrl = '/model/detect/Chicken/10.215.164.190'
+  const[imageVideo, setImageVideo]= useState()
+  useEffect(()=>{
+    setImageVideo(imageUrl)
+  },[imageUrl])
   return (
     <>
       <div className="flex flex-col flex-wrap flex-1 w-full  h-fit justify-between ">
@@ -11,7 +17,7 @@ const QuickMonitoring = () => {
           </button>
         </div>
 
-        <img src="/screen.png" alt="camer-1" />
+        <img src={imageVideo?imageVideo:"/screen.png"} alt="camer-1" />
       </div>
     </>
   );

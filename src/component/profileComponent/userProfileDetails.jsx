@@ -1,9 +1,11 @@
 import React from "react";
 import { FaVolumeUp, FaEdit } from "react-icons/fa";
 import { useState } from "react";
+import { useSelector } from "react-redux";
 
 function UserProfileDetailsSection() {
-
+  const { email, first_name, last_name, picture } = useSelector((state) => state.userdata || {});
+  
   const[isEmailInputDisabled, setIsEmailInputDisabled]= useState(true)
   const[isNameInputDisabled, setIsNameInputDisabled] =useState(true)
   const[isPhoneInputDisabled, setIsPhoneInputDisabled] =useState(true)
@@ -23,7 +25,7 @@ function UserProfileDetailsSection() {
               isNameInputDisabled ? '' : 'outline outline-green-500 text-black-500 focus:outline-green-500'
             } border-grey-500 p-5 rounded-md font-poppins text-base font-semibold leading-8 text-left text-gray-500`}
               type="text"
-              placeholder="HF"
+              placeholder={first_name && `${first_name} ${last_name ?last_name : ''}` }
               disabled={isNameInputDisabled}
             />
             <FaEdit className="absolute right-4 w-6 h-6 text-green-500  cursor-pointer" onClick={()=>{setIsNameInputDisabled(!isNameInputDisabled)}}/>
@@ -48,7 +50,7 @@ function UserProfileDetailsSection() {
     isEmailInputDisabled ? '' : 'outline outline-green-500 text-black-500 focus:outline-green-500'
   } border-grey-500 p-5 rounded-md font-poppins text-base font-semibold leading-8 text-left text-gray-500`}
   type="email"
-  placeholder="example@example.com"
+  placeholder={email}
  disabled={isEmailInputDisabled}
 />
           <FaEdit className="absolute right-4 w-6 h-6 text-green-500  cursor-pointer" onClick={()=>{setIsEmailInputDisabled(!isEmailInputDisabled)}} />
@@ -67,7 +69,7 @@ function UserProfileDetailsSection() {
             isPhoneInputDisabled ? '' : 'outline outline-green-500 text-black-500 focus:outline-green-500'
           } border-grey-500 p-5 rounded-md font-poppins text-base font-semibold leading-8 text-left text-gray-500`}
             type="number"
-            placeholder="+9991626838292"
+            placeholder='+234'
             disabled={isPhoneInputDisabled}
           />
           <FaEdit className="absolute right-4 w-6 h-6 text-green-500  cursor-pointer" onClick={()=>{setIsPhoneInputDisabled(!isPhoneInputDisabled)}}/>

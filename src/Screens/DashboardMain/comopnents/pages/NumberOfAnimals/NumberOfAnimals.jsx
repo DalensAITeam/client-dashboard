@@ -13,7 +13,7 @@ const NumberOfAnimals = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('http://localhost:8000/model/animal_number/Chicken/0');
+        const response = await fetch('http://localhost:8000/model/animal_number/Chicken/10.215.164.190');
         const reader = response.body.getReader();
 
         const decoder = new TextDecoder();

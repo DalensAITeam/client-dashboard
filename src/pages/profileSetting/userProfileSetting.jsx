@@ -8,6 +8,7 @@ function UserProfileSetting() {
   const navigator = useNavigate();
   const [selectedFile, setSelectedFile] = useState(null);
   const [previewImage, setPreviewImage] = useState(null);
+  const { picture, first_name , last_name, email} = useSelector((state) => state.userdata || {});
 
   function onGoToSettingHomePageFn() {
     navigator("/");
@@ -39,7 +40,6 @@ function UserProfileSetting() {
     }
   }
 
-  const { email, first_name, last_name } = useSelector((state) => state.userdata || {});
   // console.log(email, first_name)
 
   return (
@@ -59,7 +59,7 @@ function UserProfileSetting() {
             />
             <label htmlFor="fileInput">
               <img
-                src={previewImage || ""}
+                src={picture || ""}
                 alt="HF"
                 className="w-32 h-32 rounded-full border-4 border-green-500 flex items-center justify-center object-cover"
               />

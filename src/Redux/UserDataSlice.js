@@ -8,7 +8,7 @@ const initialState = {
   last_name: "",
   id: 0,
   name: "",
-  mobile_number: "+2340000000",
+  mobile_number: '',
   error: "",
   isLoading: false,
   isError: false,
@@ -356,6 +356,7 @@ export const {
   setName,
   setId,
   setMobileNumber,
+  setPicture,
   reset,
 } = UserDataSlice.actions;
 export default UserDataSlice.reducer;

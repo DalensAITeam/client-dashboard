@@ -14,7 +14,7 @@ const GeneralHealth = () => {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          "http://localhost:8000/model/threat_number/Chicken/0"
+          "http://localhost:8000/model/threat_number/Chicken/10.215.164.190"
         );
         const reader = response.body.getReader();
 
