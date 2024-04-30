@@ -6,6 +6,8 @@ import { Button } from "flowbite-react";
 import CustomDropdown from "../../dropdownComponent/dropdown";
 import styles from "../../modalComponent/Modal.module.css";
 import Modal from "../../modalComponent/modal";
+import { setIpAddress } from "../../../Redux/ActionSlice";
+import { useDispatch } from "react-redux";
 
 function Camera() {
   const [isCamera, setIsCamera] = useState(true);
@@ -13,69 +15,9 @@ function Camera() {
   const [ipAddressFill, setIpAddressFill] = useState(0);
   const [animalType, setAnimalType] = useState(0)
   const [camera,setCamera]=useState('')
+  const [cameraIpAddress, setCameraIpAddress] = useState('')
 
-  const webcamRef = useRef(null);
-  const mediaRecorderRef = useRef(null);
-  const [ws, setWebSocket] = useState(null);
-  const [recordedChunks, setRecordedChunks] = useState([]);
-
- 
-  // useEffect(() => {
-  //   const handleDataAvailable = (event) => {
-  //     if (event.data.size > 0) {
-  //       setRecordedChunks((prev) => [...prev, event.data]);
-
-  //       if (ws && ws.readyState === WebSocket.OPEN) {
-  //         ws.send(event.data);
-  //       }
-  //     }
-  //   };
-
-  //   const handleWebSocketOpen = () => {
-  //     console.log('WebSocket connection established.');
-  //   };
-
-  //   const handleWebSocketError = (error) => {
-  //     console.error('WebSocket error:', error);
-  //   };
-
-  //   const handleWebSocketClose = (event) => {
-  //     console.log(`WebSocket connection closed: code=${event.code}, reason=${event.reason}`);
-  //   };
-
-  //   const startCapture = async () => {
-  //     try {
-  //       const stream = await navigator.mediaDevices.getUserMedia({ video: true });
-
-  //       const newWebSocket = new WebSocket('ws://127.0.0.1:8000/feed/');
-  //       newWebSocket.onopen = handleWebSocketOpen;
-  //       newWebSocket.onerror = handleWebSocketError;
-  //       newWebSocket.onclose = handleWebSocketClose;
-
-  //       mediaRecorderRef.current = new MediaRecorder(stream);
-  //       mediaRecorderRef.current.ondataavailable = handleDataAvailable;
-  //       mediaRecorderRef.current.start();
-
-  //       setWebSocket(newWebSocket);
-  //     } catch (error) {
-  //       console.error('Error accessing webcam:', error);
-  //     }
-  //   };
-
-  //   const cleanup = () => {
-  //     if (mediaRecorderRef.current && mediaRecorderRef.current.state === 'recording') {
-  //       mediaRecorderRef.current.stop();
-  //     }
-
-  //     if (ws && ws.readyState === WebSocket.OPEN) {
-  //       ws.close();
-  //     }
-  //   };
-
-  //   startCapture();
-
-  //   return cleanup;
-  // }, []); 
+  const dispatch = useDispatch()
   
 
 
@@ -104,6 +46,7 @@ function Camera() {
       return
     }else{
       setIsCamera(false);
+      dispatch(setIpAddress(cameraIpAddress))
     }
   }
   const [isOpen, setIsOpen] = useState(false);
@@ -169,7 +112,10 @@ function Camera() {
       type="ip address"
       value={camera}
       name="id"
-      onChange={e => setCamera(e.target.value)}
+      onChange={e => {
+        setCamera(e.target.value)
+        setCameraIpAddress(e.target.value)
+      }}
     />
   ) : cameraNumber === 'multiple' ? (
     <>

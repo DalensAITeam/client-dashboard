@@ -2,18 +2,20 @@ import React, { useState, useEffect } from "react";
 import "./NumberOfAnimals.css";
 import { setAnimalNumber } from "../../../../../Redux/ActionSlice";
 import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 
 const NumberOfAnimals = () => {
   const [number, setNumber] = useState(0);
   const [animalLoading, setAnimalLoading] = useState(true);
   const [animalError, setAnimalError] = useState(null);
+  const cameraIpAddress = useSelector((state) => state.actions.ipAddress);
 
   const dispatch = useDispatch();
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('http://localhost:8000/model/animal_number/Chicken/10.215.164.190');
+        const response = await fetch(`http://localhost:8000/model/animal_number/Chicken/${cameraIpAddress}`);
         const reader = response.body.getReader();
 
         const decoder = new TextDecoder();

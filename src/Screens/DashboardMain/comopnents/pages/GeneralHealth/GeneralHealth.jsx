@@ -3,18 +3,21 @@ import StatusChart from "./StatusChart";
 import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { setThreatState } from "../../../../../Redux/ActionSlice";
+import { useSelector } from "react-redux";
 
 const GeneralHealth = () => {
   const [threats, setThreats] = useState(null);
   const [threatLoading, setThreatLoading] = useState(true);
   const [threatError, setThreatError] = useState(null);
+  const cameraIpAddress = useSelector((state) => state.actions.ipAddress);
+  console.log(cameraIpAddress);
   const dispatch = useDispatch();
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          "http://localhost:8000/model/threat_number/Chicken/10.215.164.190"
+          `http://localhost:8000/model/threat_number/Chicken/${cameraIpAddress}`
         );
         const reader = response.body.getReader();
 

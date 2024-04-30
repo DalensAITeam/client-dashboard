@@ -4,6 +4,8 @@ import { act } from "react-dom/test-utils";
 const initialState = {
     openSideNav: false,
     threatState: '',
+    animalNumber:'',
+    ipAddress:''
 };
 
 export const actionSlice = createSlice({
@@ -18,9 +20,12 @@ export const actionSlice = createSlice({
         },
         setAnimalNumber:(state, action)=>{
             state.animalNumber = action.payload;
+        },
+        setIpAddress:(state, action)=>{
+            state.ipAddress = action.payload;
         }
     }
 });
 
-export const { SideNavToggle, setThreatState, setAnimalNumber } = actionSlice.actions;
+export const { SideNavToggle, setThreatState, setAnimalNumber, setIpAddress } = actionSlice.actions;
 export default actionSlice.reducer;
