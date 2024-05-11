@@ -15,7 +15,7 @@ function Navbar({ toggle, text, Bell, back }) {
         <div className="flex ml-auto gap-[1rem]">
           <Link to="/notifications" className="text-xl text-black pt-2">{Bell}</Link>
           {text && (
-            <Link to="/profile" className="bg-[#A3FF47] rounded-full p-[0.55rem] w-[2.5rem] h-[2.5rem] text-[#01A9F2]">
+            <Link to="/settings/profile" className="bg-[#A3FF47] rounded-full p-[0.55rem] w-[2.5rem] h-[2.5rem] text-[#01A9F2]">
               {text}
             </Link>
           )}

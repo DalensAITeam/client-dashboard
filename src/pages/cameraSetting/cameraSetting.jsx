@@ -34,7 +34,7 @@ function CameraSettings() {
 
       {/* Container for ActivateCamera component with full width */}
       <div className="flex flex-col flex-1 w-full">
-        <ActivateCamera />
+        <ActivateCamera /> 
       </div>
     </div>
   );

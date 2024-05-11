@@ -41,8 +41,8 @@ const DashboardMain = () => {
             <FeedingAlarm />
             <GeneralHealth />
           </div>
-          <FeedingStatus />
-          <Metrics />
+          {/* <FeedingStatus />
+          <Metrics /> */}
         </div>
       </div>
     </>

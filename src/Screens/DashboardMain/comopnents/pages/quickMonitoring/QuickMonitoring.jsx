@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 
 const QuickMonitoring = () => {
   const cameraIpAddress = useSelector((state) => state.actions.ipAddress);
-  const imageUrl = `/model/detect/Chicken/${cameraIpAddress}`
+  const imageUrl = `https://dalensai.onrender.com/model/detect/Chicken/${cameraIpAddress[0]}`
   const[imageVideo, setImageVideo]= useState()
   useEffect(()=>{
     setImageVideo(imageUrl)

@@ -10,14 +10,13 @@ const GeneralHealth = () => {
   const [threatLoading, setThreatLoading] = useState(true);
   const [threatError, setThreatError] = useState(null);
   const cameraIpAddress = useSelector((state) => state.actions.ipAddress);
-  console.log(cameraIpAddress);
   const dispatch = useDispatch();
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          `http://localhost:8000/model/threat_number/Chicken/${cameraIpAddress}`
+          `https://dalensai.onrender.com/model/threat_number/Chicken/${cameraIpAddress[0]}`
         );
         const reader = response.body.getReader();
 

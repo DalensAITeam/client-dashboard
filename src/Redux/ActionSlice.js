@@ -5,7 +5,7 @@ const initialState = {
     openSideNav: false,
     threatState: '',
     animalNumber:'',
-    ipAddress:''
+    ipAddress:[]
 };
 
 export const actionSlice = createSlice({

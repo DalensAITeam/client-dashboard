@@ -86,7 +86,7 @@ function SignupPage() {
                                 dispatch(setPicture(data.picture));
 
                                 console.log("Account created");
-                                navigate('/settings/profile');
+                                navigate('/setup');
                             }}
                             onError={() => console.log('Signup failed')}
                         ></GoogleLogin>

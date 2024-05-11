@@ -22,7 +22,7 @@ export const signup = createAsyncThunk(
   async (formData, thunkAPI) => {
     try {
       const response = await axios.post(
-        "http://localhost:8000/users/create-user/",
+        "https://dalensai.onrender.com/users/create-user/",
         formData,
         {
           headers: {
@@ -48,7 +48,7 @@ export const google_signup = createAsyncThunk(
   async (formData, thunkAPI) => {
     try {
       const response = await axios.post(
-        "http://localhost:8000/users/google-signup/",
+        "https://dalensai.onrender.com/users/google-signup/",
         formData,
         {
           headers: {
@@ -72,7 +72,7 @@ export const google_login = createAsyncThunk(
   async (data, thunkAPI) => {
     try {
       const response = await axios.post(
-        "http://localhost:8000/users/google-login/",
+        "https://dalensai.onrender.com/users/google-login/",
         data,
         {
           headers: {
@@ -106,7 +106,7 @@ export const login = createAsyncThunk(
         password: formdata.password,
       };
       const response = await axios.post(
-        "http://localhost:8000/users/api/token/",
+        "https://dalensai.onrender.com/users/api/token/",
         formData,
         {
           headers: {
@@ -123,7 +123,7 @@ export const login = createAsyncThunk(
       const data = jwtDecode(jwt);
 
       const res = await axios.get(
-        `http://127.0.0.1:8000/users/get-user/${data.user_id}/`
+        `https://dalensai.onrender.com/users/get-user/${data.user_id}/`
       );
       thunkAPI.dispatch(setEmail(res.data.email));
       return res.data;
@@ -142,7 +142,7 @@ export const activate = createAsyncThunk(
   async (formData, thunkAPI) => {
     try {
       const response = await axios.post(
-        "http://localhost:8000/auth/users/activation/",
+        "https://dalensai.onrender.com/auth/users/activation/",
         formData,
         {
           headers: {
@@ -170,7 +170,7 @@ export const resetPassword = createAsyncThunk(
   async (formData, thunkAPI) => {
     try {
       await axios.post(
-        "http://127.0.0.1:8000/users/password_reset/",
+        "https://dalensai.onrender.com/users/password_reset/",
         formData,
         {
           headers: {
@@ -191,7 +191,7 @@ export const changePassword = createAsyncThunk(
     try {
       const token = formData.token;
       await axios.post(
-        "http://127.0.0.1:8000/users/password_reset/validate_token/",
+        "https://dalensai.onrender.com/users/password_reset/validate_token/",
         { token: token },
         {
           headers: {
@@ -200,7 +200,7 @@ export const changePassword = createAsyncThunk(
         }
       );
       await axios.post(
-        "http://127.0.0.1:8000/users/password_reset/confirm/",
+        "https://dalensai.onrender.com/users/password_reset/confirm/",
         formData,
         {
           headers: {

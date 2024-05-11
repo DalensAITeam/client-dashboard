@@ -37,7 +37,7 @@ function LoginPage() {
 
     useEffect(() => {
         if (isSuccess) {
-            navigate('/settings/profile');
+            navigate('/setup');
         }
         if (isError) {
             console.log(error);
@@ -92,7 +92,7 @@ console.log(isSuccess);
 
                                 useEffect(() => {
                                     if(isSuccess){
-                                        navigate('/settings/profile')
+                                        navigate('/setup')
                                     }else{
                                        navigate('/login')
                                     }

@@ -8,17 +8,27 @@ import styles from "../../modalComponent/Modal.module.css";
 import Modal from "../../modalComponent/modal";
 import { setIpAddress } from "../../../Redux/ActionSlice";
 import { useDispatch } from "react-redux";
+import toast from "react-hot-toast";
 
 function Camera() {
   const [isCamera, setIsCamera] = useState(true);
   const [cameraNumber, setCameraNumber] = useState();
-  const [ipAddressFill, setIpAddressFill] = useState(0);
+  const [ipAddressFill, setIpAddressFill] = useState(1);
   const [animalType, setAnimalType] = useState(0)
   const [camera,setCamera]=useState('')
-  const [cameraIpAddress, setCameraIpAddress] = useState('')
+  const [cameraIpAddress, setCameraIpAddress] = useState([{ value: '' }]);
 
   const dispatch = useDispatch()
   
+  const handleInputIpAddress = () => {
+    const lastInput = cameraIpAddress[cameraIpAddress.length - 1];
+  
+    // Check if the last input has a value and it's not empty
+    if (lastInput && lastInput.value && lastInput.value.trim() !== '') {
+      // Add a new empty object to the cameraIpAddress array
+      setCameraIpAddress(prevState => [...prevState, {}]);   
+    }
+  };
 
 
   const handleInput = (index, value) => {
@@ -40,15 +50,30 @@ function Camera() {
   }
 
   const cameraHandler = () => {
-    // alert('kjj')
-    if(camera.length === 0){
-      alert('Please enter atleast one ip address')
-      return
-    }else{
-      setIsCamera(false);
-      dispatch(setIpAddress(cameraIpAddress))
+    // Collect all IP addresses from the cameraIpAddress state array
+    const ipAddresses = cameraIpAddress.map((input) => {
+      const trimmedValue = input.value ? input.value.trim() : ''; // Check for null/undefined value
+      return trimmedValue;
+    });
+  
+    // Filter out any empty or invalid IP addresses
+    const validIpAddresses = ipAddresses.filter((ip) => isValidIpAddress(ip));
+  
+    if (validIpAddresses.length === 0) {
+      alert('Please enter at least one valid IP address');
+      return;
     }
-  }
+    // Proceed with dispatching the IP addresses or further processing
+    setIsCamera(false);
+    dispatch(setIpAddress(validIpAddresses));
+  };
+  
+  // Helper function to validate IP address format (example)
+  const isValidIpAddress = (ip) => {
+    // Implement your IP address validation logic here
+    return /^(\d{1,3}\.){3}\d{1,3}$/.test(ip); // Example: IPv4 address validation
+  };
+  
   const [isOpen, setIsOpen] = useState(false);
 
   const handleSubmit = (e) => {
@@ -58,9 +83,7 @@ function Camera() {
   //   alert('kjj')
   // }
 
-  useEffect(() => {
-    console.log(ipAddressFill)
-  }, [ipAddressFill])
+
   return (
     <div className="">
       <Navbar back={"Go back to Dashboard"} />
@@ -110,32 +133,40 @@ function Camera() {
       className="border-b-2 py-2 focus:outline-none focus:border-b-[#70E000] w-[100%] border-b-[#4D4D4D]"
       placeholder="Ip address(Camera1)"
       type="ip address"
-      value={camera}
-      name="id"
-      onChange={e => {
-        setCamera(e.target.value)
-        setCameraIpAddress(e.target.value)
+      onChange={(e) => setCameraIpAddress([{ value: e.target.value }])}
+      onCopy={(e)=>{
+        e.preventDefault()
+        toast.error("you can't copy from ipAdress fill",{
+          duration:1000,
+        })
       }}
     />
   ) : cameraNumber === 'multiple' ? (
     <>
-    <input
-      onInput={e => handleInput(0, e.target.value)}
-      className="border-b-2 py-2 focus:outline-none focus:border-b-[#70E000] w-[100%] border-b-[#4D4D4D]"
-      placeholder="Ip address(Camera1)"
-      type="ip address"
-      name="id1"
-      onChange={e => setCamera(e.target.value)}
-    />
     {Array(ipAddressFill).fill().map((_, index) => (
       <input
-        key={index}
-        onInput={e => handleInput(index + 1, e.target.value)}
-        className="border-b-2 py-2 focus:outline-none focus:border-b-[#70E000] w-[100%] border-b-[#4D4D4D]"
-        placeholder={`Ip address(Camera${index + 2})`}
-        type="ip address"
-        name={`id${index + 2}`}
-      />
+      key={index}
+      onInput={e => handleInput(index + 1, e.target.value)}
+      className="border-b-2 py-2 focus:outline-none focus:border-b-[#70E000] w-[100%] border-b-[#4D4D4D]"
+      placeholder={`Ip address(Camera${index + 1})`}
+      onChange={(e) => {
+        const newValue = e.target.value;
+        setCameraIpAddress(prevState => {
+          const updatedArray = [...prevState];
+          updatedArray[index] = { value: newValue }; // Update the value at the corresponding index
+          return updatedArray;
+        });
+        handleInputIpAddress(); // Call function to potentially add a new input field
+      }}
+      onCopy={(e)=>{
+        e.preventDefault()
+        toast.error("you can't copy from ipAdress fill",{
+        duration:1000,
+       })
+      }}
+      type="ip address"
+      name={`id${index + 1}`}
+    />
     ))}
   </>
   ) : null

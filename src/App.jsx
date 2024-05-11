@@ -25,6 +25,7 @@ import FarmMonitor from "./Screens/FarmMonitor/FarmMonitor";
 import LoginPage from "./components/auth/login";
 import SignupPage from "./components/auth/signup";
 import ForgotPassword from "./components/auth/forgotPassword";
+import { Toaster } from "react-hot-toast";
 
 //The new notifications screen
 
@@ -80,7 +81,10 @@ const router = createBrowserRouter(
 function App() {
   // Merged branches
   return (
+    <>
     <RouterProvider router={router} />
+    <Toaster/>
+    </>
 
     // New branch
     // return (
