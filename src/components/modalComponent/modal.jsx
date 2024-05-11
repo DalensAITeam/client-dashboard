@@ -1,7 +1,7 @@
 // eslint-disable-next-line no-unused-vars
 import React from "react";
 import styles from "../../../src/components/modalComponent/Modal.module.css";
-import successfulScreenImg from "../../assets/successful-screen-Img.png";
+import successfulScreenImg from "../../assets/successful-screen-img.png";
 import { RiCloseLine } from "react-icons/ri";
 import { Link } from "react-router-dom";
 import "animate.css";
