@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import { useState } from "react";
-import logo from "../assets/Images/logo.svg";
+import logo from "../assets/Images/Logo.svg";
 import grid from "../assets/grid.svg";
 import logout from "../assets/logout.svg";
 import group from "../assets/group.svg";
