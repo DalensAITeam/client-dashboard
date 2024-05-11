@@ -32,7 +32,7 @@ import { Toaster } from "react-hot-toast";
 import { useState } from "react";
 // import './App.css'
 import ToggleButtonOnOff from "./pages/notification";
-import History from "./pages/History";
+import History from "./pages/history";
 import Pricing from "./pages/Price";
 import ChangePassword from "./components/auth/changePassword";
 

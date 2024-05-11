@@ -6,12 +6,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import { login, google_login, setEmail, setFirstName, setLastName, setMobileNumber, setPicture } from '../../Redux/UserDataSlice';
 import { GoogleLogin } from '@react-oauth/google';
 import { jwtDecode } from 'jwt-decode';
+import toast from 'react-hot-toast';
 
 function LoginPage() {
     const [password, setPassword] = useState('');
     const [email, setEmailValue] = useState('');
     const [displayPassword, setDisplayPassword] = useState(false);
     const [rememberMe, setRememberMe] = useState(false);
+    const[isLoggingIn, setIsLoggingIn] = useState(false)
     
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -27,12 +29,25 @@ function LoginPage() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const data = new FormData();
-        data.append('email', email);
-        data.append('password', password);
-        data.append('rememberMe', rememberMe);
-        const formData = Object.fromEntries(data);
-        dispatch(login(formData));
+        if(email=='' || password ==''){
+            toast.error('Please fill all fields',{
+             duration:1000
+            })
+         }
+         else{
+            setIsLoggingIn(true)
+           const toastId = toast.loading('loggin in..')
+            const data = new FormData();
+            data.append('email', email);
+            data.append('password', password);
+            data.append('rememberMe', rememberMe);
+            const formData = Object.fromEntries(data);
+            dispatch(login(formData));
+            setIsLoggingIn(false)
+            toast.success('successfully logged in',{
+                id: toastId
+            })
+         }
     };
 
     useEffect(() => {
@@ -118,7 +133,7 @@ console.log(isSuccess);
                         </div>
                         <div className='flex flex-col'>
                             <div className='flex item-center justify-center mt-2'>
-                                <button className='bg-[#70E000] w-1/2 text-white rounded-[5px] p-3' type='submit' onClick={()=>{handleSubmit}}>Login</button>
+                                <button className='bg-[#70E000] w-1/2 text-white rounded-[5px] p-3' type='submit' onClick={()=>{handleSubmit}} disabled={isLoggingIn}>Login</button>
                             </div>
                             <div className='flex flex-col md:flex-row items-center justify-center mt-2'>
                                 <p className='text-[12px]'>Don't have an account?</p><span onClick={handleGoToSignup} className='text-[#70E000] cursor-pointer'>create one</span>

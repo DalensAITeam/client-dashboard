@@ -140,6 +140,13 @@ function Camera() {
           duration:1000,
         })
       }}
+      onPaste={(e)=>{
+        e.preventDefault()
+        toast.error("you can't paste an ipAdress",{
+        duration:1000,
+       })
+      }}
+      
     />
   ) : cameraNumber === 'multiple' ? (
     <>
@@ -166,8 +173,15 @@ function Camera() {
       }}
       type="ip address"
       name={`id${index + 1}`}
+      onPaste={(e)=>{
+        e.preventDefault()
+        toast.error("you can't paste an ipAdress",{
+        duration:1000,
+       })
+      }}
     />
     ))}
+    
   </>
   ) : null
 }
