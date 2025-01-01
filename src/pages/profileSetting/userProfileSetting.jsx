@@ -3,12 +3,15 @@ import UserProfileDetailsSection from "../../component/profileComponent/userProf
 import { FaArrowLeft, FaEdit } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { toast } from "react-hot-toast";
 
 function UserProfileSetting() {
   const navigator = useNavigate();
   const [selectedFile, setSelectedFile] = useState(null);
   const [previewImage, setPreviewImage] = useState(null);
   const { picture, first_name , last_name, email} = useSelector((state) => state.userdata || {});
+  const userinfo = useSelector((state) => state.userdata || {});
+  console.log(userinfo, 'userinfo');
 
   function onGoToSettingHomePageFn() {
     navigator("/");
@@ -27,6 +30,11 @@ function UserProfileSetting() {
   }
 
   function handleUpdatePhoto() {
+    if(!selectedFile){
+      toast.error('profile picture was not changed',{
+        duration: 1000,
+      })
+    }
     // Implement your logic for handling the file upload here
     if (selectedFile) {
       // You can use the selectedFile to upload it to your server or perform other actions
@@ -59,8 +67,8 @@ function UserProfileSetting() {
             />
             <label htmlFor="fileInput">
               <img
-                src={picture || ""}
-                alt="HF"
+                src={userinfo?.picture?.includes('=s96-c') ? userinfo.picture : previewImage}
+                alt="user profile"
                 className="w-32 h-32 rounded-full border-4 border-green-500 flex items-center justify-center object-cover"
               />
             </label>

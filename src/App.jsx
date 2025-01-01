@@ -35,6 +35,7 @@ import ToggleButtonOnOff from "./pages/notification";
 import History from "./pages/history";
 import Pricing from "./pages/Price";
 import ChangePassword from "./components/auth/changePassword";
+import UploadVideo from "./components/shared-components/welcome screen/UploadVideo";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -44,7 +45,7 @@ const router = createBrowserRouter(
       {/* Indivial Routes Are Added Here */}
       <Route path="/" element={<WelcomeScreen />} />
 
-      <Route path="setup" element={<Camera />} />
+      <Route path="setup" element={<UploadVideo />} />
       <Route path="/data-manager" element={<DataManager />} />
       <Route path="/dashboard" element={<DashboardMain />} />
       <Route path="/farm" element={<FarmMonitor />} />

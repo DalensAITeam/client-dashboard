@@ -178,9 +178,9 @@ export const resetPassword = createAsyncThunk(
           },
         }
       );
-      console.log("Email sent");
+      return "Email sent";
     } catch (e) {
-      return thunkAPI.rejectWithValue(e);
+      return thunkAPI.rejectWithValue(e.response.data);
     }
   }
 );
@@ -208,9 +208,9 @@ export const changePassword = createAsyncThunk(
           },
         }
       );
-      console.log("Token validated");
+      return "Password changed successfully";
     } catch (e) {
-      return thunkAPI.rejectWithValue(e);
+      return thunkAPI.rejectWithValue(e.response.data);
     }
   }
 );
@@ -241,21 +241,15 @@ export const UserDataSlice = createSlice({
       state.picture = action.payload;
     },
     reset: (state) => {
-      state.isError = false;
-      state.isLoading = false;
-      state.isSuccess = false;
-      state.error = "";
-      state.email = "Default";
-      state.first_name = "Default";
-      state.last_name = "Default";
-      state.mobile_number = "+2340000000";
-      state.picture = "";
+      Object.assign(state, initialState);
     },
   },
   extraReducers: (builder) => {
     builder
       .addCase(login.pending, (state) => {
         state.isLoading = true;
+        state.isError = false;
+        state.isSuccess = false;
       })
       .addCase(login.fulfilled, (state, action) => {
         state.isLoading = false;
@@ -271,6 +265,8 @@ export const UserDataSlice = createSlice({
       })
       .addCase(activate.pending, (state) => {
         state.isLoading = true;
+        state.isError = false;
+        state.isSuccess = false;
       })
       .addCase(activate.fulfilled, (state, action) => {
         state.isLoading = false;
@@ -285,6 +281,8 @@ export const UserDataSlice = createSlice({
       })
       .addCase(signup.pending, (state) => {
         state.isLoading = true;
+        state.isError = false;
+        state.isSuccess = false;
       })
       .addCase(signup.fulfilled, (state, action) => {
         state.isLoading = false;
@@ -300,6 +298,8 @@ export const UserDataSlice = createSlice({
       })
       .addCase(google_signup.pending, (state) => {
         state.isLoading = true;
+        state.isError = false;
+        state.isSuccess = false;
       })
       .addCase(google_signup.fulfilled, (state, action) => {
         state.isLoading = false;
@@ -315,11 +315,13 @@ export const UserDataSlice = createSlice({
       })
       .addCase(google_login.pending, (state) => {
         state.isLoading = true;
+        state.isError = false;
+        state.isSuccess = false;
       })
       .addCase(google_login.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSuccess = true;
-        console.log("Login success: ", action);
+        state.userinfo = action.payload;
       })
       .addCase(google_login.rejected, (state, action) => {
         state.isLoading = false;
@@ -329,20 +331,33 @@ export const UserDataSlice = createSlice({
         state.userinfo = null;
       })
       .addCase(logOut.fulfilled, (state) => {
-        state.userinfo = null;
-        state.isSuccess= false
+        Object.assign(state, initialState);
       })
-      .addCase(resetPassword.fulfilled, (state, action) => {
+      .addCase(resetPassword.pending, (state) => {
+        state.isLoading = true;
+        state.isError = false;
+        state.isSuccess = false;
+      })
+      .addCase(resetPassword.fulfilled, (state) => {
+        state.isLoading = false;
         state.isSuccess = true;
       })
       .addCase(resetPassword.rejected, (state, action) => {
+        state.isLoading = false;
         state.isError = true;
-        state.isError = action.payload;
+        state.error = action.payload;
+      })
+      .addCase(changePassword.pending, (state) => {
+        state.isLoading = true;
+        state.isError = false;
+        state.isSuccess = false;
       })
       .addCase(changePassword.fulfilled, (state) => {
+        state.isLoading = false;
         state.isSuccess = true;
       })
       .addCase(changePassword.rejected, (state, action) => {
+        state.isLoading = false;
         state.isError = true;
         state.error = action.payload;
       });

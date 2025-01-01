@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useSelector } from "react-redux";
 
 function UserProfileDetailsSection() {
-  const { email, first_name, last_name, picture } = useSelector((state) => state.userdata || {});
+  const { email, first_name, last_name, picture,mobile_number } = useSelector((state) => state.userdata || {});
   
   const[isEmailInputDisabled, setIsEmailInputDisabled]= useState(true)
   const[isNameInputDisabled, setIsNameInputDisabled] =useState(true)
@@ -69,7 +69,7 @@ function UserProfileDetailsSection() {
             isPhoneInputDisabled ? '' : 'outline outline-green-500 text-black-500 focus:outline-green-500'
           } border-grey-500 p-5 rounded-md font-poppins text-base font-semibold leading-8 text-left text-gray-500`}
             type="number"
-            placeholder='+234'
+            placeholder={mobile_number ? mobile_number : 'phone number not set'}
             disabled={isPhoneInputDisabled}
           />
           <FaEdit className="absolute right-4 w-6 h-6 text-green-500  cursor-pointer" onClick={()=>{setIsPhoneInputDisabled(!isPhoneInputDisabled)}}/>

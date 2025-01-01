@@ -95,25 +95,27 @@ console.log(isSuccess);
                     <div className='mt-2 flex items-center justify-center'>
                         <GoogleLogin
                             onSuccess={(response) => {
-                                const data = jwtDecode(response.credential);
-                                const { email, given_name, family_name, picture } = data;
-                                dispatch(google_login({ email, sub: data.sub }));
-                                dispatch(setEmail(email));
-                                dispatch(setFirstName(given_name));
-                                dispatch(setLastName(family_name));
-                                dispatch(setPicture(picture))
-
-                                console.log("Account created");
-
-                                useEffect(() => {
-                                    if(isSuccess){
-                                        navigate('/setup')
-                                    }else{
-                                       navigate('/login')
+                                try {
+                                    const data = jwtDecode(response.credential);
+                                    const { email, given_name, family_name, picture } = data;
+                                    dispatch(google_login({ email, sub: data.sub }));
+                                    dispatch(setEmail(email));
+                                    dispatch(setFirstName(given_name));
+                                    dispatch(setLastName(family_name));
+                                    dispatch(setPicture(picture));
+                                    console.log(isSuccess, 'is sucess');
+                                    if (isSuccess) {
+                                        navigate('/setup');
                                     }
-                                },[isSuccess])
+                                } catch (error) {
+                                    console.error("Error during Google login:", error);
+                                    navigate('/login');
+                                }
                             }}
-                            onError={() => console.log('Signup failed')}
+                            onError={() => {
+                                console.log('Signup failed');
+                                navigate('/login');
+                            }}
                         />
                     </div>
                     <h5 className='mt-[15px]'>OR</h5>
