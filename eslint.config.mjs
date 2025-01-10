@@ -3,8 +3,6 @@
 import { FlatCompat } from "@eslint/eslintrc";
 import eslint from "@eslint/js";
 import tsParser from "@typescript-eslint/parser";
-import react from "eslint-plugin-react";
-import globals from "globals";
 import { dirname } from "path";
 import tseslint from "typescript-eslint";
 import { fileURLToPath } from "url";
@@ -21,23 +19,6 @@ const eslintConfig = [
   ...tseslint.configs.recommendedTypeChecked,
   ...tseslint.configs.strictTypeChecked,
   {
-    files: ["**/*.{js,jsx,mjs,cjs,ts,tsx}"],
-    plugins: {
-      react,
-    },
-    languageOptions: {
-      parserOptions: {
-        ecmaFeatures: {
-          jsx: true,
-        },
-      },
-      globals: {
-        ...globals.browser,
-      },
-    },
-  },
-  ...compat.extends("next/core-web-vitals", "next/typescript"),
-  {
     languageOptions: {
       parserOptions: {
         projectService: true,
@@ -49,12 +30,14 @@ const eslintConfig = [
   {
     rules: {
       "no-console": "warn",
-      "no-undef": "error",
+      "no-unused-vars": "error",
       "@typescript-eslint/no-confusing-void-expression": "off",
       "@typescript-eslint/no-unsafe-call": "off",
       "@typescript-eslint/no-unsafe-assignment": "off",
+      "@typescript-eslint/no-non-null-assertion": "off",
     },
   },
+  ...compat.extends("next/core-web-vitals", "next/typescript"),
 ];
 
 export default eslintConfig;
