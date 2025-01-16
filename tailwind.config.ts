@@ -60,8 +60,8 @@ export default {
         sm: "calc(var(--radius) - 4px)",
       },
       fontFamily: {
-        poppins: ["Poppins", "serif"],
-        inter: ["Inter", "serif"]
+        poppins: ["var(--font-poppins)", "serif"],
+        inter: ["var(--font-inter)", "serif"],
       },
     },
   },

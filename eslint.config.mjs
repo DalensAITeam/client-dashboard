@@ -1,5 +1,3 @@
-// @ts-check
-
 import { FlatCompat } from "@eslint/eslintrc";
 import eslint from "@eslint/js";
 import tsParser from "@typescript-eslint/parser";
@@ -37,6 +35,7 @@ const eslintConfig = [
       "@typescript-eslint/no-non-null-assertion": "off",
     },
   },
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
   ...compat.extends("next/core-web-vitals", "next/typescript"),
 ];
 

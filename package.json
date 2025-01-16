@@ -2,9 +2,6 @@
   "name": "dalens",
   "version": "0.1.0",
   "private": true,
-  "lint-staged": {
-    "**/*.{js,jsx,ts,tsx}": "next lint"
-  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",

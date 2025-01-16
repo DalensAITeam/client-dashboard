@@ -5,6 +5,9 @@ const nextConfig: NextConfig = {
   experimental: {
     typedRoutes: true,
     typedEnv: true
+  },
+  images: {
+    dangerouslyAllowSVG: true
   }
 };
 

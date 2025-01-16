@@ -1,20 +1,19 @@
 "use client";
 
+import bottomAuthDesign from "@/assets/images/bottom-auth-design.png";
+import dalensAiImage from "@/assets/images/dalens-ai-logo.png";
 import forgotPasswordBg from "@/assets/images/forgot-password-bg.png";
 import loginBg from "@/assets/images/login-bg.png";
 import resetPasswordBg from "@/assets/images/reset-password-bg.png";
 import signUpBg from "@/assets/images/sign-up-bg.png";
-import dalensAiImage from "@/assets/images/dalens-ai-auth.png";
 import topAuthDesign from "@/assets/images/top-auth-design.png";
-import bottomAuthDesign from "@/assets/images/bottom-auth-design.png";
 import { Input } from "@/components/auth";
-import { LgGoogleSvg, SmGoogleSvg } from "@/components/svg";
 import { cn } from "@/lib/utils";
-import { useGoogleLogin } from "@react-oauth/google";
+import { GoogleLogin } from "@react-oauth/google";
 import { useForm } from "@tanstack/react-form";
 import Image from "next/image";
 import Link from "next/link";
-import { useLayoutEffect, type FC } from "react";
+import { type FC } from "react";
 
 type props = {
   route: "sign-up" | "sign-in" | "reset-password" | "forgot-password";
@@ -29,15 +28,6 @@ const bgImages: Record<props["route"], string> = {
 
 const Auth: FC<props> = ({ route }) => {
   const isAuthRoute = route === "sign-in" || route === "sign-up";
-  const login = useGoogleLogin({});
-  useLayoutEffect(() => {
-    document.body.style.backgroundColor = "#345E0A99";
-    document.body.style.backgroundImage = `url("${bgImages[route]}")`;
-    return () => {
-      document.body.style.backgroundColor = "";
-      document.body.style.backgroundImage = "";
-    };
-  }, [route]);
   const form = useForm({
     defaultValues: {
       email: "",
@@ -52,6 +42,18 @@ const Auth: FC<props> = ({ route }) => {
   });
   return (
     <>
+      <style jsx global>
+        {`
+          body {
+            background-color: #345e0a99;
+            background-image: url("${bgImages[route]}");
+            font-family: var(--font-poppins), sans-serif;
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+          }
+        `}
+      </style>
       <main
         className={cn(
           // NOTE CSS VARIABLES ARE USED TO DEFINE HEIGHT AND REDUCE THE REPITION OF MATH CODE
@@ -115,7 +117,12 @@ const Auth: FC<props> = ({ route }) => {
           </h2>
           {isAuthRoute && (
             <>
-              <button
+              <GoogleLogin
+                onSuccess={(token) => {
+                  console.log(token);
+                }}
+              />
+              {/* <button
                 type="button"
                 onClick={() => login()}
                 className="flex flex-row justify-center items-center p-0 gap-[16px] min-w-[171px] lg:min-w-[347px] h-[24px] lg:h-[62px] bg-transparent"
@@ -127,7 +134,7 @@ const Auth: FC<props> = ({ route }) => {
                 <span className="font-medium lg:font-normal text-[12px] lg:text-[24px] leading-[18px] lg:leading-[36px] text-[#333333]">
                   Continue with Google
                 </span>
-              </button>
+              </button> */}
               <p className="font-medium lg:font-normal text-[24px] leading-[36px] text-[#333333]">
                 OR
               </p>
@@ -210,6 +217,7 @@ const Auth: FC<props> = ({ route }) => {
                 )}
               </form.Field>
               <Link
+                prefetch
                 href="/auth/forgot-password"
                 className="font-medium text-[12px] lg:text-[19px] leading-[18px] lg:leading-[28px] text-main"
               >
@@ -223,6 +231,7 @@ const Auth: FC<props> = ({ route }) => {
                 ? "Don't have an account?"
                 : "Already have an account?"}{" "}
               <Link
+                prefetch
                 className="text-main"
                 href={route === "sign-in" ? "/register" : "/login"}
               >
