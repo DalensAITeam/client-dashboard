@@ -53,6 +53,7 @@ export default {
         },
         primaryText: "#333333",
         main: "#70E000",
+        p3: "#A3FF47"
       },
       borderRadius: {
         lg: "var(--radius)",
