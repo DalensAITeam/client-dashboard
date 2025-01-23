@@ -54,6 +54,7 @@ export default {
   			primaryText: '#333333',
   			main: '#70E000',
   			p3: '#A3FF47',
+			t3: "#CCCCCC",
   			sidebar: {
   				DEFAULT: '#393939',
   				foreground: 'hsl(var(--sidebar-foreground))',

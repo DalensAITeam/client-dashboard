@@ -12,7 +12,7 @@ export default function DashboardLayout({
     <SidebarProvider defaultOpen={false}>
       <Topbar />
       <Sidebar />
-      <Main>{children}</Main>
+      <Main className="px-[20px]">{children}</Main>
     </SidebarProvider>
   );
 }

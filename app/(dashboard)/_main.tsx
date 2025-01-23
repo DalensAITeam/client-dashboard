@@ -1,18 +1,19 @@
 "use client";
 
 import { useSidebar } from "@/components/ui/sidebar";
-import type { ReactNode } from "react";
+import { cn } from "@/lib/utils";
+import type { ComponentProps, FC } from "react";
 
-const Main = ({ children }: { children: ReactNode }) => {
+const Main: FC<ComponentProps<"main">> = ({ className, ...props }) => {
   const { open } = useSidebar();
   return (
     <main
-      className={
-        open ? "lg:ml-[--sidebar-width]" : "lg:ml-[--sidebar-width-icon]"
-      }
-    >
-      {children}
-    </main>
+      {...props}
+      className={cn(
+        open ? "lg:ml-[--sidebar-width]" : "lg:ml-[--sidebar-width-icon]",
+        className
+      )}
+    />
   );
 };
 

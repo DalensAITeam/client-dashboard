@@ -1,9 +1,11 @@
-"use client"
+import { HealthStatus, Monitoring, PostMonitor } from "@/components/dashboard";
 
 export default function DashboardLayout() {
-    return (
-        <>
-            
-        </>
-    )
-};
+  return (
+    <>
+      <Monitoring />
+      <PostMonitor />
+      <HealthStatus />
+    </>
+  );
+}
