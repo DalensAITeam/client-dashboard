@@ -59,7 +59,6 @@ const DashboardSidebar = () => {
                           isActive &&
                             "border-solid border-l-[6px] border-main before:content-[''] before:w-[6px] before:h-full before:bg-main before:inline-block before:absolute before:left-1 bg-p3/15"
                         )}
-                        // @ts-expect-error THIS ROURES WILL BE BUILT LATER ON
                         href={link.href}
                       >
                         <button

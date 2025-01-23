@@ -11,20 +11,20 @@ interface SidebarLink {
   name: string;
 }
 
-export const sidebarLinks = [
+export const sidebarLinks: SidebarLink[] = [
   {
-    href: "/dashboard" as const,
+    href: "/dashboard",
     icon: LayoutDashboardIcon,
     name: "Dashboard",
   },
   {
-    href: "/monitor" as const,
+    href: "/monitor",
     icon: MonitorIcon,
     name: "Farm Monitor",
   },
   {
-    href: "/data" as const,
+    href: "/data",
     icon: FolderClosedIcon,
     name: "Data Manager",
   },
-] satisfies SidebarLink[];
+];
