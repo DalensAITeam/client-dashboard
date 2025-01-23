@@ -1,6 +1,7 @@
-import { Sidebar, Topbar } from "@/components/dasboard";
-import { SidebarProvider } from "@/context/sidebar";
+import { Sidebar, Topbar } from "@/components/dashboard";
+import { SidebarProvider } from "@/components/ui/sidebar";
 import type { ReactNode } from "react";
+import Main from "./_main";
 
 export default function DashboardLayout({
   children,
@@ -8,12 +9,10 @@ export default function DashboardLayout({
   children: ReactNode;
 }>) {
   return (
-    <>
-      <SidebarProvider>
-        <Topbar />
-        <Sidebar />
-        {children}
-      </SidebarProvider>
-    </>
+    <SidebarProvider defaultOpen={false}>
+      <Topbar />
+      <Sidebar />
+      <Main>{children}</Main>
+    </SidebarProvider>
   );
 }
