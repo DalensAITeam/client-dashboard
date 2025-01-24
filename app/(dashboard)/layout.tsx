@@ -9,10 +9,12 @@ export default function DashboardLayout({
   children: ReactNode;
 }>) {
   return (
-    <SidebarProvider defaultOpen={false}>
+    <SidebarProvider defaultOpen={false} className="[--topbar-height:59px]">
       <Topbar />
       <Sidebar />
-      <Main className="px-[20px]">{children}</Main>
+      <Main className="px-[20px] my-[calc(var(--topbar-height)+20px)] w-full">
+        {children}
+      </Main>
     </SidebarProvider>
   );
 }

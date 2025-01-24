@@ -6,7 +6,8 @@
   @apply border border-solid border-red-500
 } */
 
-html, body {
+html,
+body {
   min-height: 100%;
 }
 
@@ -89,4 +90,12 @@ html, body {
   body {
     @apply bg-background text-foreground;
   }
+}
+
+path.circle {
+  @apply fill-white stroke-white;
+}
+
+div.gauge circle.wave {
+  @apply before:content-['ABC'] before:bg-green-500 before:size-20 before:block;
 }

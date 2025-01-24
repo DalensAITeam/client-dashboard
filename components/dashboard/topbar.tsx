@@ -9,7 +9,7 @@ const Topbar = () => {
   return (
     <header
       className={clsx(
-        "fixed top-0 right-0 h-[59px] bg-white [box-shadow:0px_2px_2px_rgba(204,204,204,0.5)] flex items-center left-0",
+        "fixed top-0 right-0 h-[--topbar-height] bg-white [box-shadow:0px_2px_2px_rgba(204,204,204,0.5)] flex items-center left-0 z-10",
         open ? "md:left-[--sidebar-width]" : "md:left-[--sidebar-width-icon]"
       )}
     >

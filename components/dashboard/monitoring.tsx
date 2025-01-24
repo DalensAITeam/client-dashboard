@@ -4,8 +4,8 @@ import Image from "next/image";
 
 const Monitoring = () => {
     return (
-      <div className="flex flex-col items-start p-0 gap-[15.77px]">
-        <div className="flex items-center justify-between">
+      <div className="space-y-[15.77px]">
+        <div className="flex items-center justify-between max-w-[345px]">
           <h2 className="font-poppins text-[17.7429px] leading-[27px] text-[#1A1A1A]">
             Quick Monitoring
           </h2>
