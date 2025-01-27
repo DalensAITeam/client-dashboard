@@ -18,12 +18,12 @@ export const sidebarLinks: SidebarLink[] = [
     name: "Dashboard",
   },
   {
-    href: "/monitor",
+    href: "/far",
     icon: MonitorIcon,
     name: "Farm Monitor",
   },
   {
-    href: "/data",
+    href: "/data-manager",
     icon: FolderClosedIcon,
     name: "Data Manager",
   },

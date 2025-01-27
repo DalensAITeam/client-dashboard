@@ -1,19 +1,20 @@
 "use client";
 
+import { faker } from "@faker-js/faker";
 import { TriangleAlert } from "lucide-react";
 import dynamic from "next/dynamic";
-import type { ComponentType, FC } from "react";
+import type { ComponentType } from "react";
 
 // @ts-expect-error the package has no available TS declarations
+// eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion
 const LiquidFillGauge = dynamic(() => import("react-liquid-gauge"), {
   ssr: false,
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
 }) as ComponentType<any>;
 
-type props = {
-  status: number;
-};
+const STATUS = faker.number.int({ max: 80, min: 20 });
 
-const FeedingStatus: FC<props> = ({ status }) => {
+const FeedingStatus = () => {
   const filledColor = "#A3FF47";
   return (
     <div className="max-w-[345px]">
@@ -24,14 +25,14 @@ const FeedingStatus: FC<props> = ({ status }) => {
         <div className="w-[150px] overflow-visible h-[150px] flex items-center justify-center rounded-full bg-t2">
           <LiquidFillGauge
             style={{ margin: "0 auto", transform: "translateX(-0.2rem)" }}
-            value={status}
+            value={STATUS}
             width={165}
             height={156.99}
             textSize={1}
             textRenderer={() => (
               <tspan>
                 <tspan className="value text-[22.0477px] leading-[33px] fill-[#333333] font-poppins">
-                  {+status.toFixed(2)}%
+                  {+STATUS.toFixed(2)}%
                 </tspan>
               </tspan>
             )}

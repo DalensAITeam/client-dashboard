@@ -1,0 +1,76 @@
+// TODO CHANGE ICONS RESETSETTINGS CARD COMPONENT
+
+"use client";
+
+import { faker } from "@faker-js/faker";
+import { useRouter } from "next/navigation";
+import { useCallback, type ReactNode } from "react";
+import { FaEdit, FaVolumeUp } from "react-icons/fa";
+import { HiCamera } from "react-icons/hi2";
+import { MdAccountBox, MdCreditCard } from "react-icons/md";
+
+const EMAIL = faker.internet.email();
+const FIRST_NAME = faker.person.firstName();
+
+export default function SettingsPage() {
+  const router = useRouter();
+  const renderSettingCard = useCallback(
+    (title: string, description: string, icon: ReactNode) => (
+      <div
+        onClick={() => router.push(`/settings/${title}`)}
+        className="shadow-md rounded-lg p-10 flex flex-col items-start justify-center gap-3 cursor-pointer"
+      >
+        <div className=" text-green-500">{icon}</div>
+        <h4 className="font-poppins text-1x1 font-semibold text-gray-800">
+          {title}
+        </h4>
+        <h6 className="font-poppins text-sm font-normal text-gray-400">
+          {description}
+        </h6>
+      </div>
+    ),
+    [router]
+  );
+
+  return (
+    <div className="flex flex-col w-full p-5">
+      <div className="flex flex-col gap-10 p-10-10 w-full">
+        <div className="flex flex-col items-start justify-start gap-5">
+          <h2 className="font-inter text-4xl font-semibold text-gray-800">
+            {`Welcome ${FIRST_NAME}`}
+          </h2>
+          <h6 className="font-poppins text-base font-normal text-gray-600">
+            {EMAIL}
+          </h6>
+        </div>
+        <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-10 w-full">
+          {renderSettingCard(
+            "profile",
+            "Edit personal details",
+            <MdAccountBox size={30} />
+          )}
+          {renderSettingCard(
+            "camera",
+            "Edit camera setting",
+            <HiCamera size={30} />
+          )}
+          {renderSettingCard(
+            "price",
+            "Checkout price details",
+            <MdCreditCard size={30} />
+          )}
+          {renderSettingCard(
+            "notifications",
+            "Customize Notification to suit your needs",
+            <FaVolumeUp size={30} />
+          )}
+          {renderSettingCard(
+            "history",
+            "View all history",
+            <FaEdit size={30} />
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}

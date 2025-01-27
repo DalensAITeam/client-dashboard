@@ -1,4 +1,6 @@
-const TOTAL_NUMBER_OF_ANIMALS = 250;
+import { faker } from "@faker-js/faker";
+
+const TOTAL_NUMBER_OF_ANIMALS = faker.number.int({ min: 0, max: 999 });
 
 const TotalNumberOfAnimals = () => {
   return (
