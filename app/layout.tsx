@@ -4,6 +4,7 @@ import "./globals.css";
 import NextTopLoader from "nextjs-toploader";
 import { Inter, Poppins } from "next/font/google";
 import { cn } from "@/lib/utils";
+import { Toaster } from "react-hot-toast";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -13,7 +14,7 @@ const inter = Inter({
 const poppins = Poppins({
   variable: "--font-poppins",
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
-  subsets: ["latin"]
+  subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
@@ -27,13 +28,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={cn(inter.variable, poppins.variable)}>
-        <NextTopLoader color="#70E000" showSpinner={false} zIndex={1000} />
-        <GoogleOAuthProvider clientId={process.env.GOOGLE_CLIENT_ID!}>
+    <GoogleOAuthProvider clientId={process.env.GOOGLE_CLIENT_ID!}>
+      <html lang="en">
+        <body className={cn(inter.variable, poppins.variable)}>
+          <NextTopLoader color="#70E000" showSpinner={false} zIndex={1000} />
           {children}
-        </GoogleOAuthProvider>
-      </body>
-    </html>
+          <Toaster />
+        </body>
+      </html>
+    </GoogleOAuthProvider>
   );
 }

@@ -99,3 +99,23 @@ path.circle {
 div.gauge circle.wave {
   @apply before:content-['ABC'] before:bg-green-500 before:size-20 before:block;
 }
+
+#Compressed-logout {
+  margin-top: 6rem;
+}
+table {
+  width: 100%;
+  margin-top: 1.5rem;
+}
+table .top-table {
+  border: 2px solid red;
+  border-collapse: collapse;
+  width: 100%;
+  height: 40px;
+  background: #797979;
+}
+.data-screen-search {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
