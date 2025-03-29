@@ -1,162 +1,194 @@
-import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
-import VisibilityIcon from '@mui/icons-material/Visibility';
-import { useDispatch, useSelector } from 'react-redux';
-import { signup, setEmail, setFirstName, setLastName, google_signup, setMobileNumber, setPicture } from '../../Redux/UserDataSlice';
-import { GoogleLogin } from '@react-oauth/google';
-import { jwtDecode } from 'jwt-decode';
-import toast from 'react-hot-toast';
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
+import VisibilityIcon from "@mui/icons-material/Visibility";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  signup,
+  setEmail,
+  setFirstName,
+  setLastName,
+  google_signup,
+  setPicture,
+} from "../../Redux/UserDataSlice";
+import { GoogleLogin } from "@react-oauth/google";
+import { jwtDecode } from "jwt-decode";
+import toast from "react-hot-toast";
 
-function SignupPage() {
-    const [email, setEmailValue] = useState('');
-    const [password, setPassword] = useState('');
-    const [confirmPassword, setConfirmPassword] = useState('');
-    const [displayPassword, setDisplayPassword] = useState(false);
-    const [displayConfirmPassword, setDisplayConfirmPassword] = useState(false);
-    const [isLoggingIn, setIsLoggingIn] = useState(false);
+const SignupPage = () => {
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+    confirmPassword: "",
+  });
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [isLoggingIn, setIsLoggingIn] = useState(false);
 
-    const dispatch = useDispatch();
-    const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { isError, isSuccess, error } = useSelector((state) => state.userdata);
 
-    const { isError, isSuccess, error } = useSelector(state => state.userdata);
+  useEffect(() => {
+    if (isSuccess) {
+      toast.success("An activation link has been sent to your email");
+      navigate("/login");
+    }
+    if (isError) {
+      toast.error(error || "Signup failed. Please try again.");
+    }
+  }, [isSuccess, isError, error, navigate]);
 
-    const handleSubmit = e => {
-        e.preventDefault();
-        if(email=='' || password ==''){
-           toast.error('Please fill all fields',{
-            duration:1000
-           })
-        }
-        else if(password!= confirmPassword){
-            toast.error('Passwords do not match',{
-                duration:1000
-           })
-        }
-        else{    
-            setIsLoggingIn(true)
-         const toastId= toast.loading('Signing up...');
-            const formData = {
-                email,
-                password,
-                confirmPassword
-            };
-            setIsLoggingIn(false)
-            dispatch(signup(formData));
-            toast.success('successfully signedup',{
-                id: toastId
-            })
-        }
-    };
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
 
-    useEffect(() => {
-        if (isSuccess) {
-            console.log("An activation link has been sent to your email");
-            navigate('/login');
-        }
-        if (isError) {
-            console.log(error);
-        }
-    }, [isSuccess, isError, error, navigate]);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const { email, password, confirmPassword } = formData;
 
-    const handleGoToLogin = () => {
-        navigate('/login');
-    };
+    if (!email || !password || !confirmPassword) {
+      return toast.error("Please fill all fields", { duration: 1000 });
+    }
+    if (password !== confirmPassword) {
+      return toast.error("Passwords do not match", { duration: 1000 });
+    }
 
-    return (
-        <div style={{
-            background: `url(/loginBackgroundImage.png)`,
-            height: '100vh',
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center'
-        }}>
-            <div className='bg-white min-w-[35vw] rounded-md min-h-[50vh]'>
-                <div style={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    width: '100%',
-                    marginTop: '15px'
-                }}>
-                    <img src="./dalensAI.svg" alt="dalensAI" width={'120px'} />
-                    <h1 className='text-2xl mt-5'>Sign up</h1>
-                    <div className='mt-2 flex items-center justify-center'>
-                        <GoogleLogin
-                            onSuccess={response => {
-                                const data = jwtDecode(response.credential);
-                                const { email, given_name, family_name, sub, picture } = data;
+    setIsLoggingIn(true);
+    const toastId = toast.loading("Signing up...");
 
-                                const formData = {
-                                    email,
-                                    first_name: given_name,
-                                    last_name: family_name,
-                                    google: true,
-                                    sub,
-                                    google_picture: picture
-                                };
+    dispatch(signup({ email, password, confirmPassword })).finally(() => {
+      setIsLoggingIn(false);
+      toast.dismiss(toastId);
+    });
+  };
 
-                                dispatch(google_signup(formData));
-                                dispatch(setEmail(data.email));
-                                dispatch(setFirstName(data.given_name));
-                                dispatch(setLastName(data.family_name));
-                                dispatch(setPicture(data.picture));
+  const handleGoogleSignup = (response) => {
+    try {
+      const data = jwtDecode(response.credential);
+      const userData = {
+        email: data.email,
+        first_name: data.given_name,
+        last_name: data.family_name,
+        google: true,
+        sub: data.sub,
+        google_picture: data.picture,
+      };
 
-                                console.log("Account created");
-                                navigate('/setup');
-                            }}
-                            onError={() => console.log('Signup failed')}
-                        ></GoogleLogin>
-                    </div>
-                    <h5 className='mt-[15px]'>OR</h5>
-                </div>
-                <form className='p-8' onSubmit={handleSubmit} method='post'>
-                    <input placeholder='Email' name='email' value={email} onChange={e => setEmailValue(e.target.value)} className='w-full  outline-none' />
-                    <div className='relative'>
-                        <input
-                            name='password'
-                            type={displayPassword ? 'text' : 'password'}
-                            placeholder='Password'
-                            className='w-full mt-5 outline-none'
-                            value={password}
-                            onChange={e => setPassword(e.target.value)}
-                        />
-                        {displayPassword ? (
-                            <VisibilityOffIcon className='absolute top-[-8px] right-0 mt-6 mr-4 text-gray-500 cursor-pointer' onClick={() => setDisplayPassword(!displayPassword)} />
-                        ) : (
-                            <VisibilityIcon className='absolute top-[-8px] right-0 mt-6 mr-4 text-gray-500 cursor-pointer' onClick={() => setDisplayPassword(!displayPassword)} />
-                        )}
-                    </div>
-                    <div className='relative'>
-                        <input
-                            name='re_password'
-                            type={displayConfirmPassword ? 'text' : 'password'}
-                            placeholder='Confirm password'
-                            className='w-full mt-5 outline-none'
-                            value={confirmPassword}
-                            onChange={e => setConfirmPassword(e.target.value)}
-                        />
-                        {displayConfirmPassword ? (
-                            <VisibilityOffIcon className='absolute top-[-8px] right-0 mt-6 mr-4 text-gray-500 cursor-pointer' onClick={() => setDisplayConfirmPassword(!displayConfirmPassword)} />
-                        ) : (
-                            <VisibilityIcon className='absolute top-[-8px] right-0 mt-6 mr-4 text-gray-500 cursor-pointer' onClick={() => setDisplayConfirmPassword(!displayConfirmPassword)} />
-                        )}
-                    </div>
-                    <div className='flex flex-col'>
-                        <div className='flex item-center justify-center mt-2'>
-                            <button className='bg-[#70E000] text-white rounded-[5px] p-2' type='submit' onClick={handleSubmit} disabled={isLoggingIn}>Create account</button>
-                        </div>
-                        <div className='flex items-center justify-center mt-2'>
-                            <p className='text-[12px]'>Already have an account?</p><span onClick={handleGoToLogin} className='text-[#70E000] cursor-pointer'>login</span>
-                        </div>
-                    </div>
-                </form>
-            </div>
+      dispatch(google_signup(userData));
+      dispatch(setEmail(data.email));
+      dispatch(setFirstName(data.given_name));
+      dispatch(setLastName(data.family_name));
+      dispatch(setPicture(data.picture));
+
+      toast.success("Account created successfully!");
+      navigate("/setup");
+    } catch (error) {
+      toast.error("Google signup failed. Please try again.");
+    }
+  };
+
+  return (
+    <div
+      className="h-screen flex justify-center items-center bg-cover bg-center"
+      style={{ backgroundImage: `url(/loginBackgroundImage.png)` }}
+    >
+      <div className="bg-white rounded-md shadow-lg p-8 min-w-[35vw]">
+        <div className="flex flex-col items-center">
+          <img src="./dalensAI.svg" alt="dalensAI" width="120" />
+          <h1 className="text-2xl mt-5 font-semibold">Sign Up</h1>
+
+          <div className="mt-2">
+            <GoogleLogin
+              onSuccess={handleGoogleSignup}
+              onError={() => toast.error("Google signup failed")}
+            />
+          </div>
+
+          <h5 className="mt-5 text-gray-500">OR</h5>
         </div>
-    );
-}
+
+        <form className="mt-5" onSubmit={handleSubmit}>
+          <input
+            type="email"
+            name="email"
+            placeholder="Email"
+            value={formData.email}
+            onChange={handleChange}
+            className="w-full p-2 border rounded-md mt-2 outline-none"
+          />
+
+          <div className="relative mt-4">
+            <input
+              type={showPassword ? "text" : "password"}
+              name="password"
+              placeholder="Password"
+              value={formData.password}
+              onChange={handleChange}
+              className="w-full p-2 border rounded-md outline-none"
+            />
+            {showPassword ? (
+              <VisibilityOffIcon
+                className="absolute top-3 right-3 cursor-pointer text-gray-500"
+                onClick={() => setShowPassword(!showPassword)}
+              />
+            ) : (
+              <VisibilityIcon
+                className="absolute top-3 right-3 cursor-pointer text-gray-500"
+                onClick={() => setShowPassword(!showPassword)}
+              />
+            )}
+          </div>
+
+          <div className="relative mt-4">
+            <input
+              type={showConfirmPassword ? "text" : "password"}
+              name="confirmPassword"
+              placeholder="Confirm Password"
+              value={formData.confirmPassword}
+              onChange={handleChange}
+              className="w-full p-2 border rounded-md outline-none"
+            />
+            {showConfirmPassword ? (
+              <VisibilityOffIcon
+                className="absolute top-3 right-3 cursor-pointer text-gray-500"
+                onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+              />
+            ) : (
+              <VisibilityIcon
+                className="absolute top-3 right-3 cursor-pointer text-gray-500"
+                onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+              />
+            )}
+          </div>
+
+          <button
+            type="submit"
+            disabled={isLoggingIn}
+            className="w-full bg-green-500 text-white py-2 rounded-md mt-4 hover:bg-green-600 transition"
+          >
+            {isLoggingIn ? "Creating Account..." : "Create Account"}
+          </button>
+
+          <div className="flex justify-center mt-3">
+            <p className="text-sm">Already have an account?</p>
+            <span
+              className="text-green-500 cursor-pointer ml-1"
+              onClick={() => navigate("/login")}
+            >
+              Login
+            </span>
+          </div>
+        </form>
+      </div>
+    </div>
+  );
+};
 
 export default SignupPage;
+
+
+
+
+
+
