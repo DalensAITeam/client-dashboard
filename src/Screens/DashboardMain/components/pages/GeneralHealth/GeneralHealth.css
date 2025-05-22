@@ -1,0 +1,59 @@
+.GeneralHealth {
+  @apply flex flex-col w-full;
+}
+
+.GeneralHealth h2 {
+  @apply text-lg font-medium text-gray-800 mb-4;
+}
+
+.ChartGeneralHealth {
+  @apply bg-lime-50/50 rounded-lg p-4 w-full h-32;
+}
+
+.threats {
+  @apply flex justify-between items-center w-full mt-4;
+}
+
+.count {
+  @apply flex items-center gap-2;
+}
+
+.count p {
+  @apply text-gray-500 text-base;
+}
+
+.status {
+  @apply flex flex-col gap-1;
+}
+
+.status h5 {
+  @apply text-base font-medium;
+}
+
+.status span {
+  @apply font-normal;
+}
+
+.status-perfect {
+  @apply text-green-500;
+}
+
+.status-warning {
+  @apply text-yellow-500;
+}
+
+.status-critical {
+  @apply text-red-500;
+}
+
+/* Pulse animation */
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 0.8;
+  }
+}

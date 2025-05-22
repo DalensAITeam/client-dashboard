@@ -1,0 +1,43 @@
+/* Main container */
+.monitoring-main {
+  @apply w-full py-4 px-6;
+}
+
+/* Header section */
+.header {
+  @apply flex items-center justify-between mb-4;
+}
+
+.header h1 {
+  @apply text-xl font-medium text-gray-800 m-0;
+}
+
+.header button {
+  @apply text-lime-500 font-medium text-sm hover:text-lime-600 transition-colors 
+    bg-transparent border-0 cursor-pointer p-0;
+}
+
+/* Video/Image section */
+.monitoring-main img,
+.monitoring-main video {
+  @apply w-full rounded-lg overflow-hidden;
+  aspect-ratio: 16/9;
+  object-fit: cover;
+}
+
+/* Status indicators */
+.status-indicator {
+  @apply inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-sm font-medium;
+}
+
+.status-good {
+  @apply bg-green-100 text-green-800;
+}
+
+.status-warning {
+  @apply bg-yellow-100 text-yellow-800;
+}
+
+.status-danger {
+  @apply bg-red-100 text-red-800;
+}

@@ -1,0 +1,23 @@
+.metricsMain {
+  @apply w-full;
+}
+
+.metricButtons {
+  @apply inline-flex rounded-md border shadow-sm overflow-hidden;
+}
+
+.metricButton {
+  @apply px-4 py-2 text-sm font-medium transition-colors;
+}
+
+.metricButton.active {
+  @apply bg-lime-500 text-white;
+}
+
+.metricButton:not(.active) {
+  @apply bg-white text-gray-700 hover:bg-gray-50;
+}
+
+.metricChart {
+  @apply mt-4 h-[300px] w-full;
+}

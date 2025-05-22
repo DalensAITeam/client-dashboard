@@ -1,0 +1,390 @@
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { FiRefreshCw, FiList, FiVideo, FiGrid, FiMaximize2 } from 'react-icons/fi';
+import VideoStream from '../../../components/VideoStream/VideoStream';
+
+// Constants
+const BACKEND_ENDPOINT = 'http://localhost:7017';
+
+const ViewModes = {
+  LIVE: 'live',
+  CATEGORY: 'category'
+};
+
+// Sample camera data from backend
+const SAMPLE_CAMERAS = [
+  { 
+    id: 'cam1', 
+    name: 'Main Barn', 
+    status: 'active',
+    streamUrl: `${BACKEND_ENDPOINT}/stream1`
+  },
+  { 
+    id: 'cam2', 
+    name: 'Outdoor Pen', 
+    status: 'active',
+    streamUrl: `${BACKEND_ENDPOINT}/stream2`
+  },
+  { 
+    id: 'cam3', 
+    name: 'Feeding Area', 
+    status: 'warning',
+    streamUrl: `${BACKEND_ENDPOINT}/stream3`
+  },
+  { 
+    id: 'cam4', 
+    name: 'Nursery', 
+    status: 'offline',
+    streamUrl: `${BACKEND_ENDPOINT}/stream4`
+  },
+];
+
+// Helper functions
+const getStatusColor = (status) => {
+  switch (status) {
+    case 'active': return 'bg-green-500';
+    case 'warning': return 'bg-yellow-500';
+    case 'offline': return 'bg-red-500';
+    default: return 'bg-gray-300';
+  }
+};
+
+// View components
+const LiveView = ({ quality, selectedCamera, onSelectCamera }) => {
+  const [cameras, setCameras] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [isRefreshing, setIsRefreshing] = useState(false);
+  const [isFullscreen, setIsFullscreen] = useState(false);
+  const [streamStatus, setStreamStatus] = useState('connecting');
+
+  // Simulate loading cameras
+  useEffect(() => {
+    const loadCameras = () => {
+      setIsLoading(true);
+      setTimeout(() => {
+        setCameras(SAMPLE_CAMERAS);
+        setIsLoading(false);
+        setIsRefreshing(false);
+        
+        // Auto-select first camera if none selected
+        if (SAMPLE_CAMERAS.length > 0 && !selectedCamera) {
+          onSelectCamera(SAMPLE_CAMERAS[0].id);
+        }
+      }, 500);
+    };
+
+    loadCameras();
+  }, [onSelectCamera, selectedCamera]);
+
+  const handleRefresh = () => {
+    setIsRefreshing(true);
+    // Simulate refresh
+    setTimeout(() => {
+      setIsRefreshing(false);
+    }, 500);
+  };
+
+  const handleStreamStatus = (status) => {
+    setStreamStatus(status);
+  };
+
+  const getStatusMessage = () => {
+    switch (streamStatus) {
+      case 'connecting': return 'Connecting...';
+      case 'connected': return 'Live';
+      case 'disconnected': return 'Feed lost';
+      case 'error': return 'Connection error';
+      default: return 'Waiting for connection';
+    }
+  };
+
+  const toggleFullscreen = () => {
+    setIsFullscreen(!isFullscreen);
+  };
+
+  if (isLoading) {
+    return (
+      <div className="flex items-center justify-center h-full bg-gray-50 rounded-lg">
+        <div className="animate-pulse text-gray-500">Loading cameras...</div>
+      </div>
+    );
+  }
+
+  const selectedStream = cameras.find(cam => cam.id === selectedCamera);
+
+  return (
+    <div className={`h-full flex ${isFullscreen ? 'fixed inset-0 z-50 bg-black' : 'relative'}`}>
+      {/* Sidebar with mini streams */}
+      <div className={`w-64 flex-shrink-0 bg-gray-50 border-r border-gray-200 overflow-y-auto ${isFullscreen ? 'hidden md:block' : ''}`}>
+        <div className="p-3 border-b border-gray-200">
+          <h3 className="text-sm font-medium text-gray-700">CAMERAS</h3>
+        </div>
+        <div className="space-y-2 p-2">
+          {cameras.map((camera) => (
+            <div 
+              key={camera.id}
+              onClick={() => onSelectCamera(camera.id)}
+              className={`relative rounded-md overflow-hidden cursor-pointer transition-all group ${
+                selectedCamera === camera.id 
+                  ? 'ring-2 ring-blue-500' 
+                  : 'hover:ring-1 hover:ring-gray-300'
+              }`}
+            >
+              <div className="aspect-video bg-gray-200 relative">
+                <VideoStream
+                  videoUrl={camera.streamUrl}
+                  title={camera.name}
+                  className="w-full h-full object-cover"
+                  quality={quality}
+                  muted
+                  onStatusChange={handleStreamStatus}
+                />
+                <div className="absolute inset-0 flex items-center justify-center bg-black/30 group-hover:bg-black/10 transition-colors">
+                  {selectedCamera === camera.id && (
+                    <div className="absolute top-2 left-2 flex items-center">
+                      <span className="flex h-2 w-2">
+                        <span className={`absolute inline-flex h-full w-full rounded-full ${getStatusColor(camera.status)} opacity-75`}></span>
+                      </span>
+                    </div>
+                  )}
+                </div>
+                <div className="absolute bottom-0 left-0 right-0 p-2 bg-gradient-to-t from-black/80 to-transparent">
+                  <p className="text-xs font-medium text-white truncate">{camera.name}</p>
+                  <p className="text-xs text-gray-300">{camera.status === 'active' ? 'Active' : 'Offline'}</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Main content area */}
+      <div className="flex-1 flex flex-col bg-black">
+        {/* Main stream */}
+        <div className="relative flex-1 flex items-center justify-center">
+          {selectedStream ? (
+            <div className="w-full h-full max-w-7xl mx-auto relative">
+              <VideoStream
+                videoUrl={selectedStream.streamUrl}
+                title={selectedStream.name}
+                className="w-full h-full object-contain"
+                quality={quality}
+                autoPlay
+                onStatusChange={handleStreamStatus}
+              />
+              
+              {/* Status overlay */}
+              <div className="absolute top-4 left-4 right-4 flex justify-between items-start">
+                <div className="flex items-center space-x-2 bg-black/70 text-white px-3 py-1.5 rounded-full text-sm">
+                  <span className={`w-2 h-2 rounded-full ${
+                    streamStatus === 'connected' ? 'bg-green-500' : 
+                    streamStatus === 'error' ? 'bg-red-500' : 
+                    'bg-yellow-500 animate-pulse'
+                  }`}></span>
+                  <span>{getStatusMessage()}</span>
+                </div>
+                <div className="flex space-x-2">
+                  <button 
+                    onClick={handleRefresh}
+                    className="p-2 rounded-full bg-black/70 text-white hover:bg-white/20 transition-colors"
+                    title="Refresh stream"
+                  >
+                    <FiRefreshCw className={`w-5 h-5 ${isRefreshing ? 'animate-spin' : ''}`} />
+                  </button>
+                  <button 
+                    onClick={toggleFullscreen}
+                    className="p-2 rounded-full bg-black/70 text-white hover:bg-white/20 transition-colors"
+                    title={isFullscreen ? 'Exit fullscreen' : 'Fullscreen'}
+                  >
+                    <FiMaximize2 className="w-5 h-5" />
+                  </button>
+                </div>
+              </div>
+              
+              {/* Camera info overlay */}
+              <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-black/70 text-white px-4 py-2 rounded-full text-sm">
+                {selectedStream.name} • {selectedStream.status.charAt(0).toUpperCase() + selectedStream.status.slice(1)}
+              </div>
+            </div>
+          ) : (
+            <div className="text-gray-400 flex flex-col items-center">
+              <FiVideo className="w-12 h-12 mb-2" />
+              <p>Select a camera to view the stream</p>
+            </div>
+          )}
+        </div>
+
+        {/* Bottom controls */}
+        {!isFullscreen && (
+          <div className="p-3 bg-gray-900 border-t border-gray-800 flex justify-between items-center">
+            <div className="flex items-center space-x-4">
+              <div className="flex items-center space-x-2">
+                <span className="text-sm text-gray-400">Quality:</span>
+                <select
+                  value={quality}
+                  onChange={(e) => {}}
+                  className="text-sm bg-gray-800 border border-gray-700 rounded px-2 py-1 text-white"
+                >
+                  <option value="high">High</option>
+                  <option value="medium">Medium</option>
+                  <option value="low">Low</option>
+                </select>
+              </div>
+            </div>
+            <div className="text-xs text-gray-500">
+              {isRefreshing ? 'Refreshing...' : `Last updated: ${new Date().toLocaleTimeString()}`}
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+};
+
+const CategoryView = ({ onSelectCamera }) => {
+  const [cameras, setCameras] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [streamStatus, setStreamStatus] = useState('connecting');
+
+  // Simulate loading cameras
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setCameras(SAMPLE_CAMERAS);
+      setIsLoading(false);
+    }, 500);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  const handleStreamStatus = (status) => {
+    setStreamStatus(status);
+  };
+
+  const getStatusMessage = (status) => {
+    switch (status) {
+      case 'connected': return 'Live';
+      case 'disconnected': return 'Offline';
+      case 'error': return 'Error';
+      default: return 'Connecting...';
+    }
+  };
+
+  if (isLoading) {
+    return (
+      <div className="flex items-center justify-center h-64 bg-white rounded-lg shadow">
+        <div className="animate-pulse text-gray-500">Loading cameras...</div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-4">
+      {cameras.map((camera) => (
+        <div 
+          key={camera.id}
+          className="bg-white rounded-lg shadow overflow-hidden border border-gray-200 hover:shadow-md transition-shadow"
+        >
+          <div className="relative aspect-video bg-gray-100">
+            <VideoStream
+              videoUrl={camera.streamUrl}
+              title={camera.name}
+              className="w-full h-full object-cover"
+              quality="medium"
+              muted
+              onStatusChange={handleStreamStatus}
+            />
+            <div className="absolute top-2 right-2 flex items-center space-x-1">
+              <span className={`w-2 h-2 rounded-full ${getStatusColor(camera.status)}`}></span>
+              <span className="text-xs bg-black/70 text-white px-2 py-0.5 rounded">
+                {getStatusMessage(streamStatus)}
+              </span>
+            </div>
+            <div className="absolute bottom-0 left-0 right-0 p-2 bg-gradient-to-t from-black/80 to-transparent">
+              <h3 className="text-sm font-medium text-white">{camera.name}</h3>
+              <p className="text-xs text-gray-300">
+                {camera.status.charAt(0).toUpperCase() + camera.status.slice(1)}
+              </p>
+            </div>
+          </div>
+          <div className="p-3">
+            <div className="flex justify-between items-center">
+              <span className="text-sm text-gray-600">
+                {camera.status === 'active' ? 'Active now' : 'Offline'}
+              </span>
+              <button 
+                onClick={() => onSelectCamera(camera.id)}
+                className="text-xs bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 rounded"
+              >
+                View Live
+              </button>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+};
+
+const EnhancedLiveView = () => {
+  const [viewMode, setViewMode] = useState(ViewModes.LIVE);
+  const [selectedCamera, setSelectedCamera] = useState(null);
+  const [quality, setQuality] = useState('high');
+
+  const handleSelectCamera = (cameraId) => {
+    setSelectedCamera(cameraId);
+  };
+
+  const toggleViewMode = () => {
+    setViewMode(prevMode => 
+      prevMode === ViewModes.LIVE ? ViewModes.CATEGORY : ViewModes.LIVE
+    );
+  };
+
+  return (
+    <div className="h-full flex flex-col bg-white rounded-lg shadow-lg overflow-hidden">
+      {/* Header with view mode toggle */}
+      <div className="px-6 py-4 border-b border-gray-200 bg-gray-50">
+        <div className="flex items-center justify-between">
+          <h2 className="text-xl font-semibold text-gray-800">
+            {viewMode === ViewModes.LIVE ? 'Live View' : 'Category View'}
+          </h2>
+          <div className="flex items-center space-x-4">
+            <button
+              onClick={toggleViewMode}
+              className={`px-4 py-2 text-sm font-medium rounded-md ${
+                viewMode === ViewModes.LIVE
+                  ? 'bg-blue-600 text-white'
+                  : 'bg-white text-gray-700 border border-gray-300 hover:bg-gray-50'
+              }`}
+            >
+              {viewMode === ViewModes.LIVE ? (
+                <span className="flex items-center">
+                  <FiGrid className="mr-2" /> Category View
+                </span>
+              ) : (
+                <span className="flex items-center">
+                  <FiVideo className="mr-2" /> Live View
+                </span>
+              )}
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* Main content */}
+      <div className="flex-1 overflow-auto">
+        {viewMode === ViewModes.LIVE ? (
+          <LiveView 
+            quality={quality}
+            selectedCamera={selectedCamera}
+            onSelectCamera={handleSelectCamera}
+          />
+        ) : (
+          <CategoryView onSelectCamera={handleSelectCamera} />
+        )}
+      </div>
+    </div>
+  );
+};
+
+export default EnhancedLiveView;

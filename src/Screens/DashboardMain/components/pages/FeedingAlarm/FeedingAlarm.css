@@ -1,0 +1,8 @@
+input {
+  font-size: 25px;
+  border-bottom: 2px solid var(--accentColor) !important;
+}
+.feedingGeneral input:focus-visible {
+  outline: none !important;
+  border: none !important;
+}

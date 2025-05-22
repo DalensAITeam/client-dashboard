@@ -1,0 +1,201 @@
+.liquid-jar-container {
+  position: relative;
+  width: var(--size, 160px);
+  height: var(--size, 160px);
+  margin: 0 auto;
+}
+
+.liquid-jar {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: 
+    inset 0 0 20px rgba(0, 0, 0, 0.05),
+    0 4px 20px rgba(255, 255, 255, 0.2);
+  overflow: hidden;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(4px);
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
+
+.liquid-fill {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: var(--fill-height, 0%);
+  transition: height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 1),
+    rgba(240, 240, 240, 0.95)
+  );
+  border-radius: 0 0 25px 25px;
+  overflow: visible;
+  transform: translateZ(0);
+  animation: boiling 2s ease-in-out infinite;
+  filter: brightness(1.2) contrast(1.1);
+  box-shadow:
+    0 -8px 20px rgba(255, 255, 255, 0.3),
+    inset 0 -3px 10px rgba(255, 255, 255, 0.5),
+    inset 0 3px 10px rgba(255, 255, 255, 0.3),
+    inset 0 -3px 8px rgba(255, 255, 255, 0.6),
+    0 -4px 10px rgba(255, 255, 255, 0.4);
+  z-index: 1;
+}
+
+.wave {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 200%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.9),
+    transparent
+  );
+  transform-origin: center bottom;
+  opacity: 0.8;
+  animation: wave-animation 3s cubic-bezier(0.36, 0, 0.66, -0.56) infinite;
+  filter: blur(2px);
+  mix-blend-mode: overlay;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.wave2 {
+  animation: wave-animation 4s cubic-bezier(0.36, 0, 0.66, -0.56) infinite reverse;
+  opacity: 0.6;
+  animation-delay: -1.5s;
+  filter: blur(3px);
+}
+
+.bubbles {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.bubble {
+  position: absolute;
+  bottom: 0;
+  border-radius: 50%;
+  opacity: 0;
+  background: rgba(255, 255, 255, 0.95) !important;
+  animation: bubble-rise 2s ease-in infinite;
+  box-shadow: inset 0 0 5px rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(1px);
+  will-change: transform, opacity;
+}
+
+@keyframes boiling {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+    filter: blur(1px) brightness(1);
+  }
+  25% {
+    transform: translateY(-3px) scale(1.01);
+    filter: blur(2px) brightness(1.1);
+  }
+  75% {
+    transform: translateY(-1px) scale(1.02);
+    filter: blur(2px) brightness(1.05);
+  }
+}
+
+@keyframes wave-animation {
+  0% {
+    transform: translateX(-50%) rotate(0deg) scale(1);
+  }
+  50% {
+    transform: translateX(-25%) rotate(180deg) scale(1.2);
+  }
+  100% {
+    transform: translateX(0%) rotate(360deg) scale(1);
+  }
+}
+
+@keyframes bubble-rise {
+  0% {
+    transform: translateY(5%) scale(0.1);
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.9;
+    transform: translateY(-15%) scale(0.2) rotate(2deg);
+  }
+  30% {
+    opacity: 0.8;
+    transform: translateY(-30%) scale(0.4) rotate(-2deg);
+  }
+  45% {
+    opacity: 0.7;
+    transform: translateY(-45%) scale(0.6) rotate(1deg);
+  }
+  60% {
+    opacity: 0.6;
+    transform: translateY(-60%) scale(0.7) rotate(-1deg);
+  }
+  75% {
+    opacity: 0.4;
+    transform: translateY(-75%) scale(0.8) rotate(1deg);
+  }
+  90% {
+    opacity: 0.2;
+    transform: translateY(-90%) scale(0.9) rotate(-1deg);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-100%) scale(1) rotate(0deg);
+  }
+}
+
+.liquid-percentage {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  z-index: 2;
+  width: 100%;
+}
+
+.liquid-value {
+  display: block;
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: #333;
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.5);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.liquid-label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #666;
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.5);
+}
+
+@media (max-width: 768px) {
+  .liquid-jar-container {
+    --size: 120px;
+  }
+  
+  .liquid-value {
+    font-size: 1.5rem;
+  }
+  
+  .liquid-label {
+    font-size: 0.8rem;
+  }
+}

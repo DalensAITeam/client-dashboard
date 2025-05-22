@@ -1,0 +1,118 @@
+/* Liquid fill effect */
+.liquidContainer {
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(5px);
+}
+
+.liquidFill {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  transition: height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  --animation-speed: 1;
+}
+
+/* Wave effect */
+.waveEffect {
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    45deg,
+    rgba(255, 255, 255, 0.15) 25%,
+    transparent 25%,
+    transparent 50%,
+    rgba(255, 255, 255, 0.15) 50%,
+    rgba(255, 255, 255, 0.15) 75%,
+    transparent 75%
+  );
+  background-size: 20px 20px;
+  animation: waveAnimation calc(8s / var(--animation-speed)) linear infinite;
+  transform-origin: 50% 50%;
+  opacity: 0.5;
+}
+
+/* Bubbles */
+.bubbles {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.bubble {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 50%;
+  animation: bubbleRise var(--duration, 2s) ease-in-out infinite;
+  --size: var(--bubble-size, 6px);
+  width: var(--size);
+  height: var(--size);
+}
+
+/* Animations */
+@keyframes waveAnimation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes bubbleRise {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 0;
+  }
+  50% {
+    transform: translateY(-50%) scale(1.2);
+    opacity: 0.7;
+  }
+  100% {
+    transform: translateY(-100%) scale(0.8);
+    opacity: 0;
+  }
+}
+
+/* Shine effect */
+.shine {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.15),
+    transparent
+  );
+  animation: shine calc(3s / var(--animation-speed)) ease-in-out infinite;
+  animation-delay: calc(1.5s / var(--animation-speed));
+}
+
+@keyframes shine {
+  0% {
+    transform: translateX(-100%) rotate(-25deg);
+  }
+  100% {
+    transform: translateX(200%) rotate(-25deg);
+  }
+}
+
+/* Add smooth transition for color changes */
+@keyframes colorTransition {
+  0% {
+    filter: hue-rotate(0deg);
+  }
+  100% {
+    filter: hue-rotate(360deg);
+  }
+}

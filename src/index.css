@@ -1,0 +1,90 @@
+/* Adding fonts */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: "Inter", system-ui, "Avenir", "Helvetica", "Arial", sans-serif;
+  --accentColor: #70e000;
+  --lightAccentColor: #a3ff47;
+  --text-color: #333;
+}
+
+/* Custom animation for the feeding status wave effect */
+@keyframes wave {
+  0%,
+  100% {
+    clip-path: polygon(var(--clipPathStart));
+  }
+  50% {
+    clip-path: polygon(var(--clipPathEnd));
+  }
+}
+
+/* Hide scrollbar for cleaner UI */
+body ::-webkit-scrollbar {
+  display: none;
+}
+
+/* Custom utility classes */
+@layer components {
+  .scrollbar::-webkit-scrollbar {
+    width: 15px;
+    height: 15px;
+  }
+
+  .scrollbar::-webkit-scrollbar-track {
+    border-radius: 100vh;
+    background: #f7f4ed;
+  }
+
+  .scrollbar::-webkit-scrollbar-thumb {
+    background: #e0cbcb;
+    border-radius: 100vh;
+    border: 3px solid #f6f7ed;
+  }
+
+  .scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #c0a0b9;
+  }
+
+  /* Active state for sidebar items */
+  .nav-item-active {
+    @apply bg-lime-300/50 border-l-4 border-lime-500;
+  }
+
+  /* Hover state for sidebar items */
+  .nav-item-hover {
+    @apply hover:bg-lime-300/50 hover:border-l-4 hover:border-lime-600;
+  }
+
+  /* Card styling */
+  .dashboard-card {
+    @apply rounded-lg border bg-white p-4 shadow-sm;
+  }
+}
+
+/* Media queries for responsive design */
+@media (max-width: 768px) {
+  .main {
+    display: block;
+  }
+
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .dashboard-grid {
+    grid-template-columns: 3fr 2fr;
+  }
+}
+
+@media (min-width: 1025px) {
+  .dashboard-grid {
+    grid-template-columns: 2fr 1fr;
+  }
+}

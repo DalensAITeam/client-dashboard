@@ -1,0 +1,121 @@
+.liquid-fill-container {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  backdrop-filter: blur(4px);
+  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.liquid-fill {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: currentColor;
+  transition: height 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  filter: url(#wave);
+}
+
+.liquid-wave {
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  animation: wave 8s infinite cubic-bezier(0.42, 0, 0.58, 1);
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.3),
+    transparent 90%
+  );
+  transform-origin: center center;
+}
+
+.liquid-bubble {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 50%;
+  animation: bubble 2s infinite ease-out;
+}
+
+@keyframes wave {
+  0% {
+    transform: rotate(0deg) scale(1.5) translateY(2%);
+  }
+  50% {
+    transform: rotate(180deg) scale(1.2) translateY(-2%);
+  }
+  100% {
+    transform: rotate(360deg) scale(1.5) translateY(2%);
+  }
+}
+
+@keyframes bubble {
+  0% {
+    transform: scale(0) translateY(0);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(0.8) translateY(-50px);
+    opacity: 0.6;
+  }
+  100% {
+    transform: scale(1) translateY(-100px);
+    opacity: 0;
+  }
+}
+
+@keyframes shine {
+  0% {
+    opacity: 0.5;
+    transform: translateX(-100%) rotate(45deg);
+  }
+  100% {
+    opacity: 0.1;
+    transform: translateX(100%) rotate(45deg);
+  }
+}
+
+.feed-level-full {
+  color: rgb(16, 185, 129);
+  background: linear-gradient(
+    to bottom,
+    rgba(16, 185, 129, 0.15),
+    rgba(16, 185, 129, 0.05)
+  );
+}
+
+.feed-level-medium {
+  color: rgb(245, 158, 11);
+  background: linear-gradient(
+    to bottom,
+    rgba(245, 158, 11, 0.15),
+    rgba(245, 158, 11, 0.05)
+  );
+}
+
+.feed-level-low {
+  color: rgb(239, 68, 68);
+  background: linear-gradient(
+    to bottom,
+    rgba(239, 68, 68, 0.2),
+    rgba(239, 68, 68, 0.1)
+  );
+}
+
+.shine {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.4) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  animation: shine 3s infinite;
+  pointer-events: none;
+}
